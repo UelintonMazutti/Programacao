@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de Lógica de Programação com Linguagem C - Módulo 3</title>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 12px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: "Courier New", monospace;
+            color: #f92672;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        .full-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 25vh;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #ccc;
+            margin: 30px 0;
+        }
+
+        .password-container {
+            margin-bottom: 15px;
+        }
+
+        .exercise-code {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-break" style="page-break-before: always;"></div>
+
+    <div class="full-page">
+        Módulo 3: Vetores e Matrizes
+    </div>
+
+    <h1>Curso de Lógica de Programação com Linguagem C</h1>
+
+    <hr>
+
+    <h3>1. Arrays Unidimensionais (Vetores)</h3>
+
+    <p>Vetores são estruturas que armazenam uma coleção de valores do mesmo tipo.</p>
+
+    <h4>Declaração e inicialização:</h4>
+    <pre><code class="language-c">int numeros[5]; // Declara um vetor de 5 inteiros
+float valores[3] = {1.5, 2.3, 4.7}; // Inicializado
+char letras[10]; // Vetor de caracteres</code></pre>
+
+    <h4>Acesso aos elementos:</h4>
+    <pre><code class="language-c">numeros[0] = 10; // Primeiro elemento (índice 0)
+int x = numeros[2]; // Acessa o terceiro elemento</code></pre>
+
+    <hr>
+
+    <h3>2. Arrays Bidimensionais (Matrizes)</h3>
+
+    <p>Matrizes são vetores de vetores, organizados em linhas e colunas.</p>
+
+    <h4>Declaração e inicialização:</h4>
+    <pre><code class="language-c">int matriz[3][3]; // Matriz 3x3
+float tabela[2][4] = {{1.1, 2.2, 3.3, 4.4}, 
+                      {5.5, 6.6, 7.7, 8.8}};</code></pre>
+
+    <h4>Acesso aos elementos:</h4>
+    <pre><code class="language-c">matriz[0][1] = 5; // Linha 0, coluna 1
+int val = matriz[2][2]; // Acessa elemento</code></pre>
+
+    <hr>
+
+    <h3>3. Operações com Vetores e Matrizes</h3>
+
+    <p>Operações comuns incluem percorrer, somar, multiplicar elementos.</p>
+
+    <h4>Exemplo: Percorrer vetor</h4>
+    <pre><code class="language-c">for (int i = 0; i < 5; i++) {
+    printf("%d ", numeros[i]);
+}</code></pre>
+
+    <h4>Exemplo: Soma de matrizes</h4>
+    <pre><code class="language-c">for (int i = 0; i < linhas; i++) {
+    for (int j = 0; j < colunas; j++) {
+        matrizC[i][j] = matrizA[i][j] + matrizB[i][j];
+    }
+}</code></pre>
+
+    <hr>
+
+    <h3>4. Strings como Arrays de Caracteres</h3>
+
+    <p>Em C, strings são arrays de caracteres terminados com '\0'.</p>
+
+    <pre><code class="language-c">char nome[20] = "João Silva"; // Inicialização
+char texto[50]; // Declaração
+
+// Leitura de string
+printf("Digite seu nome: ");
+scanf("%s", nome); // Lê até encontrar espaço
+fgets(texto, 50, stdin); // Lê incluindo espaços</code></pre>
+
+    <hr>
+
+    <h3>5. Funções de String</h3>
+
+    <p>Principais funções da biblioteca string.h:</p>
+    <table>
+        <tr>
+            <th>Função</th>
+            <th>Descrição</th>
+            <th>Exemplo</th>
+        </tr>
+        <tr>
+            <td><code>strlen()</code></td>
+            <td>Retorna o tamanho da string</td>
+            <td><code>int tam = strlen(nome);</code></td>
+        </tr>
+        <tr>
+            <td><code>strcpy()</code></td>
+            <td>Copia uma string</td>
+            <td><code>strcpy(destino, origem);</code></td>
+        </tr>
+        <tr>
+            <td><code>strcat()</code></td>
+            <td>Concatena strings</td>
+            <td><code>strcat(str1, str2);</code></td>
+        </tr>
+        <tr>
+            <td><code>strcmp()</code></td>
+            <td>Compara strings</td>
+            <td><code>if (strcmp(str1, str2) == 0)</code></td>
+        </tr>
+    </table>
+
+    <div class="page-break"></div>
+
+    <div class="page-break" style="page-break-before: always;"></div>
+
+    <div class="full-page">
+        Exercícios
+    </div>
+
+    <h3>1. Faça um programa que leia 5 números e mostre-os na ordem inversa.</h3>
+    <div class="password-container">
+        <input type="password" id="password1" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code1', 'password1', this.nextElementSibling)" />
+        <button onclick="toggleCode('code1', 'password1', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code1" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int numeros[5];
+    
+    printf("Digite 5 números:\n");
+    for (int i = 0; i < 5; i++) {
+        scanf("%d", &numeros[i]);
+    }
+    
+    printf("Ordem inversa:\n");
+    for (int i = 4; i >= 0; i--) {
+        printf("%d ", numeros[i]);
+    }
+    
+    return 0;
+}</code></pre>
+
+    <h3>2. Crie um programa que some dois vetores de mesmo tamanho.</h3>
+    <div class="password-container">
+        <input type="password" id="password2" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code2', 'password2', this.nextElementSibling)" />
+        <button onclick="toggleCode('code2', 'password2', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code2" style="display: none;"><code>#include &lt;stdio.h&gt;
+#define TAM 5
+
+int main() {
+    int vetor1[TAM], vetor2[TAM], resultado[TAM];
+    
+    printf("Digite %d valores para o primeiro vetor:\n", TAM);
+    for (int i = 0; i < TAM; i++) {
+        scanf("%d", &vetor1[i]);
+    }
+    
+    printf("Digite %d valores para o segundo vetor:\n", TAM);
+    for (int i = 0; i < TAM; i++) {
+        scanf("%d", &vetor2[i]);
+    }
+    
+    for (int i = 0; i < TAM; i++) {
+        resultado[i] = vetor1[i] + vetor2[i];
+    }
+    
+    printf("Resultado da soma:\n");
+    for (int i = 0; i < TAM; i++) {
+        printf("%d ", resultado[i]);
+    }
+    
+    return 0;
+}</code></pre>
+
+    <h3>3. Desenvolva um programa que encontre o maior e menor valor em um vetor.</h3>
+    <div class="password-container">
+        <input type="password" id="password3" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code3', 'password3', this.nextElementSibling)" />
+        <button onclick="toggleCode('code3', 'password3', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code3" style="display: none;"><code>#include &lt;stdio.h&gt;
+#define TAM 10
+
+int main() {
+    int vetor[TAM], maior, menor;
+    
+    printf("Digite %d números:\n", TAM);
+    for (int i = 0; i < TAM; i++) {
+        scanf("%d", &vetor[i]);
+    }
+    
+    maior = menor = vetor[0];
+    
+    for (int i = 1; i < TAM; i++) {
+        if (vetor[i] > maior) {
+            maior = vetor[i];
+        }
+        if (vetor[i] < menor) {
+            menor = vetor[i];
+        }
+    }
+    
+    printf("Maior valor: %d\n", maior);
+    printf("Menor valor: %d\n", menor);
+    
+    return 0;
+}</code></pre>
+
+    <h3>4. Escreva um programa que ordene um vetor de números em ordem crescente.</h3>
+    <div class="password-container">
+        <input type="password" id="password4" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code4', 'password4', this.nextElementSibling)" />
+        <button onclick="toggleCode('code4', 'password4', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code4" style="display: none;"><code>#include &lt;stdio.h&gt;
+#define TAM 5
+
+int main() {
+    int vetor[TAM], temp;
+    
+    printf("Digite %d números:\n", TAM);
+    for (int i = 0; i < TAM; i++) {
+        scanf("%d", &vetor[i]);
+    }
+    
+    // Algoritmo Bubble Sort
+    for (int i = 0; i < TAM-1; i++) {
+        for (int j = 0; j < TAM-i-1; j++) {
+            if (vetor[j] > vetor[j+1]) {
+                temp = vetor[j];
+                vetor[j] = vetor[j+1];
+                vetor[j+1] = temp;
+            }
+        }
+    }
+    
+    printf("Vetor ordenado:\n");
+    for (int i = 0; i < TAM; i++) {
+        printf("%d ", vetor[i]);
+    }
+    
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>5. Faça um programa que conte quantos números pares há em um vetor.</h3>
+    <div class="password-container">
+        <input type="password" id="password5" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code5', 'password5', this.nextElementSibling)" />
+        <button onclick="toggleCode('code5', 'password5', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code5" style="display: none;"><code>#include &lt;stdio.h&gt;
+#define TAM 10
+
+int main() {
+    int vetor[TAM], pares = 0;
+    
+    printf("Digite %d números:\n", TAM);
+    for (int i = 0; i < TAM; i++) {
+        scanf("%d", &vetor[i]);
+        if (vetor[i] % 2 == 0) {
+            pares++;
+        }
+    }
+    
+    printf("Quantidade de números pares: %d\n", pares);
+    return 0;
+}</code></pre>
+
+    <h3>6. Crie um programa que some os elementos da diagonal principal de uma matriz quadrada.</h3>
+    <div class="password-container">
+        <input type="password" id="password6" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code6', 'password6', this.nextElementSibling)" />
+        <button onclick="toggleCode('code6', 'password6', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code6" style="display: none;"><code>#include &lt;stdio.h&gt;
+#define TAM 3
+
+int main() {
+    int matriz[TAM][TAM], soma = 0;
+    
+    printf("Digite os elementos da matriz %dx%d:\n", TAM, TAM);
+    for (int i = 0; i < TAM; i++) {
+        for (int j = 0; j < TAM; j++) {
+            scanf("%d", &matriz[i][j]);
+            if (i == j) {
+                soma += matriz[i][j];
+            }
+        }
+    }
+    
+    printf("Soma da diagonal principal: %d\n", soma);
+    return 0;
+}</code></pre>
+
+    <h3>7. Desenvolva um programa que multiplique dois vetores (produto escalar).</h3>
+    <div class="password-container">
+        <input type="password" id="password7" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code7', 'password7', this.nextElementSibling)" />
+        <button onclick="toggleCode('code7', 'password7', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code7" style="display: none;"><code>#include &lt;stdio.h&gt;
+#define TAM 3
+
+int main() {
+    int vetor1[TAM], vetor2[TAM], produto = 0;
+    
+    printf("Digite %d valores para o primeiro vetor:\n", TAM);
+    for (int i = 0; i < TAM; i++) {
+        scanf("%d", &vetor1[i]);
+    }
+    
+    printf("Digite %d valores para o segundo vetor:\n", TAM);
+    for (int i = 0; i < TAM; i++) {
+        scanf("%d", &vetor2[i]);
+        produto += vetor1[i] * vetor2[i];
+    }
+    
+    printf("Produto escalar: %d\n", produto);
+    return 0;
+}</code></pre>
+
+    <h3>8. Escreva um programa que verifique se uma palavra é um palíndromo.</h3>
+    <div class="password-container">
+        <input type="password" id="password8" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code8', 'password8', this.nextElementSibling)" />
+        <button onclick="toggleCode('code8', 'password8', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code8" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char palavra[50];
+    int i, j, palindromo = 1;
+    
+    printf("Digite uma palavra: ");
+    scanf("%s", palavra);
+    
+    i = 0;
+    j = strlen(palavra) - 1;
+    
+    while (i < j) {
+        if (palavra[i] != palavra[j]) {
+            palindromo = 0;
+            break;
+        }
+        i++;
+        j--;
+    }
+    
+    printf("A palavra %s %s um palíndromo.\n", palavra, palindromo ? "é" : "não é");
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>9. Faça um programa que concatene duas strings sem usar a função strcat.</h3>
+    <div class="password-container">
+        <input type="password" id="password9" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code9', 'password9', this.nextElementSibling)" />
+        <button onclick="toggleCode('code9', 'password9', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code9" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    char str1[100], str2[50];
+    int i, j;
+    
+    printf("Digite a primeira string: ");
+    scanf("%s", str1);
+    
+    printf("Digite a segunda string: ");
+    scanf("%s", str2);
+    
+    // Encontra o final da primeira string
+    i = 0;
+    while (str1[i] != '\0') {
+        i++;
+    }
+    
+    // Copia a segunda string para o final da primeira
+    j = 0;
+    while (str2[j] != '\0') {
+        str1[i] = str2[j];
+        i++;
+        j++;
+    }
+    str1[i] = '\0'; // Adiciona o terminador nulo
+    
+    printf("Strings concatenadas: %s\n", str1);
+    return 0;
+}</code></pre>
+
+    <h3>10. Crie um programa que conte o número de vogais em uma string.</h3>
+    <div class="password-container">
+        <input type="password" id="password10" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code10', 'password10', this.nextElementSibling)" />
+        <button onclick="toggleCode('code10', 'password10', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code10" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+int main() {
+    char texto[100];
+    int vogais = 0;
+    
+    printf("Digite um texto: ");
+    fgets(texto, 100, stdin);
+    
+    for (int i = 0; texto[i] != '\0'; i++) {
+        char c = tolower(texto[i]);
+        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+            vogais++;
+        }
+    }
+    
+    printf("Número de vogais: %d\n", vogais);
+    return 0;
+}</code></pre>
+
+    <h3>11. Desenvolva um programa que remova os espaços em branco de uma string.</h3>
+    <div class="password-container">
+        <input type="password" id="password11" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code11', 'password11', this.nextElementSibling)" />
+        <button onclick="toggleCode('code11', 'password11', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code11" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    char texto[100], semEspacos[100];
+    int j = 0;
+    
+    printf("Digite um texto: ");
+    fgets(texto, 100, stdin);
+    
+    for (int i = 0; texto[i] != '\0'; i++) {
+        if (texto[i] != ' ') {
+            semEspacos[j] = texto[i];
+            j++;
+        }
+    }
+    semEspacos[j] = '\0';
+    
+    printf("Texto sem espaços: %s\n", semEspacos);
+    return 0;
+}</code></pre>
+
+    <h3>12. Escreva um programa que transforme todas as letras de uma string em maiúsculas.</h3>
+    <div class="password-container">
+        <input type="password" id="password12" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code12', 'password12', this.nextElementSibling)" />
+        <button onclick="toggleCode('code12', 'password12', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code12" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+int main() {
+    char texto[100];
+    
+    printf("Digite um texto: ");
+    fgets(texto, 100, stdin);
+    
+    for (int i = 0; texto[i] != '\0'; i++) {
+        texto[i] = toupper(texto[i]);
+    }
+    
+    printf("Texto em maiúsculas: %s\n", texto);
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>13. Faça um programa que some duas matrizes.</h3>
+    <div class="password-container">
+        <input type="password" id="password13" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code13', 'password13', this.nextElementSibling)" />
+        <button onclick="toggleCode('code13', 'password13', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code13" style="display: none;"><code>#include &lt;stdio.h&gt;
+#define LINHAS 2
+#define COLUNAS 3
+
+int main() {
+    int matrizA[LINHAS][COLUNAS], matrizB[LINHAS][COLUNAS], resultado[LINHAS][COLUNAS];
+    
+    printf("Digite os elementos da matriz A:\n");
+    for (int i = 0; i < LINHAS; i++) {
+        for (int j = 0; j < COLUNAS; j++) {
+            scanf("%d", &matrizA[i][j]);
+        }
+    }
+    
+    printf("Digite os elementos da matriz B:\n");
+    for (int i = 0; i < LINHAS; i++) {
+        for (int j = 0; j < COLUNAS; j++) {
+            scanf("%d", &matrizB[i][j]);
+        }
+    }
+    
+    // Soma as matrizes
+    for (int i = 0; i < LINHAS; i++) {
+        for (int j = 0; j < COLUNAS; j++) {
+            resultado[i][j] = matrizA[i][j] + matrizB[i][j];
+        }
+    }
+    
+    printf("Resultado da soma:\n");
+    for (int i = 0; i < LINHAS; i++) {
+        for (int j = 0; j < COLUNAS; j++) {
+            printf("%d ", resultado[i][j]);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}</code></pre>
+
+    <h3>14. Crie um programa que multiplique duas matrizes.</h3>
+    <div class="password-container">
+        <input type="password" id="password14" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code14', 'password14', this.nextElementSibling)" />
+        <button onclick="toggleCode('code14', 'password14', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code14" style="display: none;"><code>#include &lt;stdio.h&gt;
+#define LINHAS_A 2
+#define COLUNAS_A 3
+#define LINHAS_B 3
+#define COLUNAS_B 2
+
+int main() {
+    int matrizA[LINHAS_A][COLUNAS_A], matrizB[LINHAS_B][COLUNAS_B], resultado[LINHAS_A][COLUNAS_B];
+    
+    printf("Digite os elementos da matriz A (%dx%d):\n", LINHAS_A, COLUNAS_A);
+    for (int i = 0; i < LINHAS_A; i++) {
+        for (int j = 0; j < COLUNAS_A; j++) {
+            scanf("%d", &matrizA[i][j]);
+        }
+    }
+    
+    printf("Digite os elementos da matriz B (%dx%d):\n", LINHAS_B, COLUNAS_B);
+    for (int i = 0; i < LINHAS_B; i++) {
+        for (int j = 0; j < COLUNAS_B; j++) {
+            scanf("%d", &matrizB[i][j]);
+        }
+    }
+    
+    // Multiplica as matrizes
+    for (int i = 0; i < LINHAS_A; i++) {
+        for (int j = 0; j < COLUNAS_B; j++) {
+            resultado[i][j] = 0;
+            for (int k = 0; k < COLUNAS_A; k++) {
+                resultado[i][j] += matrizA[i][k] * matrizB[k][j];
+            }
+        }
+    }
+    
+    printf("Resultado da multiplicação:\n");
+    for (int i = 0; i < LINHAS_A; i++) {
+        for (int j = 0; j < COLUNAS_B; j++) {
+            printf("%d ", resultado[i][j]);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}</code></pre>
+
+    <h3>15. Desenvolva um programa que transponha uma matriz.</h3>
+    <div class="password-container">
+        <input type="password" id="password15" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code15', 'password15', this.nextElementSibling)" />
+        <button onclick="toggleCode('code15', 'password15', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code15" style="display: none;"><code>#include &lt;stdio.h&gt;
+#define LINHAS 3
+#define COLUNAS 3
+
+int main() {
+    int matriz[LINHAS][COLUNAS], transposta[COLUNAS][LINHAS];
+    
+    printf("Digite os elementos da matriz %dx%d:\n", LINHAS, COLUNAS);
+    for (int i = 0; i < LINHAS; i++) {
+        for (int j = 0; j < COLUNAS; j++) {
+            scanf("%d", &matriz[i][j]);
+        }
+    }
+    
+    // Calcula a transposta
+    for (int i = 0; i < LINHAS; i++) {
+        for (int j = 0; j < COLUNAS; j++) {
+            transposta[j][i] = matriz[i][j];
+        }
+    }
+    
+    printf("Matriz transposta:\n");
+    for (int i = 0; i < COLUNAS; i++) {
+        for (int j = 0; j < LINHAS; j++) {
+            printf("%d ", transposta[i][j]);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>16. Escreva um programa que verifique se uma matriz é simétrica.</h3>
+    <div class="password-container">
+        <input type="password" id="password16" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code16', 'password16', this.nextElementSibling)" />
+        <button onclick="toggleCode('code16', 'password16', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code16" style="display: none;"><code>#include &lt;stdio.h&gt;
+#define TAM 3
+
+int main() {
+    int matriz[TAM][TAM], simetrica = 1;
+    
+    printf("Digite os elementos da matriz %dx%d:\n", TAM, TAM);
+    for (int i = 0; i < TAM; i++) {
+        for (int j = 0; j < TAM; j++) {
+            scanf("%d", &matriz[i][j]);
+        }
+    }
+    
+    // Verifica se é simétrica
+    for (int i = 0; i < TAM; i++) {
+        for (int j = 0; j < TAM; j++) {
+            if (matriz[i][j] != matriz[j][i]) {
+                simetrica = 0;
+                break;
+            }
+        }
+        if (!simetrica) break;
+    }
+    
+    printf("A matriz %s simétrica.\n", simetrica ? "é" : "não é");
+    return 0;
+}</code></pre>
+
+    <h3>17. Faça um programa que realize uma busca linear em um vetor.</h3>
+    <div class="password-container">
+        <input type="password" id="password17" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code17', 'password17', this.nextElementSibling)" />
+        <button onclick="toggleCode('code17', 'password17', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code17" style="display: none;"><code>#include &lt;stdio.h&gt;
+#define TAM 10
+
+int main() {
+    int vetor[TAM], valor, encontrado = -1;
+    
+    printf("Digite %d números:\n", TAM);
+    for (int i = 0; i < TAM; i++) {
+        scanf("%d", &vetor[i]);
+    }
+    
+    printf("Digite o valor a ser buscado: ");
+    scanf("%d", &valor);
+    
+    for (int i = 0; i < TAM; i++) {
+        if (vetor[i] == valor) {
+            encontrado = i;
+            break;
+        }
+    }
+    
+    if (encontrado != -1) {
+        printf("Valor encontrado na posição %d\n", encontrado);
+    } else {
+        printf("Valor não encontrado\n");
+    }
+    
+    return 0;
+}</code></pre>
+
+    <h3>18. Crie um programa que realize uma busca binária em um vetor ordenado.</h3>
+    <div class="password-container">
+        <input type="password" id="password18" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code18', 'password18', this.nextElementSibling)" />
+        <button onclick="toggleCode('code18', 'password18', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code18" style="display: none;"><code>#include &lt;stdio.h&gt;
+#define TAM 10
+
+int main() {
+    int vetor[TAM] = {1, 3, 5, 7, 9, 11, 13, 15, 17, 19}; // Vetor ordenado
+    int valor, inicio = 0, fim = TAM - 1, meio, encontrado = -1;
+    
+    printf("Vetor ordenado: ");
+    for (int i = 0; i < TAM; i++) {
+        printf("%d ", vetor[i]);
+    }
+    printf("\n");
+    
+    printf("Digite o valor a ser buscado: ");
+    scanf("%d", &valor);
+    
+    while (inicio <= fim) {
+        meio = (inicio + fim) / 2;
+        
+        if (vetor[meio] == valor) {
+            encontrado = meio;
+            break;
+        } else if (vetor[meio] < valor) {
+            inicio = meio + 1;
+        } else {
+            fim = meio - 1;
+        }
+    }
+    
+    if (encontrado != -1) {
+        printf("Valor encontrado na posição %d\n", encontrado);
+    } else {
+        printf("Valor não encontrado\n");
+    }
+    
+    return 0;
+}</code></pre>
+
+    <h3>19. Desenvolva um programa que some os elementos acima da diagonal principal de uma matriz.</h3>
+    <div class="password-container">
+        <input type="password" id="password19" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code19', 'password19', this.nextElementSibling)" />
+        <button onclick="toggleCode('code19', 'password19', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code19" style="display: none;"><code>#include &lt;stdio.h&gt;
+#define TAM 3
+
+int main() {
+    int matriz[TAM][TAM], soma = 0;
+    
+    printf("Digite os elementos da matriz %dx%d:\n", TAM, TAM);
+    for (int i = 0; i < TAM; i++) {
+        for (int j = 0; j < TAM; j++) {
+            scanf("%d", &matriz[i][j]);
+            if (j > i) {
+                soma += matriz[i][j];
+            }
+        }
+    }
+    
+    printf("Soma dos elementos acima da diagonal principal: %d\n", soma);
+    return 0;
+}</code></pre>
+
+    <h3>20. Escreva um programa que conte a frequência de cada letra em uma string.</h3>
+    <div class="password-container">
+        <input type="password" id="password20" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code20', 'password20', this.nextElementSibling)" />
+        <button onclick="toggleCode('code20', 'password20', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code20" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+#define TAM 26
+
+int main() {
+    char texto[100];
+    int frequencia[TAM] = {0};
+    
+    printf("Digite um texto: ");
+    fgets(texto, 100, stdin);
+    
+    for (int i = 0; texto[i] != '\0'; i++) {
+        char c = tolower(texto[i]);
+        if (c >= 'a' && c <= 'z') {
+            frequencia[c - 'a']++;
+        }
+    }
+    
+    printf("Frequência de letras:\n");
+    for (int i = 0; i < TAM; i++) {
+        if (frequencia[i] > 0) {
+            printf("%c: %d\n", 'a' + i, frequencia[i]);
+        }
+    }
+    
+    return 0;
+}</code></pre>
+
+    <script>
+        function toggleCode(codeId, passwordId, button) {
+            const senhaInput = document.getElementById(passwordId);
+            const senha = senhaInput.value;
+            const codeBlock = document.getElementById(codeId);
+        
+            if (senha === "1234") {  // Altere aqui pela senha correta
+                if (codeBlock.style.display === "none") {
+                    codeBlock.style.display = "block";
+                    button.textContent = "Ocultar Código";
+                } else {
+                    codeBlock.style.display = "none";
+                    senhaInput.value = ""; // Limpa a senha ao esconder
+                    button.textContent = "Mostrar Código";
+                }
+            } else {
+                alert("Senha incorreta!");
+            }
+        }
+        
+        function handleEnter(event, codeId, passwordId, button) {
+            if (event.key === "Enter") {
+                toggleCode(codeId, passwordId, button);
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+</body>
+</html>

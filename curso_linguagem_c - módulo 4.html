@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 4: Funções e Modularização</title>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 12px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: "Courier New", monospace;
+            color: #f92672;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        .full-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 25vh;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #ccc;
+            margin: 30px 0;
+        }
+
+        .password-container {
+            margin-bottom: 15px;
+        }
+
+        .exercise-code {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-break" style="page-break-before: always;"></div>
+
+    <div class="full-page">
+        Módulo 4: Funções e Modularização
+    </div>
+
+    <h1>Curso de Lógica de Programação com Linguagem C</h1>
+
+    <hr>
+
+    <h3>1. Definição e Chamada de Funções</h3>
+
+    <p>Funções são blocos de código que realizam tarefas específicas e podem ser reutilizados.</p>
+
+    <h4>Estrutura básica:</h4>
+    <pre><code class="language-c">// Declaração (protótipo)
+tipo_retorno nome_funcao(tipo_parametro1, tipo_parametro2);
+
+// Definição
+tipo_retorno nome_funcao(tipo_parametro1 param1, tipo_parametro2 param2) {
+    // Corpo da função
+    return valor_retorno;
+}
+
+// Chamada
+variavel = nome_funcao(arg1, arg2);</code></pre>
+
+    <hr>
+
+    <h3>2. Parâmetros e Retorno de Funções</h3>
+
+    <p>Funções podem receber parâmetros e retornar valores.</p>
+
+    <pre><code class="language-c">int soma(int a, int b) {
+    return a + b;
+}
+
+int resultado = soma(5, 3); // resultado = 8</code></pre>
+
+    <hr>
+
+    <h3>3. Escopo de Variáveis</h3>
+
+    <p>Variáveis podem ser locais (dentro de funções) ou globais (acessíveis em todo o programa).</p>
+
+    <pre><code class="language-c">int global = 10; // Variável global
+
+void funcao() {
+    int local = 5; // Variável local
+    printf("%d", global); // Acesso permitido
+}
+
+int main() {
+    // printf("%d", local); // Erro - local não existe aqui
+    return 0;
+}</code></pre>
+
+    <hr>
+
+    <h3>4. Passagem de Parâmetros</h3>
+
+    <h4>Por valor (cópia do valor):</h4>
+    <pre><code class="language-c">void incrementa(int x) {
+    x++; // Não afeta a variável original
+}</code></pre>
+
+    <h4>Por referência (usa ponteiros):</h4>
+    <pre><code class="language-c">void incrementa(int *x) {
+    (*x)++; // Altera a variável original
+}</code></pre>
+
+    <hr>
+
+    <h3>5. Recursividade</h3>
+
+    <p>Funções podem chamar a si mesmas, útil para problemas que podem ser divididos em subproblemas similares.</p>
+
+    <pre><code class="language-c">int fatorial(int n) {
+    if (n <= 1) return 1;
+    return n * fatorial(n - 1);
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <div class="page-break" style="page-break-before: always;"></div>
+
+    <div class="full-page">
+        Exercícios
+    </div>
+
+    <h3>1. Faça uma função que retorne o dobro de um número.</h3>
+    <div class="password-container">
+        <input type="password" id="password1" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code1', 'password1', this.nextElementSibling)" />
+        <button onclick="toggleCode('code1', 'password1', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code1" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int dobro(int num) {
+    return num * 2;
+}
+
+int main() {
+    int numero;
+    printf("Digite um número: ");
+    scanf("%d", &numero);
+    printf("O dobro é: %d\n", dobro(numero));
+    return 0;
+}</code></pre>
+
+    <h3>2. Crie uma função que calcule o fatorial de um número.</h3>
+    <div class="password-container">
+        <input type="password" id="password2" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code2', 'password2', this.nextElementSibling)" />
+        <button onclick="toggleCode('code2', 'password2', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code2" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int fatorial(int n) {
+    int fat = 1;
+    for (int i = 2; i <= n; i++) {
+        fat *= i;
+    }
+    return fat;
+}
+
+int main() {
+    int num;
+    printf("Digite um número: ");
+    scanf("%d", &num);
+    printf("Fatorial: %d\n", fatorial(num));
+    return 0;
+}</code></pre>
+
+    <h3>3. Desenvolva uma função que verifique se um número é primo.</h3>
+    <div class="password-container">
+        <input type="password" id="password3" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code3', 'password3', this.nextElementSibling)" />
+        <button onclick="toggleCode('code3', 'password3', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code3" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;stdbool.h&gt;
+
+bool ehPrimo(int n) {
+    if (n <= 1) return false;
+    for (int i = 2; i <= n/2; i++) {
+        if (n % i == 0) return false;
+    }
+    return true;
+}
+
+int main() {
+    int num;
+    printf("Digite um número: ");
+    scanf("%d", &num);
+    printf("%d %s primo\n", num, ehPrimo(num) ? "é" : "não é");
+    return 0;
+}</code></pre>
+
+    <h3>4. Escreva uma função que retorne o maior entre dois números.</h3>
+    <div class="password-container">
+        <input type="password" id="password4" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code4', 'password4', this.nextElementSibling)" />
+        <button onclick="toggleCode('code4', 'password4', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code4" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int maior(int a, int b) {
+    return (a > b) ? a : b;
+}
+
+int main() {
+    int x, y;
+    printf("Digite dois números: ");
+    scanf("%d %d", &x, &y);
+    printf("O maior é: %d\n", maior(x, y));
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>5. Faça uma função que calcule a potência (x^y) sem usar a função pow.</h3>
+    <div class="password-container">
+        <input type="password" id="password5" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code5', 'password5', this.nextElementSibling)" />
+        <button onclick="toggleCode('code5', 'password5', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code5" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+float potencia(float base, int expoente) {
+    float resultado = 1;
+    for (int i = 0; i < expoente; i++) {
+        resultado *= base;
+    }
+    return resultado;
+}
+
+int main() {
+    float base;
+    int exp;
+    printf("Digite a base e o expoente: ");
+    scanf("%f %d", &base, &exp);
+    printf("Resultado: %.2f\n", potencia(base, exp));
+    return 0;
+}</code></pre>
+
+    <h3>6. Crie uma função que converta graus Celsius para Fahrenheit.</h3>
+    <div class="password-container">
+        <input type="password" id="password6" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code6', 'password6', this.nextElementSibling)" />
+        <button onclick="toggleCode('code6', 'password6', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code6" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+float celsiusParaFahrenheit(float celsius) {
+    return (celsius * 9/5) + 32;
+}
+
+int main() {
+    float temp;
+    printf("Digite a temperatura em Celsius: ");
+    scanf("%f", &temp);
+    printf("Em Fahrenheit: %.2f\n", celsiusParaFahrenheit(temp));
+    return 0;
+}</code></pre>
+
+    <h3>7. Desenvolva uma função que retorne o n-ésimo termo da sequência Fibonacci.</h3>
+    <div class="password-container">
+        <input type="password" id="password7" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code7', 'password7', this.nextElementSibling)" />
+        <button onclick="toggleCode('code7', 'password7', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code7" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int fibonacci(int n) {
+    if (n <= 1) return n;
+    int a = 0, b = 1, c;
+    for (int i = 2; i <= n; i++) {
+        c = a + b;
+        a = b;
+        b = c;
+    }
+    return b;
+}
+
+int main() {
+    int n;
+    printf("Digite o termo desejado: ");
+    scanf("%d", &n);
+    printf("Termo %d: %d\n", n, fibonacci(n));
+    return 0;
+}</code></pre>
+
+    <h3>8. Escreva uma função que inverta os dígitos de um número.</h3>
+    <div class="password-container">
+        <input type="password" id="password8" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code8', 'password8', this.nextElementSibling)" />
+        <button onclick="toggleCode('code8', 'password8', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code8" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int inverteNumero(int num) {
+    int invertido = 0;
+    while (num != 0) {
+        invertido = invertido * 10 + num % 10;
+        num /= 10;
+    }
+    return invertido;
+}
+
+int main() {
+    int num;
+    printf("Digite um número: ");
+    scanf("%d", &num);
+    printf("Número invertido: %d\n", inverteNumero(num));
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>9. Faça uma função que calcule o MDC entre dois números.</h3>
+    <div class="password-container">
+        <input type="password" id="password9" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code9', 'password9', this.nextElementSibling)" />
+        <button onclick="toggleCode('code9', 'password9', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code9" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int mdc(int a, int b) {
+    while (b != 0) {
+        int resto = a % b;
+        a = b;
+        b = resto;
+    }
+    return a;
+}
+
+int main() {
+    int x, y;
+    printf("Digite dois números: ");
+    scanf("%d %d", &x, &y);
+    printf("MDC: %d\n", mdc(x, y));
+    return 0;
+}</code></pre>
+
+    <h3>10. Crie uma função que determine se um número é perfeito.</h3>
+    <div class="password-container">
+        <input type="password" id="password10" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code10', 'password10', this.nextElementSibling)" />
+        <button onclick="toggleCode('code10', 'password10', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code10" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;stdbool.h&gt;
+
+bool ehPerfeito(int n) {
+    if (n <= 1) return false;
+    int soma = 1;
+    for (int i = 2; i <= n/2; i++) {
+        if (n % i == 0) soma += i;
+    }
+    return soma == n;
+}
+
+int main() {
+    int num;
+    printf("Digite um número: ");
+    scanf("%d", &num);
+    printf("%d %s um número perfeito\n", num, ehPerfeito(num) ? "é" : "não é");
+    return 0;
+}</code></pre>
+
+    <h3>11. Desenvolva uma função que some os elementos de um vetor.</h3>
+    <div class="password-container">
+        <input type="password" id="password11" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code11', 'password11', this.nextElementSibling)" />
+        <button onclick="toggleCode('code11', 'password11', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code11" style="display: none;"><code>#include &lt;stdio.h&gt;
+#define TAM 5
+
+float somaVetor(float vetor[], int tamanho) {
+    float soma = 0;
+    for (int i = 0; i < tamanho; i++) {
+        soma += vetor[i];
+    }
+    return soma;
+}
+
+int main() {
+    float vet[TAM];
+    printf("Digite %d números:\n", TAM);
+    for (int i = 0; i < TAM; i++) {
+        scanf("%f", &vet[i]);
+    }
+    printf("Soma: %.2f\n", somaVetor(vet, TAM));
+    return 0;
+}</code></pre>
+
+    <h3>12. Escreva uma função que encontre o maior elemento em um vetor.</h3>
+    <div class="password-container">
+        <input type="password" id="password12" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code12', 'password12', this.nextElementSibling)" />
+        <button onclick="toggleCode('code12', 'password12', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code12" style="display: none;"><code>#include &lt;stdio.h&gt;
+#define TAM 10
+
+int maiorElemento(int vetor[], int tamanho) {
+    int maior = vetor[0];
+    for (int i = 1; i < tamanho; i++) {
+        if (vetor[i] > maior) {
+            maior = vetor[i];
+        }
+    }
+    return maior;
+}
+
+int main() {
+    int vet[TAM];
+    printf("Digite %d números:\n", TAM);
+    for (int i = 0; i < TAM; i++) {
+        scanf("%d", &vet[i]);
+    }
+    printf("Maior elemento: %d\n", maiorElemento(vet, TAM));
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>13. Faça uma função que ordene um vetor de números.</h3>
+    <div class="password-container">
+        <input type="password" id="password13" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code13', 'password13', this.nextElementSibling)" />
+        <button onclick="toggleCode('code13', 'password13', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code13" style="display: none;"><code>#include &lt;stdio.h&gt;
+#define TAM 5
+
+void ordenaVetor(int vetor[], int tamanho) {
+    for (int i = 0; i < tamanho-1; i++) {
+        for (int j = 0; j < tamanho-i-1; j++) {
+            if (vetor[j] > vetor[j+1]) {
+                int temp = vetor[j];
+                vetor[j] = vetor[j+1];
+                vetor[j+1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    int vet[TAM];
+    printf("Digite %d números:\n", TAM);
+    for (int i = 0; i < TAM; i++) {
+        scanf("%d", &vet[i]);
+    }
+    
+    ordenaVetor(vet, TAM);
+    
+    printf("Vetor ordenado: ");
+    for (int i = 0; i < TAM; i++) {
+        printf("%d ", vet[i]);
+    }
+    printf("\n");
+    
+    return 0;
+}</code></pre>
+
+    <h3>14. Crie uma função que verifique se uma string é um palíndromo.</h3>
+    <div class="password-container">
+        <input type="password" id="password14" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code14', 'password14', this.nextElementSibling)" />
+        <button onclick="toggleCode('code14', 'password14', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code14" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdbool.h&gt;
+#include &lt;ctype.h&gt;
+
+bool ehPalindromo(char str[]) {
+    int inicio = 0;
+    int fim = strlen(str) - 1;
+    
+    while (inicio < fim) {
+        // Ignora caracteres não alfanuméricos
+        while (!isalnum(str[inicio]) && inicio < fim) inicio++;
+        while (!isalnum(str[fim]) && inicio < fim) fim--;
+        
+        if (tolower(str[inicio]) != tolower(str[fim])) {
+            return false;
+        }
+        inicio++;
+        fim--;
+    }
+    return true;
+}
+
+int main() {
+    char texto[100];
+    printf("Digite uma string: ");
+    fgets(texto, 100, stdin);
+    texto[strcspn(texto, "\n")] = '\0'; // Remove o \n do fgets
+    
+    printf("A string %s um palíndromo.\n", 
+           ehPalindromo(texto) ? "é" : "não é");
+    return 0;
+}</code></pre>
+
+    <h3>15. Desenvolva uma função que conte o número de vogais em uma string.</h3>
+    <div class="password-container">
+        <input type="password" id="password15" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code15', 'password15', this.nextElementSibling)" />
+        <button onclick="toggleCode('code15', 'password15', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code15" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+int contaVogais(char str[]) {
+    int vogais = 0;
+    for (int i = 0; str[i] != '\0'; i++) {
+        char c = tolower(str[i]);
+        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+            vogais++;
+        }
+    }
+    return vogais;
+}
+
+int main() {
+    char texto[100];
+    printf("Digite uma string: ");
+    fgets(texto, 100, stdin);
+    
+    printf("Número de vogais: %d\n", contaVogais(texto));
+    return 0;
+}</code></pre>
+
+    <h3>16. Escreva uma função recursiva para calcular o fatorial.</h3>
+    <div class="password-container">
+        <input type="password" id="password16" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code16', 'password16', this.nextElementSibling)" />
+        <button onclick="toggleCode('code16', 'password16', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code16" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int fatorialRecursivo(int n) {
+    if (n <= 1) return 1;
+    return n * fatorialRecursivo(n - 1);
+}
+
+int main() {
+    int num;
+    printf("Digite um número: ");
+    scanf("%d", &num);
+    printf("Fatorial: %d\n", fatorialRecursivo(num));
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>17. Faça uma função recursiva para calcular a potência.</h3>
+    <div class="password-container">
+        <input type="password" id="password17" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code17', 'password17', this.nextElementSibling)" />
+        <button onclick="toggleCode('code17', 'password17', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code17" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+float potenciaRecursiva(float base, int expoente) {
+    if (expoente == 0) return 1;
+    if (expoente < 0) return 1 / potenciaRecursiva(base, -expoente);
+    return base * potenciaRecursiva(base, expoente - 1);
+}
+
+int main() {
+    float base;
+    int exp;
+    printf("Digite a base e o expoente: ");
+    scanf("%f %d", &base, &exp);
+    printf("Resultado: %.2f\n", potenciaRecursiva(base, exp));
+    return 0;
+}</code></pre>
+
+    <h3>18. Crie uma função recursiva para gerar a sequência Fibonacci.</h3>
+    <div class="password-container">
+        <input type="password" id="password18" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code18', 'password18', this.nextElementSibling)" />
+        <button onclick="toggleCode('code18', 'password18', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code18" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int fibonacciRecursivo(int n) {
+    if (n <= 1) return n;
+    return fibonacciRecursivo(n - 1) + fibonacciRecursivo(n - 2);
+}
+
+int main() {
+    int n;
+    printf("Digite o termo desejado: ");
+    scanf("%d", &n);
+    printf("Termo %d: %d\n", n, fibonacciRecursivo(n));
+    return 0;
+}</code></pre>
+
+    <h3>19. Desenvolva uma função que calcule o produto escalar de dois vetores.</h3>
+    <div class="password-container">
+        <input type="password" id="password19" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code19', 'password19', this.nextElementSibling)" />
+        <button onclick="toggleCode('code19', 'password19', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code19" style="display: none;"><code>#include &lt;stdio.h&gt;
+#define TAM 3
+
+int produtoEscalar(int vetor1[], int vetor2[], int tamanho) {
+    int produto = 0;
+    for (int i = 0; i < tamanho; i++) {
+        produto += vetor1[i] * vetor2[i];
+    }
+    return produto;
+}
+
+int main() {
+    int vet1[TAM], vet2[TAM];
+    
+    printf("Digite %d valores para o primeiro vetor:\n", TAM);
+    for (int i = 0; i < TAM; i++) {
+        scanf("%d", &vet1[i]);
+    }
+    
+    printf("Digite %d valores para o segundo vetor:\n", TAM);
+    for (int i = 0; i < TAM; i++) {
+        scanf("%d", &vet2[i]);
+    }
+    
+    printf("Produto escalar: %d\n", produtoEscalar(vet1, vet2, TAM));
+    return 0;
+}</code></pre>
+
+    <h3>20. Escreva uma função que receba uma matriz e retorne sua transposta.</h3>
+    <div class="password-container">
+        <input type="password" id="password20" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code20', 'password20', this.nextElementSibling)" />
+        <button onclick="toggleCode('code20', 'password20', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code20" style="display: none;"><code>#include &lt;stdio.h&gt;
+#define LINHAS 2
+#define COLUNAS 3
+
+void transposta(int matriz[LINHAS][COLUNAS], int resultado[COLUNAS][LINHAS]) {
+    for (int i = 0; i < LINHAS; i++) {
+        for (int j = 0; j < COLUNAS; j++) {
+            resultado[j][i] = matriz[i][j];
+        }
+    }
+}
+
+void imprimeMatriz(int matriz[][LINHAS], int linhas, int colunas) {
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            printf("%d ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int mat[LINHAS][COLUNAS], transp[COLUNAS][LINHAS];
+    
+    printf("Digite os elementos da matriz %dx%d:\n", LINHAS, COLUNAS);
+    for (int i = 0; i < LINHAS; i++) {
+        for (int j = 0; j < COLUNAS; j++) {
+            scanf("%d", &mat[i][j]);
+        }
+    }
+    
+    transposta(mat, transp);
+    
+    printf("Matriz transposta:\n");
+    imprimeMatriz(transp, COLUNAS, LINHAS);
+    
+    return 0;
+}</code></pre>
+
+    <script>
+        function toggleCode(codeId, passwordId, button) {
+            const senhaInput = document.getElementById(passwordId);
+            const senha = senhaInput.value;
+            const codeBlock = document.getElementById(codeId);
+        
+            if (senha === "1234") {  // Altere aqui pela senha correta
+                if (codeBlock.style.display === "none") {
+                    codeBlock.style.display = "block";
+                    button.textContent = "Ocultar Código";
+                } else {
+                    codeBlock.style.display = "none";
+                    senhaInput.value = ""; // Limpa a senha ao esconder
+                    button.textContent = "Mostrar Código";
+                }
+            } else {
+                alert("Senha incorreta!");
+            }
+        }
+        
+        function handleEnter(event, codeId, passwordId, button) {
+            if (event.key === "Enter") {
+                toggleCode(codeId, passwordId, button);
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+</body>
+</html>

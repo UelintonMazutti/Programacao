@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 1: Introdução à Programação e Lógica Básica</title>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 12px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: "Courier New", monospace;
+            color: #f92672;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        .full-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 25vh;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #ccc;
+            margin: 30px 0;
+        }
+
+        .password-container {
+            margin-bottom: 15px;
+        }
+
+        .exercise-code {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-break" style="page-break-before: always;"></div>
+
+    <div class="full-page">
+        Módulo 1: Introdução à Programação e Lógica Básica
+    </div>
+
+    <h1>Curso de Lógica de Programação com Linguagem C</h1>
+
+    <hr>
+
+    <h3>1. Conceitos Fundamentais de Programação</h3>
+
+    <p>Programar é escrever instruções que serão executadas por um computador.</p>
+
+    <p><strong>Conceitos importantes:</strong></p>
+    <ul>
+        <li><strong>Algoritmo</strong>: sequência de passos para resolver um problema.</li>
+        <li><strong>Lógica de programação</strong>: raciocínio necessário para criar soluções computacionais.</li>
+        <li><strong>Fluxograma</strong>: representação gráfica da lógica do algoritmo.</li>
+        <li><strong>Pseudocódigo</strong>: forma textual simples de representar a lógica antes de programar.</li>
+    </ul>
+
+    <hr>
+
+    <h3>2. Introdução à Linguagem C</h3>
+
+    <p>A linguagem C é estruturada, rápida e eficiente. É muito usada em sistemas embarcados, jogos e sistemas operacionais.</p>
+
+    <p><strong>Características principais:</strong></p>
+    <ul>
+        <li>Portável e performática</li>
+        <li>Controle total de memória</li>
+        <li>Base para linguagens como C++, Java e Python</li>
+    </ul>
+
+    <hr>
+
+    <h3>3. Estrutura de um Programa em C</h3>
+
+    <p>Um programa básico em C possui esta estrutura:</p>
+
+    <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+
+int main() {
+    // Instruções do programa
+    return 0;
+}</code></pre>
+
+    <p><strong>Explicação:</strong></p>
+    <ul>
+        <li style="display: none;"><code>#include &lt;stdio.h&gt;</code>: inclui a biblioteca de entrada e saída.</li>
+        <li><code>int main()</code>: é a função principal.</li>
+        <li><code>{ }</code>: delimitam o bloco de código.</li>
+        <li><code>return 0;</code>: indica finalização bem-sucedida.</li>
+    </ul>
+
+    <hr>
+
+    <h3>4. Variáveis e Tipos de Dados</h3>
+
+    <p>Variáveis armazenam valores que podem mudar durante a execução.</p>
+
+    <p><strong>Principais tipos:</strong></p>
+    <table>
+        <tr>
+            <th>Tipo</th>
+            <th>Descrição</th>
+            <th>Exemplo</th>
+        </tr>
+        <tr>
+            <td><code>int</code></td>
+            <td>Números inteiros</td>
+            <td><code>int idade = 30;</code></td>
+        </tr>
+        <tr>
+            <td><code>float</code></td>
+            <td>Números com ponto decimal</td>
+            <td><code>float altura = 1.75;</code></td>
+        </tr>
+        <tr>
+            <td><code>char</code></td>
+            <td>Caractere</td>
+            <td><code>char letra = 'A';</code></td>
+        </tr>
+        <tr>
+            <td><code>double</code></td>
+            <td>Decimal com maior precisão</td>
+            <td><code>double pi = 3.14159;</code></td>
+        </tr>
+    </table>
+
+    <p><strong>Exemplo em código:</strong></p>
+    <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+
+int main() {
+    int idade = 25;
+    float salario = 2500.75;
+    char sexo = 'M';
+    double pi = 3.141592;
+
+    printf("Idade: %d\n", idade);
+    printf("Salário: %.2f\n", salario);
+    printf("Sexo: %c\n", sexo);
+    printf("PI: %.5lf\n", pi);
+
+    return 0;
+}</code></pre>
+
+    <hr>
+
+    <h3>5. Operadores Aritméticos e Lógicos</h3>
+
+    <h4>Aritméticos:</h4>
+    <table>
+        <tr>
+            <th>Operador</th>
+            <th>Operação</th>
+            <th>Exemplo</th>
+        </tr>
+        <tr>
+            <td><code>+</code></td>
+            <td>Adição</td>
+            <td><code>a + b</code></td>
+        </tr>
+        <tr>
+            <td><code>-</code></td>
+            <td>Subtração</td>
+            <td><code>a - b</code></td>
+        </tr>
+        <tr>
+            <td><code>*</code></td>
+            <td>Multiplicação</td>
+            <td><code>a * b</code></td>
+        </tr>
+        <tr>
+            <td><code>/</code></td>
+            <td>Divisão</td>
+            <td><code>a / b</code></td>
+        </tr>
+        <tr>
+            <td><code>%</code></td>
+            <td>Módulo</td>
+            <td><code>a % b</code></td>
+        </tr>
+    </table>
+
+    <div class="page-break"></div>
+
+    <h4>Relacionais:</h4>
+    <table>
+        <tr>
+            <th>Operador</th>
+            <th>Descrição</th>
+        </tr>
+        <tr>
+            <td><code>==</code></td>
+            <td>Igual a</td>
+        </tr>
+        <tr>
+            <td><code>!=</code></td>
+            <td>Diferente de</td>
+        </tr>
+        <tr>
+            <td><code>&gt;</code></td>
+            <td>Maior que</td>
+        </tr>
+        <tr>
+            <td><code>&lt;</code></td>
+            <td>Menor que</td>
+        </tr>
+        <tr>
+            <td><code>&gt;=</code></td>
+            <td>Maior ou igual</td>
+        </tr>
+        <tr>
+            <td><code>&lt;=</code></td>
+            <td>Menor ou igual</td>
+        </tr>
+    </table>
+
+    <h4>Lógicos:</h4>
+    <table>
+        <tr>
+            <th>Operador</th>
+            <th>Descrição</th>
+            <th>Exemplo</th>
+        </tr>
+        <tr>
+            <td><code>&amp;&amp;</code></td>
+            <td>E (AND)</td>
+            <td><code>a &gt; 0 &amp;&amp; b &lt; 10</code></td>
+        </tr>
+        <tr>
+            <td><code>||</code></td>
+            <td>Ou (OR)</td>
+            <td><code>a == 0 || b == 1</code></td>
+        </tr>
+        <tr>
+            <td><code>!</code></td>
+            <td>Negação (NOT)</td>
+            <td><code>!(a == b)</code></td>
+        </tr>
+    </table>
+
+    <p><strong>Exemplo em código:</strong></p>
+    <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+
+int main() {
+    int a = 5, b = 3;
+
+    printf("Soma: %d\n", a + b);
+    printf("Multiplicação: %d\n", a * b);
+    printf("É igual? %d\n", a == b);
+    printf("Maior que 0 e menor que 10? %d\n", a > 0 &amp;&amp; a < 10);
+
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>6. Entrada e Saída de Dados (printf e scanf)</h3>
+
+    <h4><code>printf()</code> – Saída</h4>
+    <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+
+int main() {
+    int idade = 28;
+    printf("Minha idade é: %d\n", idade);
+    return 0;
+}</code></pre>
+
+    <h4><code>scanf()</code> – Entrada</h4>
+    <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+
+int main() {
+    int idade;
+    printf("Digite sua idade: ");
+    scanf("%d", &amp;idade);
+    printf("Você digitou: %d\n", idade);
+    return 0;
+}</code></pre>
+
+    <h4>Tabela de Formatos</h4>
+    <table>
+        <tr>
+            <th>Formato</th>
+            <th>Tipo</th>
+        </tr>
+        <tr>
+            <td><code>%d</code></td>
+            <td>Inteiro</td>
+        </tr>
+        <tr>
+            <td><code>%f</code></td>
+            <td>Float</td>
+        </tr>
+        <tr>
+            <td><code>%lf</code></td>
+            <td>Double</td>
+        </tr>
+        <tr>
+            <td><code>%c</code></td>
+            <td>Caractere</td>
+        </tr>
+        <tr>
+            <td><code>%s</code></td>
+            <td>String (texto)</td>
+        </tr>
+    </table>
+
+    <p>⚠️ Use o <code>&amp;</code> antes da variável no <code>scanf()</code> para indicar o endereço de memória.</p>
+
+    <div class="page-break"></div>
+
+    <div class="page-break" style="page-break-before: always;"></div>
+
+    <div class="full-page">
+        Exercícios
+    </div>
+
+    <h3>1. Faça um programa que escreva na tela "Olá, mundo"!</h3>
+    <div class="password-container">
+        <input type="password" id="password1" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code1', 'password1', this.nextElementSibling)" />
+        <button onclick="toggleCode('code1', 'password1', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code1" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Olá, mundo!");
+    return 0;
+}</code></pre>
+
+    <h3>2. Faça um programa que solicite dois números ao usuário e imprime a soma dos dois números</h3>
+    <div class="password-container">
+        <input type="password" id="password2" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code2', 'password2', this.nextElementSibling)" />
+        <button onclick="toggleCode('code2', 'password2', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code2" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int num1, num2, soma;
+    printf("Digite dois números: ");
+    scanf("%d %d", &num1, &num2);
+    soma = num1 + num2;
+    printf("A soma é: %d", soma);
+    return 0;
+}</code></pre>
+
+    <h3>3. Faça um programa que leia a temperatura em Celsius e Converta para fahrenheit</h3>
+    <p>Fórmula: fahrenheit = (celsius * 9/5) + 32</p>
+    <div class="password-container">
+        <input type="password" id="password3" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code3', 'password3', this.nextElementSibling)" />
+        <button onclick="toggleCode('code3', 'password3', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code3" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    float celsius, fahrenheit;
+    printf("Digite a temperatura em Celsius: ");
+    scanf("%f", &celsius);
+    fahrenheit = (celsius * 9/5) + 32;
+    printf("Temperatura em Fahrenheit: %.2f", fahrenheit);
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>4. Faça um programa que calcule a área do Circulo. Pedindo pro usuário informar o raio do circulo.</h3>
+    <p>Para fazer o exercício você vai precisar declarar o valor de PI e fazer a seguinte Fórmula: PI * raio * raio</p>
+    <div class="password-container">
+        <input type="password" id="password4" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code4', 'password4', this.nextElementSibling)" />
+        <button onclick="toggleCode('code4', 'password4', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code4" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    float raio, area;
+    const float PI = 3.14159;
+    printf("Digite o raio do círculo: ");
+    scanf("%f", &raio);
+    area = PI * raio * raio;
+    printf("A área do círculo é: %.2f", area);
+    return 0;
+}</code></pre>
+
+    <h3>5. Faça um programa que peça ao usuário um número e imprima o Dobro, Triplo e Quadrado desse número</h3>
+    <div class="password-container">
+        <input type="password" id="password5" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code5', 'password5', this.nextElementSibling)" />
+        <button onclick="toggleCode('code5', 'password5', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code5" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int numero;
+    printf("Digite um número: ");
+    scanf("%d", &numero);
+    printf("Dobro: %d", numero * 2);
+    printf("Triplo: %d", numero * 3);
+    printf("Quadrado: %d", numero * numero);
+    return 0;
+}</code></pre>
+
+    <h3>6. Faça um programa que calcule o IMC de uma pessoa, pedindo o seu Peso e Altura</h3>
+    <p>Fórmula: imc = peso / (altura * altura)</p>
+    <div class="password-container">
+        <input type="password" id="password6" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code6', 'password6', this.nextElementSibling)" />
+        <button onclick="toggleCode('code6', 'password6', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code6" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    float peso, altura, imc;
+    printf("Digite seu peso (kg) e altura (m): ");
+    scanf("%f %f", &peso, &altura);
+    imc = peso / (altura * altura);
+    printf("Seu IMC é: %.2f", imc);
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>7. Faça um programa que peça dois números para o usuário e apresente eles na Ordem Invertida</h3>
+    <div class="password-container">
+        <input type="password" id="password7" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code7', 'password7', this.nextElementSibling)" />
+        <button onclick="toggleCode('code7', 'password7', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code7" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int a, b, temp;
+    printf("Digite dois números: ");
+    scanf("%d %d", &a, &b);
+    temp = a;
+    a = b;
+    b = temp;
+    printf("A troca foi realizada: a = %d, b = %d", a, b);
+    return 0;
+}</code></pre>
+
+    <h3>8. Faça um programa para Cálculo do salário líquido, solicitando o valor do Salário Bruto</h3>
+    <p>Considere 15% de Desconto sobre o Salário Bruto para cálculo do Salário Liquido</p>
+    <div class="password-container">
+        <input type="password" id="password8" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code8', 'password8', this.nextElementSibling)" />
+        <button onclick="toggleCode('code8', 'password8', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code8" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    float salario_bruto, salario_liquido;
+    printf("Digite o salário bruto: ");
+    scanf("%f", &salario_bruto);
+    salario_liquido = salario_bruto * 0.85;
+    printf("O salário líquido é: %.2f", salario_liquido);
+    return 0;
+}</code></pre>
+
+    <h3>9. Faça um programa que peça 3 valores e imprima a média desses valores</h3>
+    <div class="password-container">
+        <input type="password" id="password9" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code9', 'password9', this.nextElementSibling)" />
+        <button onclick="toggleCode('code9', 'password9', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code9" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    float n1, n2, n3, media;
+    printf("Digite as três notas: ");
+    scanf("%f %f %f", &n1, &n2, &n3);
+    media = (n1 + n2 + n3) / 3;
+    printf("A média aritmética é: %.2f", media);
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>10. Faça um programa que peça uma quantidade de Horas e imprima a conversão em Horas e Minutos</h3>
+    <div class="password-container">
+        <input type="password" id="password10" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code10', 'password10', this.nextElementSibling)" />
+        <button onclick="toggleCode('code10', 'password10', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code10" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int horas, minutos, segundos;
+    printf("Digite o tempo em horas: ");
+    scanf("%d", &horas);
+    minutos = horas * 60;
+    segundos = horas * 3600;
+    printf("Equivalente em minutos: %d", minutos);
+    printf("Equivalente em segundos: %d", segundos);
+    return 0;
+}</code></pre>
+
+    <h3>11. Faça um programa que imprima o volume de uma esfera, para isso peça ao usuário o Raio da Esfera</h3>
+    <p>Fórmula: volume = (4.0 / 3.0) * PI * raio * raio * raio;</p>
+    <div class="password-container">
+        <input type="password" id="password11" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code11', 'password11', this.nextElementSibling)" />
+        <button onclick="toggleCode('code11', 'password11', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code11" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    float raio, volume;
+    const float PI = 3.14159;
+
+    printf("Digite o raio da esfera: ");
+    scanf("%f", &raio);
+
+    volume = (4.0 / 3.0) * PI * raio * raio * raio;
+
+    printf("O volume da esfera é: %.2f\n", volume);
+    return 0;
+}</code></pre>
+
+    <h3>12. Faça um programa que peça dois números e valide se ele é ímpar ou par</h3>
+    <div class="password-container">
+        <input type="password" id="password12" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code12', 'password12', this.nextElementSibling)" />
+        <button onclick="toggleCode('code12', 'password12', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code12" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int numero;
+    printf("Digite um número: ");
+    scanf("%d", &numero);
+    if (numero % 2 == 0) {
+        printf("O número é par.\n");
+    } else {
+        printf("O número é ímpar.\n");
+    }
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>13. Faça um programa que peça ao usuário um valor em Metros e imprima esses valores convertidos para Centimetros e Milimetros</h3>
+    <div class="password-container">
+        <input type="password" id="password13" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code13', 'password13', this.nextElementSibling)" />
+        <button onclick="toggleCode('code13', 'password13', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code13" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    float metros, centimetros, milimetros;
+    printf("Digite um valor em metros: ");
+    scanf("%f", &metros);
+    centimetros = metros * 100;
+    milimetros = metros * 1000;
+    printf("Em centímetros: %.2f", centimetros);
+    printf("Em milímetros: %.2f", milimetros);
+    return 0;
+}</code></pre>
+
+    <h3>14. Faça um programa que calcule o Consumo médio de combustível, pedindo ao usuário a distância percorrida e quantos litros foram usados</h3>
+    <div class="password-container">
+        <input type="password" id="password14" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code14', 'password14', this.nextElementSibling)" />
+        <button onclick="toggleCode('code14', 'password14', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code14" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    float distancia, combustivel, consumo;
+    printf("Digite a distância percorrida (km) e o combustível gasto (l): ");
+    scanf("%f %f", &distancia, &combustivel);
+    consumo = distancia / combustivel;
+    printf("O consumo médio de combustível é: %.2f km/l", consumo);
+    return 0;
+}</code></pre>
+
+    <h3>15. Faça um program para calcular o delta de uma equação de segundo grau</h3>
+    <p>Peça ao usuário 3 números (a, b, c) e use a fórmula: delta = b * b - 4 * a * c</p>
+    <div class="password-container">
+        <input type="password" id="password15" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code15', 'password15', this.nextElementSibling)" />
+        <button onclick="toggleCode('code15', 'password15', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code15" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    float a, b, c, delta;
+
+    printf("Digite os coeficientes a, b e c da equação (ax² + bx + c): ");
+    scanf("%f %f %f", &a, &b, &c);
+
+    delta = b * b - 4 * a * c;
+
+    printf("O valor de delta é: %.2f\n", delta);
+
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>16. Faça um programa que peça dois números e informe qual é o maior número entre eles</h3>
+    <p>Dica: Será necessário fazer uma validação</p>
+    <div class="password-container">
+        <input type="password" id="password16" placeholder="Digite a senha para ver o código" 
+        onkeydown="handleEnter(event, 'code16', 'password16', this.nextElementSibling)"/>
+        <button onclick="toggleCode('code16', 'password16', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code16" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int num1, num2, maior;
+
+    printf("Digite dois números: ");
+    scanf("%d %d", &num1, &num2);
+
+    maior = (num1 > num2) ? num1 : num2;
+
+    printf("O maior número é: %d\n", maior);
+
+    return 0;
+}</code></pre>
+
+    <h3>17. Faça um programa que aplique um desconto de 10% sobre o valor informado</h3>
+    <div class="password-container">
+        <input type="password" id="password17" placeholder="Digite a senha para ver o código" 
+        onkeydown="handleEnter(event, 'code17', 'password17', this.nextElementSibling)" />
+        <button onclick="toggleCode('code17', 'password17', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code17" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    float preco, preco_com_desconto;
+    printf("Digite o preço do produto: ");
+    scanf("%f", &preco);
+    preco_com_desconto = preco * 0.90;
+    printf("O preço com 10%% de desconto é: %.2f", preco_com_desconto);
+    return 0;
+}</code></pre>
+
+    <h3>18. Faça um programa que informe a velocidade em KM e converta para Metros por segundo</h3>
+    <div class="password-container">
+        <input type="password" id="password18" placeholder="Digite a senha para ver o código" 
+        onkeydown="handleEnter(event, 'code18', 'password18', this.nextElementSibling)" />
+        <button onclick="toggleCode('code18', 'password18', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code18" style="display: none;" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    float kmh, ms;
+    printf("Digite a velocidade em km/h: ");
+    scanf("%f", &kmh);
+    ms = kmh / 3.6;
+    printf("A velocidade em m/s é: %.2f", ms);
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>19. Faça um programa que peça a idade de uma pessoa e imprima a idade em dias</h3>
+    <div class="password-container">
+        <input type="password" id="password19" placeholder="Digite a senha para ver o código" 
+        onkeydown="handleEnter(event, 'code19', 'password19', this.nextElementSibling)"/>
+        <button onclick="toggleCode('code19', 'password19', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code19" style="display: none;" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int idade, dias;
+    printf("Digite sua idade: ");
+    scanf("%d", &idade);
+    dias = idade * 365;
+    printf("Sua idade em dias é: %d", dias);
+    return 0;
+}
+</code></pre>
+
+    <h3>20. Faça um programa que leia um ano e validde se esse ano é Bissexto ou não</h3>
+    <p><strong>Regra:</strong> Um ano é <strong>bissexto</strong> se for divisível por 4 e, se também for divisível por 100, precisa ser divisível por 400.</p>
+    <div class="password-container">
+        <input type="password" id="password20" placeholder="Digite a senha para ver o código" 
+        onkeydown="handleEnter(event, 'code20', 'password20', this.nextElementSibling)" />
+        <button onclick="toggleCode('code20', 'password20', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code20" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int ano;
+    printf("Digite um ano: ");
+    scanf("%d", &ano);
+    if ((ano % 4 == 0 &amp;&amp; ano % 100 != 0) || (ano % 400 == 0)) {
+        printf("O ano é bissexto.\n");
+    } else {
+        printf("O ano não é bissexto.\n");
+    }
+    return 0;
+}</code></pre>
+
+    <script>
+        function toggleCode(codeId, passwordId, button) {
+            const senhaInput = document.getElementById(passwordId);
+            const senha = senhaInput.value;
+            const codeBlock = document.getElementById(codeId);
+        
+            if (senha === "1234") {  // Altere aqui pela senha correta
+                if (codeBlock.style.display === "none") {
+                    codeBlock.style.display = "block";
+                    button.textContent = "Ocultar Código";
+                } else {
+                    codeBlock.style.display = "none";
+                    senhaInput.value = ""; // Limpa a senha ao esconder
+                    button.textContent = "Mostrar Código";
+                }
+            } else {
+                alert("Senha incorreta!");
+            }
+        }
+        
+        function handleEnter(event, codeId, passwordId, button) {
+            if (event.key === "Enter") {
+                toggleCode(codeId, passwordId, button);
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 1: Introdução à Programação com Python</title>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 12px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: "Courier New", monospace;
+            color: #f92672;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        .full-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 25vh;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #ccc;
+            margin: 30px 0;
+        }
+
+        .password-container {
+            margin-bottom: 15px;
+        }
+
+        .exercise-code {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-break" style="page-break-before: always;"></div>
+
+    <div class="full-page">
+        Módulo 1: Introdução à Programação com Python
+    </div>
+
+    <h1>Curso de Lógica de Programação com Python</h1>
+
+    <hr>
+
+    <h3>1. Conceitos Fundamentais de Programação</h3>
+
+    <p>Programar é escrever instruções que serão executadas por um computador.</p>
+
+    <p><strong>Conceitos importantes:</strong></p>
+    <ul>
+        <li><strong>Algoritmo</strong>: sequência de passos para resolver um problema.</li>
+        <li><strong>Lógica de programação</strong>: raciocínio necessário para criar soluções computacionais.</li>
+        <li><strong>Fluxograma</strong>: representação gráfica da lógica do algoritmo.</li>
+        <li><strong>Pseudocódigo</strong>: forma textual simples de representar a lógica antes de programar.</li>
+    </ul>
+
+    <hr>
+
+    <h3>2. Introdução à Linguagem Python</h3>
+
+    <p>Python é uma linguagem de programação interpretada, de alto nível e com sintaxe simples e legível.</p>
+
+    <p><strong>Características principais:</strong></p>
+    <ul>
+        <li>Fácil aprendizado e leitura</li>
+        <li>Tipagem dinâmica</li>
+        <li>Multiplataforma</li>
+        <li>Grande comunidade e ecossistema</li>
+        <li>Amplamente usada em ciência de dados, IA, web e automação</li>
+    </ul>
+
+    <hr>
+
+    <h3>3. Estrutura de um Programa em Python</h3>
+
+    <p>Um programa básico em Python possui esta estrutura:</p>
+
+    <pre><code class="language-python"># Comentários em Python começam com #
+
+# Função principal (não é obrigatória como em C)
+def main():
+    # Instruções do programa
+    print("Olá, mundo!")
+
+# Verifica se este arquivo está sendo executado diretamente
+if __name__ == "__main__":
+    main()</code></pre>
+
+    <p><strong>Explicação:</strong></p>
+    <ul>
+        <li><code>def main():</code>: define a função principal (opcional em Python)</li>
+        <li><code>print()</code>: função para exibir mensagens na tela</li>
+        <li><code>if __name__ == "__main__":</code>: padrão para executar o programa</li>
+    </ul>
+
+    <hr>
+
+    <h3>4. Variáveis e Tipos de Dados</h3>
+
+    <p>Em Python, as variáveis são criadas quando você atribui um valor a elas (tipagem dinâmica).</p>
+
+    <p><strong>Principais tipos:</strong></p>
+    <table>
+        <tr>
+            <th>Tipo</th>
+            <th>Descrição</th>
+            <th>Exemplo</th>
+        </tr>
+        <tr>
+            <td><code>int</code></td>
+            <td>Números inteiros</td>
+            <td><code>idade = 30</code></td>
+        </tr>
+        <tr>
+            <td><code>float</code></td>
+            <td>Números com ponto decimal</td>
+            <td><code>altura = 1.75</code></td>
+        </tr>
+        <tr>
+            <td><code>str</code></td>
+            <td>Texto (string)</td>
+            <td><code>nome = "João"</code></td>
+        </tr>
+        <tr>
+            <td><code>bool</code></td>
+            <td>Valores booleanos</td>
+            <td><code>ativo = True</code></td>
+        </tr>
+    </table>
+
+    <p><strong>Exemplo em código:</strong></p>
+    <pre><code class="language-python">def main():
+    idade = 25
+    salario = 2500.75
+    nome = "Maria"
+    ativo = True
+
+    print(f"Idade: {idade}")
+    print(f"Salário: {salario:.2f}")
+    print(f"Nome: {nome}")
+    print(f"Ativo: {ativo}")
+
+if __name__ == "__main__":
+    main()</code></pre>
+
+    <hr>
+
+    <h3>5. Operadores Aritméticos e Lógicos</h3>
+
+    <h4>Aritméticos:</h4>
+    <table>
+        <tr>
+            <th>Operador</th>
+            <th>Operação</th>
+            <th>Exemplo</th>
+        </tr>
+        <tr>
+            <td><code>+</code></td>
+            <td>Adição</td>
+            <td><code>a + b</code></td>
+        </tr>
+        <tr>
+            <td><code>-</code></td>
+            <td>Subtração</td>
+            <td><code>a - b</code></td>
+        </tr>
+        <tr>
+            <td><code>*</code></td>
+            <td>Multiplicação</td>
+            <td><code>a * b</code></td>
+        </tr>
+        <tr>
+            <td><code>/</code></td>
+            <td>Divisão</td>
+            <td><code>a / b</code></td>
+        </tr>
+        <tr>
+            <td><code>//</code></td>
+            <td>Divisão inteira</td>
+            <td><code>a // b</code></td>
+        </tr>
+        <tr>
+            <td><code>%</code></td>
+            <td>Módulo (resto)</td>
+            <td><code>a % b</code></td>
+        </tr>
+        <tr>
+            <td><code>**</code></td>
+            <td>Exponenciação</td>
+            <td><code>a ** b</code></td>
+        </tr>
+    </table>
+
+    <div class="page-break"></div>
+
+    <h4>Relacionais:</h4>
+    <table>
+        <tr>
+            <th>Operador</th>
+            <th>Descrição</th>
+        </tr>
+        <tr>
+            <td><code>==</code></td>
+            <td>Igual a</td>
+        </tr>
+        <tr>
+            <td><code>!=</code></td>
+            <td>Diferente de</td>
+        </tr>
+        <tr>
+            <td><code>&gt;</code></td>
+            <td>Maior que</td>
+        </tr>
+        <tr>
+            <td><code>&lt;</code></td>
+            <td>Menor que</td>
+        </tr>
+        <tr>
+            <td><code>&gt;=</code></td>
+            <td>Maior ou igual</td>
+        </tr>
+        <tr>
+            <td><code>&lt;=</code></td>
+            <td>Menor ou igual</td>
+        </tr>
+    </table>
+
+    <h4>Lógicos:</h4>
+    <table>
+        <tr>
+            <th>Operador</th>
+            <th>Descrição</th>
+            <th>Exemplo</th>
+        </tr>
+        <tr>
+            <td><code>and</code></td>
+            <td>E (AND)</td>
+            <td><code>a &gt; 0 and b &lt; 10</code></td>
+        </tr>
+        <tr>
+            <td><code>or</code></td>
+            <td>Ou (OR)</td>
+            <td><code>a == 0 or b == 1</code></td>
+        </tr>
+        <tr>
+            <td><code>not</code></td>
+            <td>Negação (NOT)</td>
+            <td><code>not (a == b)</code></td>
+        </tr>
+    </table>
+
+    <p><strong>Exemplo em código:</strong></p>
+    <pre><code class="language-python">def main():
+    a = 5
+    b = 3
+
+    print(f"Soma: {a + b}")
+    print(f"Multiplicação: {a * b}")
+    print(f"É igual? {a == b}")
+    print(f"Maior que 0 e menor que 10? {a > 0 and a < 10}")
+
+if __name__ == "__main__":
+    main()</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>6. Entrada e Saída de Dados (input e print)</h3>
+
+    <h4><code>print()</code> – Saída</h4>
+    <pre><code class="language-python">def main():
+    idade = 28
+    print("Minha idade é:", idade)
+    # Usando f-string (Python 3.6+)
+    print(f"Minha idade é: {idade}")
+
+if __name__ == "__main__":
+    main()</code></pre>
+
+    <h4><code>input()</code> – Entrada</h4>
+    <pre><code class="language-python">def main():
+    idade = input("Digite sua idade: ")
+    print("Você digitou:", idade)
+    
+    # Convertendo para inteiro
+    idade_int = int(input("Digite sua idade: "))
+    print("No próximo ano você terá:", idade_int + 1)
+
+if __name__ == "__main__":
+    main()</code></pre>
+
+    <p><strong>Observações:</strong></p>
+    <ul>
+        <li><code>input()</code> sempre retorna uma string</li>
+        <li>É necessário converter para outros tipos quando necessário (int(), float())</li>
+        <li>f-strings (Python 3.6+) permitem formatação fácil de strings</li>
+    </ul>
+
+    <div class="page-break"></div>
+
+    <div class="page-break" style="page-break-before: always;"></div>
+
+    <div class="full-page">
+        Exercícios
+    </div>
+
+    <h3>1. Faça um programa que escreva na tela "Olá, mundo"!</h3>
+    <div class="password-container">
+        <input type="password" id="password1" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code1', 'password1', this.nextElementSibling)" />
+        <button onclick="toggleCode('code1', 'password1', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code1" style="display: none;"><code>print("Olá, mundo!")</code></pre>
+
+    <h3>2. Faça um programa que solicite dois números ao usuário e imprime a soma dos dois números</h3>
+    <div class="password-container">
+        <input type="password" id="password2" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code2', 'password2', this.nextElementSibling)" />
+        <button onclick="toggleCode('code2', 'password2', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code2" style="display: none;"><code>num1 = float(input("Digite o primeiro número: "))
+num2 = float(input("Digite o segundo número: "))
+soma = num1 + num2
+print(f"A soma é: {soma}")</code></pre>
+
+    <h3>3. Faça um programa que leia a temperatura em Celsius e Converta para Fahrenheit</h3>
+    <p>Fórmula: fahrenheit = (celsius * 9/5) + 32</p>
+    <div class="password-container">
+        <input type="password" id="password3" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code3', 'password3', this.nextElementSibling)" />
+        <button onclick="toggleCode('code3', 'password3', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code3" style="display: none;"><code>celsius = float(input("Digite a temperatura em Celsius: "))
+fahrenheit = (celsius * 9/5) + 32
+print(f"Temperatura em Fahrenheit: {fahrenheit:.2f}")</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>4. Faça um programa que calcule a área do Círculo. Pedindo pro usuário informar o raio do circulo.</h3>
+    <p>Para fazer o exercício você vai precisar declarar o valor de PI e fazer a seguinte Fórmula: PI * raio * raio</p>
+    <div class="password-container">
+        <input type="password" id="password4" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code4', 'password4', this.nextElementSibling)" />
+        <button onclick="toggleCode('code4', 'password4', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code4" style="display: none;"><code>import math
+
+raio = float(input("Digite o raio do círculo: "))
+area = math.pi * raio ** 2
+print(f"A área do círculo é: {area:.2f}")</code></pre>
+
+    <h3>5. Faça um programa que peça ao usuário um número e imprima o Dobro, Triplo e Quadrado desse número</h3>
+    <div class="password-container">
+        <input type="password" id="password5" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code5', 'password5', this.nextElementSibling)" />
+        <button onclick="toggleCode('code5', 'password5', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code5" style="display: none;"><code>numero = float(input("Digite um número: "))
+print(f"Dobro: {numero * 2}")
+print(f"Triplo: {numero * 3}")
+print(f"Quadrado: {numero ** 2}")</code></pre>
+
+    <h3>6. Faça um programa que calcule o IMC de uma pessoa, pedindo o seu Peso e Altura</h3>
+    <p>Fórmula: imc = peso / (altura * altura)</p>
+    <div class="password-container">
+        <input type="password" id="password6" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code6', 'password6', this.nextElementSibling)" />
+        <button onclick="toggleCode('code6', 'password6', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code6" style="display: none;"><code>peso = float(input("Digite seu peso (kg): "))
+altura = float(input("Digite sua altura (m): "))
+imc = peso / (altura ** 2)
+print(f"Seu IMC é: {imc:.2f}")</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>7. Faça um programa que peça dois números para o usuário e apresente eles na Ordem Invertida</h3>
+    <div class="password-container">
+        <input type="password" id="password7" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code7', 'password7', this.nextElementSibling)" />
+        <button onclick="toggleCode('code7', 'password7', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code7" style="display: none;"><code>a = input("Digite o primeiro valor: ")
+b = input("Digite o segundo valor: ")
+print(f"Valores invertidos: {b}, {a}")</code></pre>
+
+    <h3>8. Faça um programa para Cálculo do salário líquido, solicitando o valor do Salário Bruto</h3>
+    <p>Considere 15% de Desconto sobre o Salário Bruto para cálculo do Salário Liquido</p>
+    <div class="password-container">
+        <input type="password" id="password8" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code8', 'password8', this.nextElementSibling)" />
+        <button onclick="toggleCode('code8', 'password8', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code8" style="display: none;"><code>salario_bruto = float(input("Digite o salário bruto: "))
+salario_liquido = salario_bruto * 0.85
+print(f"O salário líquido é: R${salario_liquido:.2f}")</code></pre>
+
+    <h3>9. Faça um programa que peça 3 valores e imprima a média desses valores</h3>
+    <div class="password-container">
+        <input type="password" id="password9" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code9', 'password9', this.nextElementSibling)" />
+        <button onclick="toggleCode('code9', 'password9', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code9" style="display: none;"><code>n1 = float(input("Digite a primeira nota: "))
+n2 = float(input("Digite a segunda nota: "))
+n3 = float(input("Digite a terceira nota: "))
+media = (n1 + n2 + n3) / 3
+print(f"A média aritmética é: {media:.2f}")</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>10. Faça um programa que peça uma quantidade de Horas e imprima a conversão em Horas e Minutos</h3>
+    <div class="password-container">
+        <input type="password" id="password10" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code10', 'password10', this.nextElementSibling)" />
+        <button onclick="toggleCode('code10', 'password10', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code10" style="display: none;"><code>horas = int(input("Digite o tempo em horas: "))
+minutos = horas * 60
+segundos = horas * 3600
+print(f"Equivalente em minutos: {minutos}")
+print(f"Equivalente em segundos: {segundos}")</code></pre>
+
+    <h3>11. Faça um programa que imprima o volume de uma esfera, para isso peça ao usuário o Raio da Esfera</h3>
+    <p>Fórmula: volume = (4.0 / 3.0) * PI * raio * raio * raio;</p>
+    <div class="password-container">
+        <input type="password" id="password11" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code11', 'password11', this.nextElementSibling)" />
+        <button onclick="toggleCode('code11', 'password11', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code11" style="display: none;"><code>import math
+
+raio = float(input("Digite o raio da esfera: "))
+volume = (4.0 / 3.0) * math.pi * raio ** 3
+print(f"O volume da esfera é: {volume:.2f}")</code></pre>
+
+    <h3>12. Faça um programa que peça um número e valide se ele é ímpar ou par</h3>
+    <div class="password-container">
+        <input type="password" id="password12" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code12', 'password12', this.nextElementSibling)" />
+        <button onclick="toggleCode('code12', 'password12', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code12" style="display: none;"><code>numero = int(input("Digite um número: "))
+if numero % 2 == 0:
+    print("O número é par.")
+else:
+    print("O número é ímpar.")</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>13. Faça um programa que peça ao usuário um valor em Metros e imprima esses valores convertidos para Centimetros e Milimetros</h3>
+    <div class="password-container">
+        <input type="password" id="password13" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code13', 'password13', this.nextElementSibling)" />
+        <button onclick="toggleCode('code13', 'password13', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code13" style="display: none;"><code>metros = float(input("Digite um valor em metros: "))
+centimetros = metros * 100
+milimetros = metros * 1000
+print(f"Em centímetros: {centimetros:.2f}")
+print(f"Em milímetros: {milimetros:.2f}")</code></pre>
+
+    <h3>14. Faça um programa que calcule o Consumo médio de combustível, pedindo ao usuário a distância percorrida e quantos litros foram usados</h3>
+    <div class="password-container">
+        <input type="password" id="password14" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code14', 'password14', this.nextElementSibling)" />
+        <button onclick="toggleCode('code14', 'password14', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code14" style="display: none;"><code>distancia = float(input("Digite a distância percorrida (km): "))
+combustivel = float(input("Digite o combustível gasto (l): "))
+consumo = distancia / combustivel
+print(f"O consumo médio de combustível é: {consumo:.2f} km/l")</code></pre>
+
+    <h3>15. Faça um program para calcular o delta de uma equação de segundo grau</h3>
+    <p>Peça ao usuário 3 números (a, b, c) e use a fórmula: delta = b * b - 4 * a * c</p>
+    <div class="password-container">
+        <input type="password" id="password15" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code15', 'password15', this.nextElementSibling)" />
+        <button onclick="toggleCode('code15', 'password15', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code15" style="display: none;"><code>a = float(input("Digite o coeficiente a: "))
+b = float(input("Digite o coeficiente b: "))
+c = float(input("Digite o coeficiente c: "))
+
+delta = b ** 2 - 4 * a * c
+
+print(f"O valor de delta é: {delta:.2f}")</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>16. Faça um programa que peça dois números e informe qual é o maior número entre eles</h3>
+    <p>Dica: Será necessário fazer uma validação</p>
+    <div class="password-container">
+        <input type="password" id="password16" placeholder="Digite a senha para ver o código" 
+        onkeydown="handleEnter(event, 'code16', 'password16', this.nextElementSibling)"/>
+        <button onclick="toggleCode('code16', 'password16', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code16" style="display: none;"><code>num1 = float(input("Digite o primeiro número: "))
+num2 = float(input("Digite o segundo número: "))
+
+if num1 > num2:
+    print(f"O maior número é: {num1}")
+elif num2 > num1:
+    print(f"O maior número é: {num2}")
+else:
+    print("Os números são iguais.")</code></pre>
+
+    <h3>17. Faça um programa que aplique um desconto de 10% sobre o valor informado</h3>
+    <div class="password-container">
+        <input type="password" id="password17" placeholder="Digite a senha para ver o código" 
+        onkeydown="handleEnter(event, 'code17', 'password17', this.nextElementSibling)" />
+        <button onclick="toggleCode('code17', 'password17', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code17" style="display: none;"><code>preco = float(input("Digite o preço do produto: "))
+preco_com_desconto = preco * 0.90
+print(f"O preço com 10% de desconto é: R${preco_com_desconto:.2f}")</code></pre>
+
+    <h3>18. Faça um programa que informe a velocidade em KM e converta para Metros por segundo</h3>
+    <div class="password-container">
+        <input type="password" id="password18" placeholder="Digite a senha para ver o código" 
+        onkeydown="handleEnter(event, 'code18', 'password18', this.nextElementSibling)" />
+        <button onclick="toggleCode('code18', 'password18', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code18" style="display: none;"><code>kmh = float(input("Digite a velocidade em km/h: "))
+ms = kmh / 3.6
+print(f"A velocidade em m/s é: {ms:.2f}")</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>19. Faça um programa que peça a idade de uma pessoa e imprima a idade em dias</h3>
+    <div class="password-container">
+        <input type="password" id="password19" placeholder="Digite a senha para ver o código" 
+        onkeydown="handleEnter(event, 'code19', 'password19', this.nextElementSibling)"/>
+        <button onclick="toggleCode('code19', 'password19', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code19" style="display: none;"><code>idade = int(input("Digite sua idade: "))
+dias = idade * 365
+print(f"Sua idade em dias é: {dias}")</code></pre>
+
+    <h3>20. Faça um programa que leia um ano e valide se esse ano é Bissexto ou não</h3>
+    <p><strong>Regra:</strong> Um ano é <strong>bissexto</strong> se for divisível por 4 e, se também for divisível por 100, precisa ser divisível por 400.</p>
+    <div class="password-container">
+        <input type="password" id="password20" placeholder="Digite a senha para ver o código" 
+        onkeydown="handleEnter(event, 'code20', 'password20', this.nextElementSibling)" />
+        <button onclick="toggleCode('code20', 'password20', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code20" style="display: none;"><code>ano = int(input("Digite um ano: "))
+if (ano % 4 == 0 and ano % 100 != 0) or (ano % 400 == 0):
+    print("O ano é bissexto.")
+else:
+    print("O ano não é bissexto.")</code></pre>
+
+    <script>
+        function toggleCode(codeId, passwordId, button) {
+            const senhaInput = document.getElementById(passwordId);
+            const senha = senhaInput.value;
+            const codeBlock = document.getElementById(codeId);
+        
+            if (senha === "1234") {  // Altere aqui pela senha correta
+                if (codeBlock.style.display === "none") {
+                    codeBlock.style.display = "block";
+                    button.textContent = "Ocultar Código";
+                } else {
+                    codeBlock.style.display = "none";
+                    senhaInput.value = ""; // Limpa a senha ao esconder
+                    button.textContent = "Mostrar Código";
+                }
+            } else {
+                alert("Senha incorreta!");
+            }
+        }
+        
+        function handleEnter(event, codeId, passwordId, button) {
+            if (event.key === "Enter") {
+                toggleCode(codeId, passwordId, button);
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+</body>
+</html>

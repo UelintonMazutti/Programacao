@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de Lógica de Programação com Linguagem C - Módulo 5</title>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 12px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: "Courier New", monospace;
+            color: #f92672;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        .full-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 25vh;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #ccc;
+            margin: 30px 0;
+        }
+
+        .password-container {
+            margin-bottom: 15px;
+        }
+
+        .exercise-code {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-break" style="page-break-before: always;"></div>
+
+    <div class="full-page">
+        Módulo 5: Ponteiros e Alocação Dinâmica
+    </div>
+
+    <h1>Curso de Lógica de Programação com Linguagem C</h1>
+
+    <hr>
+
+    <h3>1. Conceito de Ponteiros</h3>
+
+    <p>Ponteiros são variáveis que armazenam endereços de memória de outras variáveis.</p>
+
+    <h4>Declaração e uso básico:</h4>
+    <pre><code class="language-c">int var = 10;
+int *ptr = &var;  // ptr armazena o endereço de var
+
+printf("Valor: %d\n", *ptr);  // Acessa o valor através do ponteiro
+printf("Endereço: %p\n", ptr); // Mostra o endereço armazenado</code></pre>
+
+    <hr>
+
+    <h3>2. Operações com Ponteiros</h3>
+
+    <p>Principais operações com ponteiros:</p>
+    <table>
+        <tr>
+            <th>Operação</th>
+            <th>Descrição</th>
+        </tr>
+        <tr>
+            <td><code>*ptr</code></td>
+            <td>Acessa o valor no endereço apontado</td>
+        </tr>
+        <tr>
+            <td><code>&var</code></td>
+            <td>Obtém o endereço de uma variável</td>
+        </tr>
+        <tr>
+            <td><code>ptr++</code></td>
+            <td>Incrementa o ponteiro (avança para próximo elemento)</td>
+        </tr>
+        <tr>
+            <td><code>ptr--</code></td>
+            <td>Decrementa o ponteiro (volta para elemento anterior)</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h3>3. Ponteiros e Arrays</h3>
+
+    <p>Arrays e ponteiros têm uma relação estreita em C:</p>
+    <pre><code class="language-c">int vetor[5] = {1, 2, 3, 4, 5};
+int *ptr = vetor;  // Equivalente a &vetor[0]
+
+// Acesso aos elementos
+printf("Primeiro elemento: %d\n", *ptr);
+printf("Segundo elemento: %d\n", *(ptr + 1));</code></pre>
+
+    <hr>
+
+    <h3>4. Alocação Dinâmica de Memória</h3>
+
+    <p>Funções para gerenciamento de memória dinâmica:</p>
+    <table>
+        <tr>
+            <th>Função</th>
+            <th>Descrição</th>
+        </tr>
+        <tr>
+            <td><code>malloc()</code></td>
+            <td>Aloca um bloco de memória</td>
+        </tr>
+        <tr>
+            <td><code>calloc()</code></td>
+            <td>Aloca e inicializa com zero</td>
+        </tr>
+        <tr>
+            <td><code>realloc()</code></td>
+            <td>Redimensiona um bloco alocado</td>
+        </tr>
+        <tr>
+            <td><code>free()</code></td>
+            <td>Libera memória alocada</td>
+        </tr>
+    </table>
+
+    <h4>Exemplo:</h4>
+    <pre><code class="language-c">int *vetor = malloc(5 * sizeof(int));  // Aloca vetor de 5 inteiros
+if (vetor != NULL) {
+    vetor[0] = 10;  // Atribui valor
+    free(vetor);    // Libera memória
+}</code></pre>
+
+    <hr>
+
+    <h3>5. Ponteiros para Funções</h3>
+
+    <p>Ponteiros podem apontar para funções, permitindo chamá-las dinamicamente:</p>
+    <pre><code class="language-c">int soma(int a, int b) { return a + b; }
+int (*ptrFunc)(int, int) = soma;  // Ponteiro para função
+
+int resultado = ptrFunc(5, 3);  // Chama a função através do ponteiro</code></pre>
+
+    <div class="page-break"></div>
+
+    <div class="page-break" style="page-break-before: always;"></div>
+
+    <div class="full-page">
+        Exercícios
+    </div>
+
+    <h3>1. Faça um programa que declare um inteiro e um ponteiro para inteiro, atribua o endereço do inteiro ao ponteiro e modifique o valor usando o ponteiro.</h3>
+    <div class="password-container">
+        <input type="password" id="password1" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code1', 'password1', this.nextElementSibling)" />
+        <button onclick="toggleCode('code1', 'password1', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code1" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int num = 10;
+    int *ptr = &num;
+    
+    printf("Valor original: %d\n", num);
+    *ptr = 20;  // Modifica o valor através do ponteiro
+    printf("Novo valor: %d\n", num);
+    
+    return 0;
+}</code></pre>
+
+    <h3>2. Crie uma função que troque os valores de duas variáveis usando ponteiros.</h3>
+    <div class="password-container">
+        <input type="password" id="password2" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code2', 'password2', this.nextElementSibling)" />
+        <button onclick="toggleCode('code2', 'password2', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code2" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+void trocar(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main() {
+    int x = 5, y = 10;
+    printf("Antes: x = %d, y = %d\n", x, y);
+    trocar(&x, &y);
+    printf("Depois: x = %d, y = %d\n", x, y);
+    return 0;
+}</code></pre>
+
+    <h3>3. Desenvolva um programa que some dois números usando ponteiros.</h3>
+    <div class="password-container">
+        <input type="password" id="password3" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code3', 'password3', this.nextElementSibling)" />
+        <button onclick="toggleCode('code3', 'password3', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code3" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int soma(int *a, int *b) {
+    return *a + *b;
+}
+
+int main() {
+    int num1 = 5, num2 = 7;
+    printf("Soma: %d\n", soma(&num1, &num2));
+    return 0;
+}</code></pre>
+
+    <h3>4. Escreva uma função que receba um array e seu tamanho por ponteiro e retorne a soma dos elementos.</h3>
+    <div class="password-container">
+        <input type="password" id="password4" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code4', 'password4', this.nextElementSibling)" />
+        <button onclick="toggleCode('code4', 'password4', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code4" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int somaArray(int *arr, int tamanho) {
+    int soma = 0;
+    for (int i = 0; i < tamanho; i++) {
+        soma += *(arr + i);  // Equivalente a arr[i]
+    }
+    return soma;
+}
+
+int main() {
+    int vetor[] = {1, 2, 3, 4, 5};
+    int tamanho = sizeof(vetor) / sizeof(vetor[0]);
+    printf("Soma: %d\n", somaArray(vetor, tamanho));
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>5. Faça um programa que aloque dinamicamente um vetor de inteiros.</h3>
+    <div class="password-container">
+        <input type="password" id="password5" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code5', 'password5', this.nextElementSibling)" />
+        <button onclick="toggleCode('code5', 'password5', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code5" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+    int tamanho;
+    printf("Digite o tamanho do vetor: ");
+    scanf("%d", &tamanho);
+    
+    int *vetor = malloc(tamanho * sizeof(int));
+    if (vetor == NULL) {
+        printf("Erro na alocação de memória!\n");
+        return 1;
+    }
+    
+    for (int i = 0; i < tamanho; i++) {
+        vetor[i] = i * 2;
+        printf("%d ", vetor[i]);
+    }
+    
+    free(vetor);  // Libera a memória alocada
+    return 0;
+}</code></pre>
+
+    <h3>6. Crie uma função que receba dois ponteiros para inteiros e retorne o maior.</h3>
+    <div class="password-container">
+        <input type="password" id="password6" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code6', 'password6', this.nextElementSibling)" />
+        <button onclick="toggleCode('code6', 'password6', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code6" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int maior(int *a, int *b) {
+    return (*a > *b) ? *a : *b;
+}
+
+int main() {
+    int x = 5, y = 8;
+    printf("Maior: %d\n", maior(&x, &y));
+    return 0;
+}</code></pre>
+
+    <h3>7. Desenvolva um programa que concatene duas strings usando ponteiros.</h3>
+    <div class="password-container">
+        <input type="password" id="password7" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code7', 'password7', this.nextElementSibling)" />
+        <button onclick="toggleCode('code7', 'password7', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code7" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+void concatenar(char *dest, const char *src) {
+    while (*dest) dest++;  // Encontra o final da string destino
+    while (*src) {
+        *dest = *src;
+        dest++;
+        src++;
+    }
+    *dest = '\0';  // Adiciona terminador nulo
+}
+
+int main() {
+    char str1[50] = "Olá, ";
+    char str2[] = "mundo!";
+    concatenar(str1, str2);
+    printf("%s\n", str1);
+    return 0;
+}</code></pre>
+
+    <h3>8. Escreva uma função que inverta uma string usando ponteiros.</h3>
+    <div class="password-container">
+        <input type="password" id="password8" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code8', 'password8', this.nextElementSibling)" />
+        <button onclick="toggleCode('code8', 'password8', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code8" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+void inverterString(char *str) {
+    char *inicio = str;
+    char *fim = str + strlen(str) - 1;
+    
+    while (inicio < fim) {
+        char temp = *inicio;
+        *inicio = *fim;
+        *fim = temp;
+        inicio++;
+        fim--;
+    }
+}
+
+int main() {
+    char texto[] = "Programação";
+    inverterString(texto);
+    printf("%s\n", texto);
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>9. Faça um programa que aloque dinamicamente uma matriz de inteiros.</h3>
+    <div class="password-container">
+        <input type="password" id="password9" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code9', 'password9', this.nextElementSibling)" />
+        <button onclick="toggleCode('code9', 'password9', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code9" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+    int linhas, colunas;
+    printf("Digite o número de linhas e colunas: ");
+    scanf("%d %d", &linhas, &colunas);
+    
+    // Aloca vetor de ponteiros para linhas
+    int **matriz = malloc(linhas * sizeof(int *));
+    if (matriz == NULL) {
+        printf("Erro na alocação!\n");
+        return 1;
+    }
+    
+    // Aloca cada linha da matriz
+    for (int i = 0; i < linhas; i++) {
+        matriz[i] = malloc(colunas * sizeof(int));
+        if (matriz[i] == NULL) {
+            printf("Erro na alocação!\n");
+            return 1;
+        }
+    }
+    
+    // Preenche e imprime a matriz
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            matriz[i][j] = i + j;
+            printf("%d ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+    
+    // Libera a memória
+    for (int i = 0; i < linhas; i++) {
+        free(matriz[i]);
+    }
+    free(matriz);
+    
+    return 0;
+}</code></pre>
+
+    <h3>10. Crie uma função que libere a memória alocada para uma matriz.</h3>
+    <div class="password-container">
+        <input type="password" id="password10" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code10', 'password10', this.nextElementSibling)" />
+        <button onclick="toggleCode('code10', 'password10', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code10" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+void liberarMatriz(int **matriz, int linhas) {
+    for (int i = 0; i < linhas; i++) {
+        free(matriz[i]);
+    }
+    free(matriz);
+}
+
+int main() {
+    int linhas = 3, colunas = 3;
+    int **matriz = malloc(linhas * sizeof(int *));
+    
+    for (int i = 0; i < linhas; i++) {
+        matriz[i] = malloc(colunas * sizeof(int));
+    }
+    
+    // ... usar a matriz ...
+    
+    liberarMatriz(matriz, linhas);
+    printf("Memória liberada com sucesso!\n");
+    return 0;
+}</code></pre>
+
+    <h3>11. Desenvolva um programa que realize a multiplicação de matrizes usando ponteiros.</h3>
+    <div class="password-container">
+        <input type="password" id="password11" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code11', 'password11', this.nextElementSibling)" />
+        <button onclick="toggleCode('code11', 'password11', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code11" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+void multiplicarMatrizes(int **a, int **b, int **resultado, int linhasA, int colunasA, int colunasB) {
+    for (int i = 0; i < linhasA; i++) {
+        for (int j = 0; j < colunasB; j++) {
+            resultado[i][j] = 0;
+            for (int k = 0; k < colunasA; k++) {
+                resultado[i][j] += a[i][k] * b[k][j];
+            }
+        }
+    }
+}
+
+int main() {
+    int linhasA = 2, colunasA = 3, colunasB = 2;
+    
+    // Aloca e preenche as matrizes
+    int **a = malloc(linhasA * sizeof(int *));
+    int **b = malloc(colunasA * sizeof(int *));
+    int **resultado = malloc(linhasA * sizeof(int *));
+    
+    for (int i = 0; i < linhasA; i++) a[i] = malloc(colunasA * sizeof(int));
+    for (int i = 0; i < colunasA; i++) b[i] = malloc(colunasB * sizeof(int));
+    for (int i = 0; i < linhasA; i++) resultado[i] = malloc(colunasB * sizeof(int));
+    
+    // Preenche matriz A
+    for (int i = 0; i < linhasA; i++)
+        for (int j = 0; j < colunasA; j++)
+            a[i][j] = i + j;
+    
+    // Preenche matriz B
+    for (int i = 0; i < colunasA; i++)
+        for (int j = 0; j < colunasB; j++)
+            b[i][j] = i * j;
+    
+    multiplicarMatrizes(a, b, resultado, linhasA, colunasA, colunasB);
+    
+    // Imprime resultado
+    for (int i = 0; i < linhasA; i++) {
+        for (int j = 0; j < colunasB; j++) {
+            printf("%d ", resultado[i][j]);
+        }
+        printf("\n");
+    }
+    
+    // Libera memória
+    for (int i = 0; i < linhasA; i++) free(a[i]);
+    for (int i = 0; i < colunasA; i++) free(b[i]);
+    for (int i = 0; i < linhasA; i++) free(resultado[i]);
+    free(a); free(b); free(resultado);
+    
+    return 0;
+}</code></pre>
+
+    <h3>12. Escreva uma função que receba um ponteiro para função e dois números, e aplique a função a esses números.</h3>
+    <div class="password-container">
+        <input type="password" id="password12" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code12', 'password12', this.nextElementSibling)" />
+        <button onclick="toggleCode('code12', 'password12', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code12" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int soma(int a, int b) { return a + b; }
+int multiplicacao(int a, int b) { return a * b; }
+
+int aplicarFuncao(int (*funcao)(int, int), int x, int y) {
+    return funcao(x, y);
+}
+
+int main() {
+    int a = 5, b = 3;
+    printf("Soma: %d\n", aplicarFuncao(soma, a, b));
+    printf("Multiplicação: %d\n", aplicarFuncao(multiplicacao, a, b));
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>13. Faça um programa que implemente uma calculadora usando ponteiros para funções.</h3>
+    <div class="password-container">
+        <input type="password" id="password13" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code13', 'password13', this.nextElementSibling)" />
+        <button onclick="toggleCode('code13', 'password13', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code13" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+float soma(float a, float b) { return a + b; }
+float subtracao(float a, float b) { return a - b; }
+float multiplicacao(float a, float b) { return a * b; }
+float divisao(float a, float b) { return a / b; }
+
+int main() {
+    float x, y;
+    char operador;
+    float (*operacao)(float, float);
+    
+    printf("Digite a operação (ex: 5 + 3): ");
+    scanf("%f %c %f", &x, &operador, &y);
+    
+    switch (operador) {
+        case '+': operacao = soma; break;
+        case '-': operacao = subtracao; break;
+        case '*': operacao = multiplicacao; break;
+        case '/': operacao = divisao; break;
+        default:
+            printf("Operador inválido!\n");
+            return 1;
+    }
+    
+    printf("Resultado: %.2f\n", operacao(x, y));
+    return 0;
+}</code></pre>
+
+    <h3>14. Crie uma função que retorne o número de caracteres em uma string usando ponteiros.</h3>
+    <div class="password-container">
+        <input type="password" id="password14" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code14', 'password14', this.nextElementSibling)" />
+        <button onclick="toggleCode('code14', 'password14', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code14" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int contarCaracteres(const char *str) {
+    int contador = 0;
+    while (*str++) contador++;
+    return contador;
+}
+
+int main() {
+    char texto[] = "Programação em C";
+    printf("Número de caracteres: %d\n", contarCaracteres(texto));
+    return 0;
+}</code></pre>
+
+    <h3>15. Desenvolva um programa que copie uma string para outra usando ponteiros.</h3>
+    <div class="password-container">
+        <input type="password" id="password15" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code15', 'password15', this.nextElementSibling)" />
+        <button onclick="toggleCode('code15', 'password15', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code15" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+void copiarString(char *dest, const char *src) {
+    while ((*dest++ = *src++));
+}
+
+int main() {
+    char origem[] = "Texto original";
+    char destino[50];
+    
+    copiarString(destino, origem);
+    printf("String copiada: %s\n", destino);
+    return 0;
+}</code></pre>
+
+    <h3>16. Escreva uma função que compare duas strings usando ponteiros.</h3>
+    <div class="password-container">
+        <input type="password" id="password16" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code16', 'password16', this.nextElementSibling)" />
+        <button onclick="toggleCode('code16', 'password16', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code16" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int compararStrings(const char *str1, const char *str2) {
+    while (*str1 && *str2 && *str1 == *str2) {
+        str1++;
+        str2++;
+    }
+    return *str1 - *str2;
+}
+
+int main() {
+    char str1[] = "abcde";
+    char str2[] = "abcdf";
+    
+    int resultado = compararStrings(str1, str2);
+    if (resultado < 0) printf("str1 é menor\n");
+    else if (resultado > 0) printf("str1 é maior\n");
+    else printf("strings iguais\n");
+    
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>17. Faça um programa que ordene um vetor usando ponteiros.</h3>
+    <div class="password-container">
+        <input type="password" id="password17" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code17', 'password17', this.nextElementSibling)" />
+        <button onclick="toggleCode('code17', 'password17', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code17" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+void ordenarVetor(int *vetor, int tamanho) {
+    for (int i = 0; i < tamanho-1; i++) {
+        for (int j = i+1; j < tamanho; j++) {
+            if (*(vetor + i) > *(vetor + j)) {
+                int temp = *(vetor + i);
+                *(vetor + i) = *(vetor + j);
+                *(vetor + j) = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    int vetor[] = {5, 2, 8, 1, 4};
+    int tamanho = sizeof(vetor) / sizeof(vetor[0]);
+    
+    ordenarVetor(vetor, tamanho);
+    
+    for (int i = 0; i < tamanho; i++) {
+        printf("%d ", vetor[i]);
+    }
+    
+    return 0;
+}</code></pre>
+
+    <h3>18. Crie uma função que receba um ponteiro para vetor e seu tamanho, e retorne a média.</h3>
+    <div class="password-container">
+        <input type="password" id="password18" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code18', 'password18', this.nextElementSibling)" />
+        <button onclick="toggleCode('code18', 'password18', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code18" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+float calcularMedia(int *vetor, int tamanho) {
+    float soma = 0;
+    for (int i = 0; i < tamanho; i++) {
+        soma += *(vetor + i);
+    }
+    return soma / tamanho;
+}
+
+int main() {
+    int numeros[] = {10, 20, 30, 40, 50};
+    int tamanho = sizeof(numeros) / sizeof(numeros[0]);
+    
+    printf("Média: %.2f\n", calcularMedia(numeros, tamanho));
+    return 0;
+}</code></pre>
+
+    <h3>19. Desenvolva um programa que realize busca binária usando ponteiros.</h3>
+    <div class="password-container">
+        <input type="password" id="password19" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code19', 'password19', this.nextElementSibling)" />
+        <button onclick="toggleCode('code19', 'password19', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code19" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int buscaBinaria(int *vetor, int tamanho, int valor) {
+    int *inicio = vetor;
+    int *fim = vetor + tamanho - 1;
+    
+    while (inicio <= fim) {
+        int *meio = inicio + (fim - inicio) / 2;
+        
+        if (*meio == valor) return meio - vetor;  // Retorna o índice
+        if (*meio < valor) inicio = meio + 1;
+        else fim = meio - 1;
+    }
+    
+    return -1;  // Não encontrado
+}
+
+int main() {
+    int vetor[] = {1, 3, 5, 7, 9, 11, 13};
+    int tamanho = sizeof(vetor) / sizeof(vetor[0]);
+    int valor = 7;
+    
+    int posicao = buscaBinaria(vetor, tamanho, valor);
+    if (posicao != -1) {
+        printf("Valor %d encontrado na posição %d\n", valor, posicao);
+    } else {
+        printf("Valor não encontrado\n");
+    }
+    
+    return 0;
+}</code></pre>
+
+    <h3>20. Escreva uma função que aloque dinamicamente uma string e retorne seu ponteiro.</h3>
+    <div class="password-container">
+        <input type="password" id="password20" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code20', 'password20', this.nextElementSibling)" />
+        <button onclick="toggleCode('code20', 'password20', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code20" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+char *alocarString(const char *texto) {
+    char *novaString = malloc(strlen(texto) + 1);
+    if (novaString != NULL) {
+        strcpy(novaString, texto);
+    }
+    return novaString;
+}
+
+int main() {
+    char *minhaString = alocarString("Alocação dinâmica");
+    if (minhaString != NULL) {
+        printf("String alocada: %s\n", minhaString);
+        free(minhaString);
+    } else {
+        printf("Erro na alocação!\n");
+    }
+    return 0;
+}</code></pre>
+
+    <script>
+        function toggleCode(codeId, passwordId, button) {
+            const senhaInput = document.getElementById(passwordId);
+            const senha = senhaInput.value;
+            const codeBlock = document.getElementById(codeId);
+        
+            if (senha === "1234") {  // Altere aqui pela senha correta
+                if (codeBlock.style.display === "none") {
+                    codeBlock.style.display = "block";
+                    button.textContent = "Ocultar Código";
+                } else {
+                    codeBlock.style.display = "none";
+                    senhaInput.value = ""; // Limpa a senha ao esconder
+                    button.textContent = "Mostrar Código";
+                }
+            } else {
+                alert("Senha incorreta!");
+            }
+        }
+        
+        function handleEnter(event, codeId, passwordId, button) {
+            if (event.key === "Enter") {
+                toggleCode(codeId, passwordId, button);
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+</body>
+</html>

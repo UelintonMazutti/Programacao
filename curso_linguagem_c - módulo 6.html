@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de Lógica de Programação com Linguagem C - Módulo 6</title>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 12px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: "Courier New", monospace;
+            color: #f92672;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        .full-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 25vh;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #ccc;
+            margin: 30px 0;
+        }
+
+        .password-container {
+            margin-bottom: 15px;
+        }
+
+        .exercise-code {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-break" style="page-break-before: always;"></div>
+
+    <div class="full-page">
+        Módulo 6: Estruturas e Arquivos
+    </div>
+
+    <h1>Curso de Lógica de Programação com Linguagem C</h1>
+
+    <hr>
+
+    <h3>1. Definição e Uso de Estruturas (struct)</h3>
+
+    <p>Estruturas permitem agrupar variáveis de diferentes tipos sob um único nome.</p>
+
+    <h4>Declaração e uso:</h4>
+    <pre><code class="language-c">struct Ponto {
+    float x;
+    float y;
+};
+
+int main() {
+    struct Ponto p1 = {1.5, 2.5};
+    printf("Coordenadas: (%.1f, %.1f)", p1.x, p1.y);
+    return 0;
+}</code></pre>
+
+    <hr>
+
+    <h3>2. Arrays de Estruturas</h3>
+
+    <p>Podemos criar arrays para armazenar múltiplas estruturas do mesmo tipo.</p>
+
+    <pre><code class="language-c">struct Aluno {
+    char nome[50];
+    float nota;
+};
+
+int main() {
+    struct Aluno turma[30]; // Array de 30 alunos
+    strcpy(turma[0].nome, "Maria");
+    turma[0].nota = 9.5;
+    return 0;
+}</code></pre>
+
+    <hr>
+
+    <h3>3. Ponteiros para Estruturas</h3>
+
+    <p>Ponteiros podem ser usados para acessar estruturas de forma eficiente.</p>
+
+    <pre><code class="language-c">struct Produto {
+    char nome[50];
+    float preco;
+};
+
+int main() {
+    struct Produto p = {"Notebook", 2500.00};
+    struct Produto *ptr = &p;
+    printf("Produto: %s\nPreço: %.2f", ptr->nome, ptr->preco);
+    return 0;
+}</code></pre>
+
+    <hr>
+
+    <h3>4. Manipulação de Arquivos</h3>
+
+    <p>Principais funções para trabalhar com arquivos:</p>
+    <table>
+        <tr>
+            <th>Função</th>
+            <th>Descrição</th>
+        </tr>
+        <tr>
+            <td><code>fopen()</code></td>
+            <td>Abre um arquivo</td>
+        </tr>
+        <tr>
+            <td><code>fclose()</code></td>
+            <td>Fecha um arquivo</td>
+        </tr>
+        <tr>
+            <td><code>fprintf()</code></td>
+            <td>Escreve dados formatados</td>
+        </tr>
+        <tr>
+            <td><code>fscanf()</code></td>
+            <td>Lê dados formatados</td>
+        </tr>
+        <tr>
+            <td><code>fwrite()</code></td>
+            <td>Escreve dados binários</td>
+        </tr>
+        <tr>
+            <td><code>fread()</code></td>
+            <td>Lê dados binários</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h3>5. Leitura e Escrita em Arquivos</h3>
+
+    <h4>Arquivos texto:</h4>
+    <pre><code class="language-c">FILE *arquivo = fopen("dados.txt", "w");
+if (arquivo != NULL) {
+    fprintf(arquivo, "Dados de exemplo\n");
+    fclose(arquivo);
+}</code></pre>
+
+    <h4>Arquivos binários:</h4>
+    <pre><code class="language-c">struct Dados {
+    int id;
+    char info[50];
+};
+
+struct Dados d = {1, "Informação importante"};
+FILE *arquivo = fopen("dados.bin", "wb");
+fwrite(&d, sizeof(struct Dados), 1, arquivo);
+fclose(arquivo);</code></pre>
+
+    <div class="page-break"></div>
+
+    <div class="page-break" style="page-break-before: always;"></div>
+
+    <div class="full-page">
+        Exercícios
+    </div>
+
+    <h3>1. Defina uma estrutura para representar um ponto 2D e calcule a distância entre dois pontos.</h3>
+    <div class="password-container">
+        <input type="password" id="password1" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code1', 'password1', this.nextElementSibling)" />
+        <button onclick="toggleCode('code1', 'password1', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code1" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+struct Ponto {
+    float x;
+    float y;
+};
+
+float distancia(struct Ponto a, struct Ponto b) {
+    return sqrt(pow(b.x - a.x, 2) + pow(b.y - a.y, 2));
+}
+
+int main() {
+    struct Ponto p1 = {1.0, 2.0};
+    struct Ponto p2 = {4.0, 6.0};
+    
+    printf("Distância: %.2f\n", distancia(p1, p2));
+    return 0;
+}</code></pre>
+
+    <h3>2. Crie uma estrutura para armazenar dados de um aluno (nome, matrícula, notas) e calcule a média.</h3>
+    <div class="password-container">
+        <input type="password" id="password2" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code2', 'password2', this.nextElementSibling)" />
+        <button onclick="toggleCode('code2', 'password2', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code2" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+struct Aluno {
+    char nome[50];
+    int matricula;
+    float notas[3];
+};
+
+float calcularMedia(struct Aluno a) {
+    return (a.notas[0] + a.notas[1] + a.notas[2]) / 3;
+}
+
+int main() {
+    struct Aluno aluno;
+    
+    printf("Nome: ");
+    scanf("%49s", aluno.nome);
+    printf("Matrícula: ");
+    scanf("%d", &aluno.matricula);
+    printf("Notas (3): ");
+    scanf("%f %f %f", &aluno.notas[0], &aluno.notas[1], &aluno.notas[2]);
+    
+    printf("Média: %.2f\n", calcularMedia(aluno));
+    return 0;
+}</code></pre>
+
+    <h3>3. Desenvolva um programa que armazene dados de 5 produtos (nome, preço, quantidade) e mostre o mais caro.</h3>
+    <div class="password-container">
+        <input type="password" id="password3" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code3', 'password3', this.nextElementSibling)" />
+        <button onclick="toggleCode('code3', 'password3', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code3" style="display: none;"><code>#include &lt;stdio.h&gt;
+#define NUM_PRODUTOS 5
+
+struct Produto {
+    char nome[50];
+    float preco;
+    int quantidade;
+};
+
+int main() {
+    struct Produto produtos[NUM_PRODUTOS];
+    int mais_caro = 0;
+    
+    for (int i = 0; i < NUM_PRODUTOS; i++) {
+        printf("Produto %d:\n", i+1);
+        printf("Nome: ");
+        scanf("%49s", produtos[i].nome);
+        printf("Preço: ");
+        scanf("%f", &produtos[i].preco);
+        printf("Quantidade: ");
+        scanf("%d", &produtos[i].quantidade);
+        
+        if (produtos[i].preco > produtos[mais_caro].preco) {
+            mais_caro = i;
+        }
+    }
+    
+    printf("\nProduto mais caro:\n");
+    printf("Nome: %s\nPreço: %.2f\nQuantidade: %d\n",
+           produtos[mais_caro].nome, 
+           produtos[mais_caro].preco,
+           produtos[mais_caro].quantidade);
+    
+    return 0;
+}</code></pre>
+
+    <h3>4. Escreva um programa que grave dados de uma estrutura em um arquivo.</h3>
+    <div class="password-container">
+        <input type="password" id="password4" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code4', 'password4', this.nextElementSibling)" />
+        <button onclick="toggleCode('code4', 'password4', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code4" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+struct Livro {
+    char titulo[100];
+    char autor[50];
+    int ano;
+};
+
+int main() {
+    struct Livro livro;
+    FILE *arquivo;
+    
+    printf("Título: ");
+    fgets(livro.titulo, 100, stdin);
+    printf("Autor: ");
+    fgets(livro.autor, 50, stdin);
+    printf("Ano: ");
+    scanf("%d", &livro.ano);
+    
+    arquivo = fopen("livros.txt", "a");
+    if (arquivo != NULL) {
+        fprintf(arquivo, "%s;%s;%d\n", livro.titulo, livro.autor, livro.ano);
+        fclose(arquivo);
+        printf("Dados gravados com sucesso!\n");
+    } else {
+        printf("Erro ao abrir o arquivo.\n");
+    }
+    
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>5. Faça um programa que leia dados de um arquivo para uma estrutura.</h3>
+    <div class="password-container">
+        <input type="password" id="password5" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code5', 'password5', this.nextElementSibling)" />
+        <button onclick="toggleCode('code5', 'password5', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code5" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+struct Pessoa {
+    char nome[50];
+    int idade;
+    float altura;
+};
+
+int main() {
+    struct Pessoa p;
+    FILE *arquivo;
+    
+    arquivo = fopen("pessoa.txt", "r");
+    if (arquivo != NULL) {
+        fscanf(arquivo, "%49[^;];%d;%f", p.nome, &p.idade, &p.altura);
+        fclose(arquivo);
+        
+        printf("Nome: %s\nIdade: %d\nAltura: %.2f\n", 
+               p.nome, p.idade, p.altura);
+    } else {
+        printf("Erro ao abrir o arquivo.\n");
+    }
+    
+    return 0;
+}</code></pre>
+
+    <h3>6. Crie uma agenda de contatos usando estruturas e arquivos.</h3>
+    <div class="password-container">
+        <input type="password" id="password6" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code6', 'password6', this.nextElementSibling)" />
+        <button onclick="toggleCode('code6', 'password6', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code6" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+struct Contato {
+    char nome[50];
+    char telefone[20];
+    char email[50];
+};
+
+void adicionarContato() {
+    struct Contato c;
+    FILE *arquivo;
+    
+    printf("Nome: ");
+    scanf(" %[^\n]", c.nome);
+    printf("Telefone: ");
+    scanf("%s", c.telefone);
+    printf("Email: ");
+    scanf("%s", c.email);
+    
+    arquivo = fopen("contatos.txt", "a");
+    if (arquivo != NULL) {
+        fprintf(arquivo, "%s;%s;%s\n", c.nome, c.telefone, c.email);
+        fclose(arquivo);
+        printf("Contato adicionado!\n");
+    } else {
+        printf("Erro ao abrir arquivo.\n");
+    }
+}
+
+void listarContatos() {
+    struct Contato c;
+    FILE *arquivo;
+    
+    arquivo = fopen("contatos.txt", "r");
+    if (arquivo != NULL) {
+        printf("\n--- CONTATOS ---\n");
+        while (fscanf(arquivo, "%49[^;];%19[^;];%49[^\n]\n", 
+                     c.nome, c.telefone, c.email) != EOF) {
+            printf("Nome: %s\nTel: %s\nEmail: %s\n\n", 
+                   c.nome, c.telefone, c.email);
+        }
+        fclose(arquivo);
+    } else {
+        printf("Nenhum contato cadastrado.\n");
+    }
+}
+
+int main() {
+    int opcao;
+    
+    do {
+        printf("\n1. Adicionar contato\n");
+        printf("2. Listar contatos\n");
+        printf("0. Sair\n");
+        printf("Opção: ");
+        scanf("%d", &opcao);
+        
+        switch(opcao) {
+            case 1: adicionarContato(); break;
+            case 2: listarContatos(); break;
+        }
+    } while (opcao != 0);
+    
+    return 0;
+}</code></pre>
+
+    <h3>7. Desenvolva um programa que gerencie uma biblioteca (livros, autores, empréstimos).</h3>
+    <div class="password-container">
+        <input type="password" id="password7" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code7', 'password7', this.nextElementSibling)" />
+        <button onclick="toggleCode('code7', 'password7', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code7" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+struct Livro {
+    char titulo[100];
+    char autor[50];
+    int disponivel; // 1-disponível, 0-emprestado
+};
+
+void cadastrarLivro() {
+    struct Livro l;
+    FILE *arquivo;
+    
+    printf("Título: ");
+    scanf(" %[^\n]", l.titulo);
+    printf("Autor: ");
+    scanf(" %[^\n]", l.autor);
+    l.disponivel = 1;
+    
+    arquivo = fopen("biblioteca.bin", "ab");
+    if (arquivo != NULL) {
+        fwrite(&l, sizeof(struct Livro), 1, arquivo);
+        fclose(arquivo);
+        printf("Livro cadastrado!\n");
+    } else {
+        printf("Erro ao abrir arquivo.\n");
+    }
+}
+
+void listarLivros() {
+    struct Livro l;
+    FILE *arquivo;
+    
+    arquivo = fopen("biblioteca.bin", "rb");
+    if (arquivo != NULL) {
+        printf("\n--- LIVROS ---\n");
+        while (fread(&l, sizeof(struct Livro), 1, arquivo)) {
+            printf("Título: %s\nAutor: %s\nStatus: %s\n\n", 
+                   l.titulo, l.autor, 
+                   l.disponivel ? "Disponível" : "Emprestado");
+        }
+        fclose(arquivo);
+    } else {
+        printf("Nenhum livro cadastrado.\n");
+    }
+}
+
+int main() {
+    int opcao;
+    
+    do {
+        printf("\n1. Cadastrar livro\n");
+        printf("2. Listar livros\n");
+        printf("0. Sair\n");
+        printf("Opção: ");
+        scanf("%d", &opcao);
+        
+        switch(opcao) {
+            case 1: cadastrarLivro(); break;
+            case 2: listarLivros(); break;
+        }
+    } while (opcao != 0);
+    
+    return 0;
+}</code></pre>
+
+    <h3>8. Escreva um programa que cadastre funcionários (nome, salário, departamento) em um arquivo.</h3>
+    <div class="password-container">
+        <input type="password" id="password8" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code8', 'password8', this.nextElementSibling)" />
+        <button onclick="toggleCode('code8', 'password8', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code8" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+struct Funcionario {
+    char nome[50];
+    float salario;
+    char departamento[30];
+};
+
+int main() {
+    struct Funcionario f;
+    FILE *arquivo;
+    
+    printf("Nome: ");
+    scanf(" %[^\n]", f.nome);
+    printf("Salário: ");
+    scanf("%f", &f.salario);
+    printf("Departamento: ");
+    scanf(" %[^\n]", f.departamento);
+    
+    arquivo = fopen("funcionarios.dat", "ab");
+    if (arquivo != NULL) {
+        fwrite(&f, sizeof(struct Funcionario), 1, arquivo);
+        fclose(arquivo);
+        printf("Funcionário cadastrado!\n");
+    } else {
+        printf("Erro ao abrir arquivo.\n");
+    }
+    
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>9. Faça um programa que leia um arquivo CSV e armazene os dados em estruturas.</h3>
+    <div class="password-container">
+        <input type="password" id="password9" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code9', 'password9', this.nextElementSibling)" />
+        <button onclick="toggleCode('code9', 'password9', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code9" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+struct Produto {
+    int codigo;
+    char nome[50];
+    float preco;
+    int estoque;
+};
+
+int main() {
+    struct Produto p;
+    FILE *arquivo;
+    
+    arquivo = fopen("produtos.csv", "r");
+    if (arquivo != NULL) {
+        printf("--- PRODUTOS ---\n");
+        while (fscanf(arquivo, "%d;%49[^;];%f;%d\n", 
+                     &p.codigo, p.nome, &p.preco, &p.estoque) != EOF) {
+            printf("Código: %d\nNome: %s\nPreço: %.2f\nEstoque: %d\n\n",
+                   p.codigo, p.nome, p.preco, p.estoque);
+        }
+        fclose(arquivo);
+    } else {
+        printf("Erro ao abrir arquivo.\n");
+    }
+    
+    return 0;
+}</code></pre>
+
+    <h3>10. Crie um programa que simule um caixa de supermercado usando estruturas e arquivos.</h3>
+    <div class="password-container">
+        <input type="password" id="password10" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code10', 'password10', this.nextElementSibling)" />
+        <button onclick="toggleCode('code10', 'password10', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code10" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+struct Item {
+    char nome[50];
+    float preco;
+    int quantidade;
+};
+
+void registrarVenda(struct Item itens[], int num_itens) {
+    FILE *arquivo;
+    float total = 0;
+    
+    arquivo = fopen("vendas.txt", "a");
+    if (arquivo != NULL) {
+        fprintf(arquivo, "--- NOVA VENDA ---\n");
+        for (int i = 0; i < num_itens; i++) {
+            fprintf(arquivo, "%s - %.2f x %d = %.2f\n", 
+                   itens[i].nome, itens[i].preco, 
+                   itens[i].quantidade, 
+                   itens[i].preco * itens[i].quantidade);
+            total += itens[i].preco * itens[i].quantidade;
+        }
+        fprintf(arquivo, "TOTAL: %.2f\n\n", total);
+        fclose(arquivo);
+        printf("Venda registrada!\n");
+    } else {
+        printf("Erro ao registrar venda.\n");
+    }
+}
+
+int main() {
+    struct Item carrinho[10];
+    int num_itens = 0;
+    char continuar;
+    
+    do {
+        printf("Item %d:\n", num_itens + 1);
+        printf("Nome: ");
+        scanf(" %[^\n]", carrinho[num_itens].nome);
+        printf("Preço: ");
+        scanf("%f", &carrinho[num_itens].preco);
+        printf("Quantidade: ");
+        scanf("%d", &carrinho[num_itens].quantidade);
+        num_itens++;
+        
+        printf("Adicionar outro item? (s/n): ");
+        scanf(" %c", &continuar);
+    } while (continuar == 's' && num_itens < 10);
+    
+    registrarVenda(carrinho, num_itens);
+    
+    return 0;
+}</code></pre>
+
+    <h3>11. Desenvolva um programa que grave dados de alunos em um arquivo binário.</h3>
+    <div class="password-container">
+        <input type="password" id="password11" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code11', 'password11', this.nextElementSibling)" />
+        <button onclick="toggleCode('code11', 'password11', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code11" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+struct Aluno {
+    int matricula;
+    char nome[50];
+    float nota;
+};
+
+int main() {
+    struct Aluno a;
+    FILE *arquivo;
+    
+    printf("Matrícula: ");
+    scanf("%d", &a.matricula);
+    printf("Nome: ");
+    scanf(" %[^\n]", a.nome);
+    printf("Nota: ");
+    scanf("%f", &a.nota);
+    
+    arquivo = fopen("alunos.bin", "ab");
+    if (arquivo != NULL) {
+        fwrite(&a, sizeof(struct Aluno), 1, arquivo);
+        fclose(arquivo);
+        printf("Dados gravados com sucesso!\n");
+    } else {
+        printf("Erro ao abrir arquivo.\n");
+    }
+    
+    return 0;
+}</code></pre>
+
+    <h3>12. Escreva um programa que leia um arquivo binário com dados de alunos.</h3>
+    <div class="password-container">
+        <input type="password" id="password12" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code12', 'password12', this.nextElementSibling)" />
+        <button onclick="toggleCode('code12', 'password12', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code12" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+struct Aluno {
+    int matricula;
+    char nome[50];
+    float nota;
+};
+
+int main() {
+    struct Aluno a;
+    FILE *arquivo;
+    
+    arquivo = fopen("alunos.bin", "rb");
+    if (arquivo != NULL) {
+        printf("--- ALUNOS ---\n");
+        while (fread(&a, sizeof(struct Aluno), 1, arquivo)) {
+            printf("Matrícula: %d\nNome: %s\nNota: %.2f\n\n",
+                   a.matricula, a.nome, a.nota);
+        }
+        fclose(arquivo);
+    } else {
+        printf("Arquivo não encontrado.\n");
+    }
+    
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>13. Faça um programa que copie o conteúdo de um arquivo para outro.</h3>
+    <div class="password-container">
+        <input type="password" id="password13" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code13', 'password13', this.nextElementSibling)" />
+        <button onclick="toggleCode('code13', 'password13', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code13" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *origem, *destino;
+    char ch;
+    
+    origem = fopen("origem.txt", "r");
+    if (origem == NULL) {
+        printf("Erro ao abrir arquivo de origem.\n");
+        return 1;
+    }
+    
+    destino = fopen("destino.txt", "w");
+    if (destino == NULL) {
+        printf("Erro ao criar arquivo de destino.\n");
+        fclose(origem);
+        return 1;
+    }
+    
+    while ((ch = fgetc(origem)) != EOF) {
+        fputc(ch, destino);
+    }
+    
+    fclose(origem);
+    fclose(destino);
+    printf("Cópia realizada com sucesso!\n");
+    
+    return 0;
+}</code></pre>
+
+    <h3>14. Crie um programa que conte o número de linhas em um arquivo de texto.</h3>
+    <div class="password-container">
+        <input type="password" id="password14" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code14', 'password14', this.nextElementSibling)" />
+        <button onclick="toggleCode('code14', 'password14', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code14" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *arquivo;
+    char ch;
+    int linhas = 0;
+    
+    arquivo = fopen("texto.txt", "r");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir arquivo.\n");
+        return 1;
+    }
+    
+    while ((ch = fgetc(arquivo)) != EOF) {
+        if (ch == '\n') linhas++;
+    }
+    
+    // Conta a última linha se não terminar com \n
+    if (ch != '\n' && linhas > 0) linhas++;
+    
+    fclose(arquivo);
+    printf("Número de linhas: %d\n", linhas);
+    
+    return 0;
+}</code></pre>
+
+    <h3>15. Desenvolva um programa que busque uma palavra em um arquivo de texto.</h3>
+    <div class="password-container">
+        <input type="password" id="password15" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code15', 'password15', this.nextElementSibling)" />
+        <button onclick="toggleCode('code15', 'password15', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code15" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;ctype.h&gt;
+
+int main() {
+    FILE *arquivo;
+    char palavra[50], buffer[1024];
+    int encontradas = 0, linha = 1;
+    
+    printf("Digite a palavra a buscar: ");
+    scanf("%49s", palavra);
+    
+    arquivo = fopen("texto.txt", "r");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir arquivo.\n");
+        return 1;
+    }
+    
+    while (fgets(buffer, sizeof(buffer), arquivo)) {
+        char *ptr = buffer;
+        while ((ptr = strstr(ptr, palavra)) != NULL) {
+            printf("Encontrada na linha %d: %s\n", linha, buffer);
+            encontradas++;
+            ptr += strlen(palavra);
+        }
+        linha++;
+    }
+    
+    fclose(arquivo);
+    printf("Total de ocorrências: %d\n", encontradas);
+    
+    return 0;
+}</code></pre>
+
+    <h3>16. Escreva um programa que crie um arquivo com os primeiros N números primos.</h3>
+    <div class="password-container">
+        <input type="password" id="password16" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code16', 'password16', this.nextElementSibling)" />
+        <button onclick="toggleCode('code16', 'password16', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code16" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;stdbool.h&gt;
+
+bool ehPrimo(int n) {
+    if (n <= 1) return false;
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0) return false;
+    }
+    return true;
+}
+
+int main() {
+    FILE *arquivo;
+    int n, count = 0, num = 2;
+    
+    printf("Quantos primos deseja gerar? ");
+    scanf("%d", &n);
+    
+    arquivo = fopen("primos.txt", "w");
+    if (arquivo == NULL) {
+        printf("Erro ao criar arquivo.\n");
+        return 1;
+    }
+    
+    fprintf(arquivo, "Os primeiros %d números primos:\n", n);
+    while (count < n) {
+        if (ehPrimo(num)) {
+            fprintf(arquivo, "%d\n", num);
+            count++;
+        }
+        num++;
+    }
+    
+    fclose(arquivo);
+    printf("Arquivo gerado com sucesso!\n");
+    
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>17. Faça um programa que compacte dois arquivos em um terceiro arquivo.</h3>
+    <div class="password-container">
+        <input type="password" id="password17" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code17', 'password17', this.nextElementSibling)" />
+        <button onclick="toggleCode('code17', 'password17', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code17" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *arq1, *arq2, *arq3;
+    char ch;
+    
+    arq1 = fopen("arquivo1.txt", "r");
+    arq2 = fopen("arquivo2.txt", "r");
+    arq3 = fopen("compactado.txt", "w");
+    
+    if (arq1 == NULL || arq2 == NULL || arq3 == NULL) {
+        printf("Erro ao abrir arquivos.\n");
+        return 1;
+    }
+    
+    // Copia conteúdo do primeiro arquivo
+    while ((ch = fgetc(arq1)) != EOF) {
+        fputc(ch, arq3);
+    }
+    fprintf(arq3, "\n--- FIM ARQUIVO 1 ---\n\n");
+    
+    // Copia conteúdo do segundo arquivo
+    while ((ch = fgetc(arq2)) != EOF) {
+        fputc(ch, arq3);
+    }
+    
+    fclose(arq1);
+    fclose(arq2);
+    fclose(arq3);
+    printf("Arquivos compactados com sucesso!\n");
+    
+    return 0;
+}</code></pre>
+
+    <h3>18. Crie um programa que criptografe um arquivo de texto (cifra de César).</h3>
+    <div class="password-container">
+        <input type="password" id="password18" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code18', 'password18', this.nextElementSibling)" />
+        <button onclick="toggleCode('code18', 'password18', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code18" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+void cifraCesar(FILE *entrada, FILE *saida, int chave) {
+    char ch;
+    while ((ch = fgetc(entrada)) != EOF) {
+        if (isalpha(ch)) {
+            char base = isupper(ch) ? 'A' : 'a';
+            ch = ((ch - base + chave) % 26) + base;
+        }
+        fputc(ch, saida);
+    }
+}
+
+int main() {
+    FILE *origem, *destino;
+    int chave;
+    
+    printf("Digite a chave de criptografia (1-25): ");
+    scanf("%d", &chave);
+    
+    origem = fopen("original.txt", "r");
+    destino = fopen("criptografado.txt", "w");
+    
+    if (origem == NULL || destino == NULL) {
+        printf("Erro ao abrir arquivos.\n");
+        return 1;
+    }
+    
+    cifraCesar(origem, destino, chave);
+    
+    fclose(origem);
+    fclose(destino);
+    printf("Arquivo criptografado com sucesso!\n");
+    
+    return 0;
+}</code></pre>
+
+    <h3>19. Desenvolva um programa que gerencie uma lista de tarefas com datas usando estruturas.</h3>
+    <div class="password-container">
+        <input type="password" id="password19" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code19', 'password19', this.nextElementSibling)" />
+        <button onclick="toggleCode('code19', 'password19', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code19" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+struct Data {
+    int dia, mes, ano;
+};
+
+struct Tarefa {
+    char descricao[100];
+    struct Data data;
+    int prioridade; // 1-baixa, 2-média, 3-alta
+};
+
+void adicionarTarefa() {
+    struct Tarefa t;
+    FILE *arquivo;
+    
+    printf("Descrição: ");
+    scanf(" %[^\n]", t.descricao);
+    printf("Data (dd mm aaaa): ");
+    scanf("%d %d %d", &t.data.dia, &t.data.mes, &t.data.ano);
+    printf("Prioridade (1-3): ");
+    scanf("%d", &t.prioridade);
+    
+    arquivo = fopen("tarefas.dat", "ab");
+    if (arquivo != NULL) {
+        fwrite(&t, sizeof(struct Tarefa), 1, arquivo);
+        fclose(arquivo);
+        printf("Tarefa adicionada!\n");
+    } else {
+        printf("Erro ao abrir arquivo.\n");
+    }
+}
+
+void listarTarefas() {
+    struct Tarefa t;
+    FILE *arquivo;
+    
+    arquivo = fopen("tarefas.dat", "rb");
+    if (arquivo != NULL) {
+        printf("\n--- TAREFAS ---\n");
+        while (fread(&t, sizeof(struct Tarefa), 1, arquivo)) {
+            printf("Descrição: %s\n", t.descricao);
+            printf("Data: %02d/%02d/%04d\n", t.data.dia, t.data.mes, t.data.ano);
+            printf("Prioridade: %d\n\n", t.prioridade);
+        }
+        fclose(arquivo);
+    } else {
+        printf("Nenhuma tarefa cadastrada.\n");
+    }
+}
+
+int main() {
+    int opcao;
+    
+    do {
+        printf("\n1. Adicionar tarefa\n");
+        printf("2. Listar tarefas\n");
+        printf("0. Sair\n");
+        printf("Opção: ");
+        scanf("%d", &opcao);
+        
+        switch(opcao) {
+            case 1: adicionarTarefa(); break;
+            case 2: listarTarefas(); break;
+        }
+    } while (opcao != 0);
+    
+    return 0;
+}</code></pre>
+
+    <h3>20. Escreva um programa que implemente um sistema de login usando arquivos.</h3>
+    <div class="password-container">
+        <input type="password" id="password20" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code20', 'password20', this.nextElementSibling)" />
+        <button onclick="toggleCode('code20', 'password20', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code20" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+struct Usuario {
+    char login[20];
+    char senha[20];
+};
+
+void cadastrarUsuario() {
+    struct Usuario u;
+    FILE *arquivo;
+    
+    printf("Novo login: ");
+    scanf("%19s", u.login);
+    printf("Nova senha: ");
+    scanf("%19s", u.senha);
+    
+    arquivo = fopen("usuarios.dat", "ab");
+    if (arquivo != NULL) {
+        fwrite(&u, sizeof(struct Usuario), 1, arquivo);
+        fclose(arquivo);
+        printf("Usuário cadastrado!\n");
+    } else {
+        printf("Erro ao cadastrar usuário.\n");
+    }
+}
+
+int fazerLogin() {
+    struct Usuario u, entrada;
+    FILE *arquivo;
+    int encontrado = 0;
+    
+    printf("Login: ");
+    scanf("%19s", entrada.login);
+    printf("Senha: ");
+    scanf("%19s", entrada.senha);
+    
+    arquivo = fopen("usuarios.dat", "rb");
+    if (arquivo != NULL) {
+        while (fread(&u, sizeof(struct Usuario), 1, arquivo)) {
+            if (strcmp(u.login, entrada.login) == 0 && 
+                strcmp(u.senha, entrada.senha) == 0) {
+                encontrado = 1;
+                break;
+            }
+        }
+        fclose(arquivo);
+    }
+    
+    return encontrado;
+}
+
+int main() {
+    int opcao;
+    
+    do {
+        printf("\n1. Cadastrar usuário\n");
+        printf("2. Fazer login\n");
+        printf("0. Sair\n");
+        printf("Opção: ");
+        scanf("%d", &opcao);
+        
+        switch(opcao) {
+            case 1: 
+                cadastrarUsuario(); 
+                break;
+            case 2: 
+                if (fazerLogin()) {
+                    printf("Login bem-sucedido!\n");
+                } else {
+                    printf("Login ou senha incorretos.\n");
+                }
+                break;
+        }
+    } while (opcao != 0);
+    
+    return 0;
+}</code></pre>
+
+    <script>
+        function toggleCode(codeId, passwordId, button) {
+            const senhaInput = document.getElementById(passwordId);
+            const senha = senhaInput.value;
+            const codeBlock = document.getElementById(codeId);
+        
+            if (senha === "1234") {  // Altere aqui pela senha correta
+                if (codeBlock.style.display === "none") {
+                    codeBlock.style.display = "block";
+                    button.textContent = "Ocultar Código";
+                } else {
+                    codeBlock.style.display = "none";
+                    senhaInput.value = ""; // Limpa a senha ao esconder
+                    button.textContent = "Mostrar Código";
+                }
+            } else {
+                alert("Senha incorreta!");
+            }
+        }
+        
+        function handleEnter(event, codeId, passwordId, button) {
+            if (event.key === "Enter") {
+                toggleCode(codeId, passwordId, button);
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+</body>
+</html>

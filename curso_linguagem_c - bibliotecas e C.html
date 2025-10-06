@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bibliotecas Importantes em C - math.h e outras</title>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 12px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: "Courier New", monospace;
+            color: #f92672;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        .full-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 25vh;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #ccc;
+            margin: 30px 0;
+        }
+
+        .password-container {
+            margin-bottom: 15px;
+        }
+
+        .exercise-code {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-break" style="page-break-before: always;"></div>
+
+    <div class="full-page">
+        Bibliotecas Importantes em C - math.h e outras
+    </div>
+
+    <h1>Curso de Lógica de Programação com Linguagem C</h1>
+
+    <hr>
+
+    <h3>1. Introdução às Bibliotecas em C</h3>
+
+    <p>Bibliotecas em C são coleções de funções pré-definidas que expandem as capacidades da linguagem. Elas são incluídas usando a diretiva <code>#include</code>.</p>
+
+    <p><strong>Principais bibliotecas padrão:</strong></p>
+    <ul>
+        <li><code>stdio.h</code> - Entrada e saída padrão</li>
+        <li><code>math.h</code> - Funções matemáticas</li>
+        <li><code>stdlib.h</code> - Funções utilitárias gerais</li>
+        <li><code>string.h</code> - Manipulação de strings</li>
+        <li><code>time.h</code> - Manipulação de data e hora</li>
+    </ul>
+
+    <hr>
+
+    <h3>2. A Biblioteca math.h</h3>
+
+    <p>A biblioteca <code>math.h</code> contém funções matemáticas avançadas. Para usá-la, você precisa:</p>
+    <pre><code class="language-c">#include &lt;math.h&gt;
+#include &lt;stdio.h&gt;
+
+int main() {
+    // Seu código aqui
+    return 0;
+}</code></pre>
+
+    <p><strong>Observação:</strong> Ao compilar, você pode precisar linkar a biblioteca matemática com a flag <code>-lm</code>:</p>
+    <pre><code class="language-bash">gcc programa.c -o programa -lm</code></pre>
+
+    <hr>
+
+    <h3>3. Principais Funções da math.h</h3>
+
+    <h4>Funções Trigonométricas:</h4>
+    <table>
+        <tr>
+            <th>Função</th>
+            <th>Descrição</th>
+            <th>Exemplo</th>
+        </tr>
+        <tr>
+            <td><code>sin(x)</code></td>
+            <td>Seno de x (radianos)</td>
+            <td><code>sin(3.14159/2)</code> → ~1.0</td>
+        </tr>
+        <tr>
+            <td><code>cos(x)</code></td>
+            <td>Cosseno de x (radianos)</td>
+            <td><code>cos(0)</code> → 1.0</td>
+        </tr>
+        <tr>
+            <td><code>tan(x)</code></td>
+            <td>Tangente de x (radianos)</td>
+            <td><code>tan(0.785398)</code> → ~1.0</td>
+        </tr>
+    </table>
+
+    <h4>Funções Exponenciais e Logarítmicas:</h4>
+    <table>
+        <tr>
+            <th>Função</th>
+            <th>Descrição</th>
+            <th>Exemplo</th>
+        </tr>
+        <tr>
+            <td><code>exp(x)</code></td>
+            <td>e elevado a x</td>
+            <td><code>exp(1)</code> → ~2.71828</td>
+        </tr>
+        <tr>
+            <td><code>log(x)</code></td>
+            <td>Logaritmo natural (base e)</td>
+            <td><code>log(2.71828)</code> → ~1.0</td>
+        </tr>
+        <tr>
+            <td><code>log10(x)</code></td>
+            <td>Logaritmo base 10</td>
+            <td><code>log10(100)</code> → 2.0</td>
+        </tr>
+    </table>
+
+    <h4>Funções de Potência e Arredondamento:</h4>
+    <table>
+        <tr>
+            <th>Função</th>
+            <th>Descrição</th>
+            <th>Exemplo</th>
+        </tr>
+        <tr>
+            <td><code>pow(x, y)</code></td>
+            <td>x elevado a y</td>
+            <td><code>pow(2, 3)</code> → 8.0</td>
+        </tr>
+        <tr>
+            <td><code>sqrt(x)</code></td>
+            <td>Raiz quadrada de x</td>
+            <td><code>sqrt(16)</code> → 4.0</td>
+        </tr>
+        <tr>
+            <td><code>ceil(x)</code></td>
+            <td>Arredonda para cima</td>
+            <td><code>ceil(3.2)</code> → 4.0</td>
+        </tr>
+        <tr>
+            <td><code>floor(x)</code></td>
+            <td>Arredonda para baixo</td>
+            <td><code>floor(3.9)</code> → 3.0</td>
+        </tr>
+        <tr>
+            <td><code>fabs(x)</code></td>
+            <td>Valor absoluto (float/double)</td>
+            <td><code>fabs(-5.5)</code> → 5.5</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h3>4. Outras Bibliotecas Úteis</h3>
+
+    <h4>stdlib.h - Funções Gerais</h4>
+    <table>
+        <tr>
+            <th>Função</th>
+            <th>Descrição</th>
+        </tr>
+        <tr>
+            <td><code>rand()</code></td>
+            <td>Gera número pseudo-aleatório</td>
+        </tr>
+        <tr>
+            <td><code>srand()</code></td>
+            <td>Define semente para rand()</td>
+        </tr>
+        <tr>
+            <td><code>abs()</code></td>
+            <td>Valor absoluto (inteiro)</td>
+        </tr>
+        <tr>
+            <td><code>system()</code></td>
+            <td>Executa comando do sistema</td>
+        </tr>
+    </table>
+
+    <h4>string.h - Manipulação de Strings</h4>
+    <table>
+        <tr>
+            <th>Função</th>
+            <th>Descrição</th>
+        </tr>
+        <tr>
+            <td><code>strlen()</code></td>
+            <td>Retorna tamanho da string</td>
+        </tr>
+        <tr>
+            <td><code>strcpy()</code></td>
+            <td>Copia uma string</td>
+        </tr>
+        <tr>
+            <td><code>strcat()</code></td>
+            <td>Concatena strings</td>
+        </tr>
+        <tr>
+            <td><code>strcmp()</code></td>
+            <td>Compara duas strings</td>
+        </tr>
+    </table>
+
+    <h4>time.h - Data e Hora</h4>
+    <table>
+        <tr>
+            <th>Função</th>
+            <th>Descrição</th>
+        </tr>
+        <tr>
+            <td><code>time()</code></td>
+            <td>Retorna tempo atual</td>
+        </tr>
+        <tr>
+            <td><code>localtime()</code></td>
+            <td>Converte para hora local</td>
+        </tr>
+        <tr>
+            <td><code>strftime()</code></td>
+            <td>Formata data/hora</td>
+        </tr>
+    </table>
+
+    <div class="page-break"></div>
+
+    <div class="page-break" style="page-break-before: always;"></div>
+
+    <div class="full-page">
+        Exercícios - Bibliotecas em C
+    </div>
+
+    <h3>1. Faça um programa que calcule a hipotenusa de um triângulo retângulo, pedindo ao usuário os catetos</h3>
+    <p>Fórmula: hipotenusa = √(cateto1² + cateto2²)</p>
+    <div class="password-container">
+        <input type="password" id="password1" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code1', 'password1', this.nextElementSibling)" />
+        <button onclick="toggleCode('code1', 'password1', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code1" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    double cateto1, cateto2, hipotenusa;
+    
+    printf("Digite os dois catetos: ");
+    scanf("%lf %lf", &cateto1, &cateto2);
+    
+    hipotenusa = sqrt(pow(cateto1, 2) + pow(cateto2, 2));
+    
+    printf("A hipotenusa é: %.2lf\n", hipotenusa);
+    
+    return 0;
+}</code></pre>
+
+    <h3>2. Faça um programa que calcule as raízes de uma equação de segundo grau usando a fórmula de Bhaskara</h3>
+    <p>Fórmula: x = [-b ± √(b² - 4ac)] / (2a)</p>
+    <div class="password-container">
+        <input type="password" id="password2" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code2', 'password2', this.nextElementSibling)" />
+        <button onclick="toggleCode('code2', 'password2', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code2" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    float a, b, c, delta, x1, x2;
+    
+    printf("Digite os coeficientes a, b e c: ");
+    scanf("%f %f %f", &a, &b, &c);
+    
+    delta = pow(b, 2) - 4 * a * c;
+    
+    if (delta < 0) {
+        printf("Não existem raízes reais.\n");
+    } else {
+        x1 = (-b + sqrt(delta)) / (2 * a);
+        x2 = (-b - sqrt(delta)) / (2 * a);
+        printf("As raízes são: %.2f e %.2f\n", x1, x2);
+    }
+    
+    return 0;
+}</code></pre>
+
+    <h3>3. Faça um programa que calcule o logaritmo natural e o logaritmo base 10 de um número</h3>
+    <div class="password-container">
+        <input type="password" id="password3" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code3', 'password3', this.nextElementSibling)" />
+        <button onclick="toggleCode('code3', 'password3', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code3" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    double numero;
+    
+    printf("Digite um número positivo: ");
+    scanf("%lf", &numero);
+    
+    if (numero <= 0) {
+        printf("Número inválido! Deve ser positivo.\n");
+    } else {
+        printf("Log natural: %.4lf\n", log(numero));
+        printf("Log base 10: %.4lf\n", log10(numero));
+    }
+    
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>4. Faça um programa que calcule a distância entre dois pontos no plano cartesiano</h3>
+    <p>Fórmula: distância = √[(x2-x1)² + (y2-y1)²]</p>
+    <div class="password-container">
+        <input type="password" id="password4" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code4', 'password4', this.nextElementSibling)" />
+        <button onclick="toggleCode('code4', 'password4', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code4" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    float x1, y1, x2, y2, distancia;
+    
+    printf("Digite as coordenadas do primeiro ponto (x1 y1): ");
+    scanf("%f %f", &x1, &y1);
+    
+    printf("Digite as coordenadas do segundo ponto (x2 y2): ");
+    scanf("%f %f", &x2, &y2);
+    
+    distancia = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+    
+    printf("Distância entre os pontos: %.2f\n", distancia);
+    
+    return 0;
+}</code></pre>
+
+    <h3>5. Faça um programa que calcule o seno, cosseno e tangente de um ângulo em graus</h3>
+    <p>Dica: Converta o ângulo para radianos antes (radianos = graus * π / 180)</p>
+    <div class="password-container">
+        <input type="password" id="password5" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code5', 'password5', this.nextElementSibling)" />
+        <button onclick="toggleCode('code5', 'password5', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code5" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+#define PI 3.14159265
+
+int main() {
+    double angulo, radianos;
+    
+    printf("Digite o ângulo em graus: ");
+    scanf("%lf", &angulo);
+    
+    radianos = angulo * PI / 180.0;
+    
+    printf("Seno: %.4lf\n", sin(radianos));
+    printf("Cosseno: %.4lf\n", cos(radianos));
+    printf("Tangente: %.4lf\n", tan(radianos));
+    
+    return 0;
+}</code></pre>
+
+    <h3>6. Faça um programa que arredonde um número decimal para cima e para baixo</h3>
+    <div class="password-container">
+        <input type="password" id="password6" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code6', 'password6', this.nextElementSibling)" />
+        <button onclick="toggleCode('code6', 'password6', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code6" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    double numero;
+    
+    printf("Digite um número decimal: ");
+    scanf("%lf", &numero);
+    
+    printf("Arredondado para cima: %.0lf\n", ceil(numero));
+    printf("Arredondado para baixo: %.0lf\n", floor(numero));
+    
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>7. Faça um programa que calcule a potência de um número (base e expoente)</h3>
+    <div class="password-container">
+        <input type="password" id="password7" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code7', 'password7', this.nextElementSibling)" />
+        <button onclick="toggleCode('code7', 'password7', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code7" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    double base, expoente, resultado;
+    
+    printf("Digite a base e o expoente: ");
+    scanf("%lf %lf", &base, &expoente);
+    
+    resultado = pow(base, expoente);
+    
+    printf("Resultado: %.2lf\n", resultado);
+    
+    return 0;
+}</code></pre>
+
+    <h3>8. Faça um programa que gere um número aleatório entre 1 e 100</h3>
+    <div class="password-container">
+        <input type="password" id="password8" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code8', 'password8', this.nextElementSibling)" />
+        <button onclick="toggleCode('code8', 'password8', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code8" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
+
+int main() {
+    int numero;
+    
+    // Inicializa o gerador de números aleatórios
+    srand(time(NULL));
+    
+    // Gera número entre 1 e 100
+    numero = rand() % 100 + 1;
+    
+    printf("Número aleatório: %d\n", numero);
+    
+    return 0;
+}</code></pre>
+
+    <h3>9. Faça um programa que calcule o fatorial de um número</h3>
+    <div class="password-container">
+        <input type="password" id="password9" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code9', 'password9', this.nextElementSibling)" />
+        <button onclick="toggleCode('code9', 'password9', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code9" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int n, i;
+    double fatorial = 1;
+    
+    printf("Digite um número inteiro positivo: ");
+    scanf("%d", &n);
+    
+    if (n < 0) {
+        printf("Erro! Fatorial de número negativo não existe.\n");
+    } else {
+        for (i = 1; i <= n; ++i) {
+            fatorial *= i;
+        }
+        printf("Fatorial de %d = %.0lf\n", n, fatorial);
+    }
+    
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>10. Faça um programa que calcule o valor absoluto de um número</h3>
+    <div class="password-container">
+        <input type="password" id="password10" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code10', 'password10', this.nextElementSibling)" />
+        <button onclick="toggleCode('code10', 'password10', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code10" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    double numero;
+    
+    printf("Digite um número: ");
+    scanf("%lf", &numero);
+    
+    printf("Valor absoluto: %.2lf\n", fabs(numero));
+    
+    return 0;
+}</code></pre>
+
+    <h3>11. Faça um programa que converta coordenadas polares (raio e ângulo) para cartesianas (x, y)</h3>
+    <p>Fórmulas: x = r * cos(θ), y = r * sin(θ)</p>
+    <div class="password-container">
+        <input type="password" id="password11" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code11', 'password11', this.nextElementSibling)" />
+        <button onclick="toggleCode('code11', 'password11', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code11" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+#define PI 3.14159265
+
+int main() {
+    double raio, angulo, x, y;
+    
+    printf("Digite o raio e o ângulo em graus: ");
+    scanf("%lf %lf", &raio, &angulo);
+    
+    // Converte ângulo para radianos
+    angulo = angulo * PI / 180.0;
+    
+    x = raio * cos(angulo);
+    y = raio * sin(angulo);
+    
+    printf("Coordenadas cartesianas: (%.2lf, %.2lf)\n", x, y);
+    
+    return 0;
+}</code></pre>
+
+    <h3>12. Faça um programa que calcule o perímetro e área de um círculo usando math.h</h3>
+    <div class="password-container">
+        <input type="password" id="password12" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code12', 'password12', this.nextElementSibling)" />
+        <button onclick="toggleCode('code12', 'password12', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code12" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+#define PI 3.14159265
+
+int main() {
+    double raio, perimetro, area;
+    
+    printf("Digite o raio do círculo: ");
+    scanf("%lf", &raio);
+    
+    perimetro = 2 * PI * raio;
+    area = PI * pow(raio, 2);
+    
+    printf("Perímetro: %.2lf\n", perimetro);
+    printf("Área: %.2lf\n", area);
+    
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>13. Faça um programa que calcule o comprimento de uma circunferência dado o diâmetro</h3>
+    <div class="password-container">
+        <input type="password" id="password13" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code13', 'password13', this.nextElementSibling)" />
+        <button onclick="toggleCode('code13', 'password13', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code13" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+#define PI 3.14159265
+
+int main() {
+    double diametro, comprimento;
+    
+    printf("Digite o diâmetro da circunferência: ");
+    scanf("%lf", &diametro);
+    
+    comprimento = PI * diametro;
+    
+    printf("Comprimento da circunferência: %.2lf\n", comprimento);
+    
+    return 0;
+}</code></pre>
+
+    <h3>14. Faça um programa que calcule a média geométrica de três números</h3>
+    <p>Fórmula: ³√(a * b * c)</p>
+    <div class="password-container">
+        <input type="password" id="password14" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code14', 'password14', this.nextElementSibling)" />
+        <button onclick="toggleCode('code14', 'password14', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code14" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    double a, b, c, media_geo;
+    
+    printf("Digite três números positivos: ");
+    scanf("%lf %lf %lf", &a, &b, &c);
+    
+    if (a <= 0 || b <= 0 || c <= 0) {
+        printf("Todos os números devem ser positivos!\n");
+    } else {
+        media_geo = pow(a * b * c, 1.0/3.0);
+        printf("Média geométrica: %.2lf\n", media_geo);
+    }
+    
+    return 0;
+}</code></pre>
+
+    <h3>15. Faça um programa que calcule o valor futuro de um investimento com juros compostos</h3>
+    <p>Fórmula: VF = VP * (1 + i)^n</p>
+    <div class="password-container">
+        <input type="password" id="password15" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code15', 'password15', this.nextElementSibling)" />
+        <button onclick="toggleCode('code15', 'password15', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code15" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    double vp, i, vf;
+    int n;
+    
+    printf("Digite o valor presente (VP): ");
+    scanf("%lf", &vp);
+    
+    printf("Digite a taxa de juros (i) em decimal: ");
+    scanf("%lf", &i);
+    
+    printf("Digite o número de períodos (n): ");
+    scanf("%d", &n);
+    
+    vf = vp * pow(1 + i, n);
+    
+    printf("Valor futuro: %.2lf\n", vf);
+    
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>16. Faça um programa que calcule a média harmônica de três números</h3>
+    <p>Fórmula: 3 / (1/a + 1/b + 1/c)</p>
+    <div class="password-container">
+        <input type="password" id="password16" placeholder="Digite a senha para ver o código" 
+        onkeydown="handleEnter(event, 'code16', 'password16', this.nextElementSibling)"/>
+        <button onclick="toggleCode('code16', 'password16', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code16" style="display: none;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    float a, b, c, media_harm;
+    
+    printf("Digite três números positivos: ");
+    scanf("%f %f %f", &a, &b, &c);
+    
+    if (a <= 0 || b <= 0 || c <= 0) {
+        printf("Todos os números devem ser positivos!\n");
+    } else {
+        media_harm = 3 / (1/a + 1/b + 1/c);
+        printf("Média harmônica: %.2f\n", media_harm);
+    }
+    
+    return 0;
+}</code></pre>
+
+    <h3>17. Faça um programa que calcule a área de um triângulo usando a fórmula de Heron</h3>
+    <p>Fórmula: Área = √[s(s-a)(s-b)(s-c)], onde s = (a+b+c)/2</p>
+    <div class="password-container">
+        <input type="password" id="password17" placeholder="Digite a senha para ver o código" 
+        onkeydown="handleEnter(event, 'code17', 'password17', this.nextElementSibling)" />
+        <button onclick="toggleCode('code17', 'password17', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code17" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    float a, b, c, s, area;
+    
+    printf("Digite os três lados do triângulo: ");
+    scanf("%f %f %f", &a, &b, &c);
+    
+    if (a + b > c && a + c > b && b + c > a) {
+        s = (a + b + c) / 2;
+        area = sqrt(s * (s - a) * (s - b) * (s - c));
+        printf("Área do triângulo: %.2f\n", area);
+    } else {
+        printf("Os lados não formam um triângulo válido!\n");
+    }
+    
+    return 0;
+}</code></pre>
+
+    <h3>18. Faça um programa que calcule o comprimento de um arco dado o ângulo e o raio</h3>
+    <p>Fórmula: comprimento = raio * ângulo (em radianos)</p>
+    <div class="password-container">
+        <input type="password" id="password18" placeholder="Digite a senha para ver o código" 
+        onkeydown="handleEnter(event, 'code18', 'password18', this.nextElementSibling)" />
+        <button onclick="toggleCode('code18', 'password18', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code18" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+#define PI 3.14159265
+
+int main() {
+    double raio, angulo_graus, angulo_rad, comprimento;
+    
+    printf("Digite o raio e o ângulo em graus: ");
+    scanf("%lf %lf", &raio, &angulo_graus);
+    
+    angulo_rad = angulo_graus * PI / 180.0;
+    comprimento = raio * angulo_rad;
+    
+    printf("Comprimento do arco: %.2lf\n", comprimento);
+    
+    return 0;
+}</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>19. Faça um programa que calcule a distância percorrida por um projétil dado ângulo e velocidade inicial</h3>
+    <p>Fórmula: d = (v² * sin(2θ)) / g (use g = 9.8 m/s²)</p>
+    <div class="password-container">
+        <input type="password" id="password19" placeholder="Digite a senha para ver o código" 
+        onkeydown="handleEnter(event, 'code19', 'password19', this.nextElementSibling)"/>
+        <button onclick="toggleCode('code19', 'password19', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code19" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+#define PI 3.14159265
+#define G 9.8
+
+int main() {
+    double velocidade, angulo, distancia;
+    
+    printf("Digite a velocidade inicial (m/s) e o ângulo (graus): ");
+    scanf("%lf %lf", &velocidade, &angulo);
+    
+    // Converte ângulo para radianos
+    angulo = angulo * PI / 180.0;
+    
+    distancia = (pow(velocidade, 2) * sin(2 * angulo)) / G;
+    
+    printf("Distância percorrida: %.2lf metros\n", distancia);
+    
+    return 0;
+}</code></pre>
+
+    <h3>20. Faça um programa que calcule o valor de e^x usando a série de Taylor (primeiros 10 termos)</h3>
+    <p>Fórmula: e^x ≈ 1 + x + x²/2! + x³/3! + ... + x^9/9!</p>
+    <div class="password-container">
+        <input type="password" id="password20" placeholder="Digite a senha para ver o código" 
+        onkeydown="handleEnter(event, 'code20', 'password20', this.nextElementSibling)" />
+        <button onclick="toggleCode('code20', 'password20', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-c exercise-code" id="code20" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    double x, ex = 1.0, termo = 1.0;
+    int i;
+    
+    printf("Digite o valor de x: ");
+    scanf("%lf", &x);
+    
+    for (i = 1; i <= 9; i++) {
+        termo *= x / i;
+        ex += termo;
+    }
+    
+    printf("e^%.2lf ≈ %.6lf\n", x, ex);
+    printf("Valor real: %.6lf\n", exp(x));
+    
+    return 0;
+}</code></pre>
+
+<!-- [Código anterior mantido até a seção de exercícios] -->
+
+<div class="page-break"></div>
+
+<h2>Exercícios Adicionais - Biblioteca stdlib.h</h2>
+
+<h3>21. Faça um programa que gere 6 números aleatórios para uma loteria (entre 1 e 60 sem repetição)</h3>
+<div class="password-container">
+    <input type="password" id="password21" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code21', 'password21', this.nextElementSibling)" />
+    <button onclick="toggleCode('code21', 'password21', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code21" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
+
+int main() {
+    int numeros[6], i, j, repetido;
+    
+    srand(time(NULL));
+    
+    for (i = 0; i < 6; i++) {
+        do {
+            numeros[i] = rand() % 60 + 1;
+            repetido = 0;
+            for (j = 0; j < i; j++) {
+                if (numeros[j] == numeros[i]) {
+                    repetido = 1;
+                    break;
+                }
+            }
+        } while (repetido);
+    }
+    
+    printf("Números da loteria: ");
+    for (i = 0; i < 6; i++) {
+        printf("%d ", numeros[i]);
+    }
+    printf("\n");
+    
+    return 0;
+}</code></pre>
+
+<h3>22. Faça um programa que converta uma string numérica em um número inteiro usando atoi()</h3>
+<div class="password-container">
+    <input type="password" id="password22" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code22', 'password22', this.nextElementSibling)" />
+    <button onclick="toggleCode('code22', 'password22', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code22" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+    char entrada[50];
+    int numero;
+    
+    printf("Digite um número: ");
+    scanf("%s", entrada);
+    
+    numero = atoi(entrada);
+    
+    printf("O número convertido é: %d\n", numero);
+    printf("Dobro: %d\n", numero * 2);
+    
+    return 0;
+}</code></pre>
+
+<h3>23. Faça um programa que aloque dinamicamente memória para armazenar 10 números inteiros</h3>
+<div class="password-container">
+    <input type="password" id="password23" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code23', 'password23', this.nextElementSibling)" />
+    <button onclick="toggleCode('code23', 'password23', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code23" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+    int *numeros, i;
+    
+    numeros = (int*) malloc(10 * sizeof(int));
+    
+    if (numeros == NULL) {
+        printf("Erro na alocação de memória!\n");
+        return 1;
+    }
+    
+    printf("Digite 10 números:\n");
+    for (i = 0; i < 10; i++) {
+        scanf("%d", &numeros[i]);
+    }
+    
+    printf("Números digitados:\n");
+    for (i = 0; i < 10; i++) {
+        printf("%d ", numeros[i]);
+    }
+    printf("\n");
+    
+    free(numeros);
+    
+    return 0;
+}</code></pre>
+
+<h3>24. Faça um programa que ordene um vetor de números usando qsort()</h3>
+<div class="password-container">
+    <input type="password" id="password24" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code24', 'password24', this.nextElementSibling)" />
+    <button onclick="toggleCode('code24', 'password24', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code24" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int comparar(const void *a, const void *b) {
+    return (*(int*)a - *(int*)b);
+}
+
+int main() {
+    int numeros[10], i;
+    
+    printf("Digite 10 números:\n");
+    for (i = 0; i < 10; i++) {
+        scanf("%d", &numeros[i]);
+    }
+    
+    qsort(numeros, 10, sizeof(int), comparar);
+    
+    printf("Números ordenados:\n");
+    for (i = 0; i < 10; i++) {
+        printf("%d ", numeros[i]);
+    }
+    printf("\n");
+    
+    return 0;
+}</code></pre>
+
+<h3>25. Faça um programa que simule o lançamento de um dado 1000 vezes e conte a frequência de cada face</h3>
+<div class="password-container">
+    <input type="password" id="password25" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code25', 'password25', this.nextElementSibling)" />
+    <button onclick="toggleCode('code25', 'password25', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code25" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
+
+int main() {
+    int frequencia[6] = {0};
+    int i, resultado;
+    
+    srand(time(NULL));
+    
+    for (i = 0; i < 1000; i++) {
+        resultado = rand() % 6;
+        frequencia[resultado]++;
+    }
+    
+    printf("Frequência de cada face:\n");
+    for (i = 0; i < 6; i++) {
+        printf("Face %d: %d vezes\n", i+1, frequencia[i]);
+    }
+    
+    return 0;
+}</code></pre>
+
+<h3>26. Faça um programa que converta uma string numérica em um número float usando atof()</h3>
+<div class="password-container">
+    <input type="password" id="password26" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code26', 'password26', this.nextElementSibling)" />
+    <button onclick="toggleCode('code26', 'password26', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code26" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+    char entrada[50];
+    float numero;
+    
+    printf("Digite um número decimal: ");
+    scanf("%s", entrada);
+    
+    numero = atof(entrada);
+    
+    printf("O número convertido é: %.2f\n", numero);
+    printf("Metade: %.2f\n", numero / 2);
+    
+    return 0;
+}</code></pre>
+
+<h3>27. Faça um programa que implemente uma busca binária usando bsearch()</h3>
+<div class="password-container">
+    <input type="password" id="password27" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code27', 'password27', this.nextElementSibling)" />
+    <button onclick="toggleCode('code27', 'password27', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code27" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int comparar(const void *a, const void *b) {
+    return (*(int*)a - *(int*)b);
+}
+
+int main() {
+    int numeros[] = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
+    int chave, *resultado;
+    
+    printf("Digite um número para buscar: ");
+    scanf("%d", &chave);
+    
+    resultado = (int*) bsearch(&chave, numeros, 10, sizeof(int), comparar);
+    
+    if (resultado != NULL) {
+        printf("Número %d encontrado!\n", chave);
+    } else {
+        printf("Número %d não encontrado.\n", chave);
+    }
+    
+    return 0;
+}</code></pre>
+
+<h3>28. Faça um programa que aloque e redimensione dinamicamente um array de floats</h3>
+<div class="password-container">
+    <input type="password" id="password28" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code28', 'password28', this.nextElementSibling)" />
+    <button onclick="toggleCode('code28', 'password28', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code28" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+    float *valores;
+    int tamanho, novoTamanho, i;
+    
+    printf("Digite o tamanho inicial do array: ");
+    scanf("%d", &tamanho);
+    
+    valores = (float*) malloc(tamanho * sizeof(float));
+    
+    printf("Digite %d valores float:\n", tamanho);
+    for (i = 0; i < tamanho; i++) {
+        scanf("%f", &valores[i]);
+    }
+    
+    printf("Digite o novo tamanho: ");
+    scanf("%d", &novoTamanho);
+    
+    valores = (float*) realloc(valores, novoTamanho * sizeof(float));
+    
+    if (novoTamanho > tamanho) {
+        printf("Digite mais %d valores:\n", novoTamanho - tamanho);
+        for (i = tamanho; i < novoTamanho; i++) {
+            scanf("%f", &valores[i]);
+        }
+    }
+    
+    printf("Valores no array:\n");
+    for (i = 0; i < novoTamanho; i++) {
+        printf("%.2f ", valores[i]);
+    }
+    printf("\n");
+    
+    free(valores);
+    
+    return 0;
+}</code></pre>
+
+<h3>29. Faça um programa que gere strings aleatórias com letras maiúsculas</h3>
+<div class="password-container">
+    <input type="password" id="password29" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code29', 'password29', this.nextElementSibling)" />
+    <button onclick="toggleCode('code29', 'password29', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code29" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
+
+int main() {
+    char string[11]; // 10 caracteres + '\0'
+    int i;
+    
+    srand(time(NULL));
+    
+    for (i = 0; i < 10; i++) {
+        string[i] = 'A' + (rand() % 26);
+    }
+    string[10] = '\0';
+    
+    printf("String aleatória: %s\n", string);
+    
+    return 0;
+}</code></pre>
+
+<h3>30. Faça um programa que divida um array em dois usando malloc() e memcpy()</h3>
+<div class="password-container">
+    <input type="password" id="password30" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code30', 'password30', this.nextElementSibling)" />
+    <button onclick="toggleCode('code30', 'password30', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code30" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    int original[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    int *parte1, *parte2;
+    int tamanho = sizeof(original) / sizeof(original[0]);
+    int metade = tamanho / 2;
+    
+    parte1 = (int*) malloc(metade * sizeof(int));
+    parte2 = (int*) malloc((tamanho - metade) * sizeof(int));
+    
+    memcpy(parte1, original, metade * sizeof(int));
+    memcpy(parte2, original + metade, (tamanho - metade) * sizeof(int));
+    
+    printf("Parte 1: ");
+    for (int i = 0; i < metade; i++) {
+        printf("%d ", parte1[i]);
+    }
+    printf("\n");
+    
+    printf("Parte 2: ");
+    for (int i = 0; i < tamanho - metade; i++) {
+        printf("%d ", parte2[i]);
+    }
+    printf("\n");
+    
+    free(parte1);
+    free(parte2);
+    
+    return 0;
+}</code></pre>
+
+<div class="page-break"></div>
+
+<h2>Exercícios Adicionais - Biblioteca string.h</h2>
+
+<h3>31. Faça um programa que concatene duas strings usando strcat()</h3>
+<div class="password-container">
+    <input type="password" id="password31" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code31', 'password31', this.nextElementSibling)" />
+    <button onclick="toggleCode('code31', 'password31', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code31" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char string1[50] = "Olá, ";
+    char string2[] = "mundo!";
+    
+    strcat(string1, string2);
+    
+    printf("String concatenada: %s\n", string1);
+    
+    return 0;
+}</code></pre>
+
+<h3>32. Faça um programa que compare duas strings usando strcmp()</h3>
+<div class="password-container">
+    <input type="password" id="password32" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code32', 'password32', this.nextElementSibling)" />
+    <button onclick="toggleCode('code32', 'password32', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code32" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char senha[20] = "secreto123";
+    char tentativa[20];
+    
+    printf("Digite a senha: ");
+    scanf("%s", tentativa);
+    
+    if (strcmp(senha, tentativa) == 0) {
+        printf("Acesso permitido!\n");
+    } else {
+        printf("Senha incorreta!\n");
+    }
+    
+    return 0;
+}</code></pre>
+
+<h3>33. Faça um programa que copie uma string para outra usando strcpy()</h3>
+<div class="password-container">
+    <input type="password" id="password33" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code33', 'password33', this.nextElementSibling)" />
+    <button onclick="toggleCode('code33', 'password33', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code33" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char origem[50], destino[50];
+    
+    printf("Digite uma string: ");
+    scanf("%s", origem);
+    
+    strcpy(destino, origem);
+    
+    printf("String original: %s\n", origem);
+    printf("String copiada: %s\n", destino);
+    
+    return 0;
+}</code></pre>
+
+<h3>34. Faça um programa que calcule o comprimento de uma string usando strlen()</h3>
+<div class="password-container">
+    <input type="password" id="password34" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code34', 'password34', this.nextElementSibling)" />
+    <button onclick="toggleCode('code34', 'password34', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code34" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char texto[100];
+    
+    printf("Digite um texto: ");
+    scanf(" %[^\n]", texto); // Lê até encontrar nova linha
+    
+    printf("O texto tem %lu caracteres.\n", strlen(texto));
+    
+    return 0;
+}</code></pre>
+
+<h3>35. Faça um programa que busque um caractere em uma string usando strchr()</h3>
+<div class="password-container">
+    <input type="password" id="password35" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code35', 'password35', this.nextElementSibling)" />
+    <button onclick="toggleCode('code35', 'password35', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code35" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char texto[100], *posicao;
+    char caractere;
+    
+    printf("Digite um texto: ");
+    scanf(" %[^\n]", texto);
+    
+    printf("Digite um caractere para buscar: ");
+    scanf(" %c", &caractere);
+    
+    posicao = strchr(texto, caractere);
+    
+    if (posicao != NULL) {
+        printf("Caractere encontrado na posição %ld.\n", posicao - texto);
+    } else {
+        printf("Caractere não encontrado.\n");
+    }
+    
+    return 0;
+}</code></pre>
+
+<h3>36. Faça um programa que busque uma substring em uma string usando strstr()</h3>
+<div class="password-container">
+    <input type="password" id="password36" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code36', 'password36', this.nextElementSibling)" />
+    <button onclick="toggleCode('code36', 'password36', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code36" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char texto[100], substring[50], *posicao;
+    
+    printf("Digite um texto: ");
+    scanf(" %[^\n]", texto);
+    
+    printf("Digite uma substring para buscar: ");
+    scanf(" %[^\n]", substring);
+    
+    posicao = strstr(texto, substring);
+    
+    if (posicao != NULL) {
+        printf("Substring encontrada na posição %ld.\n", posicao - texto);
+    } else {
+        printf("Substring não encontrada.\n");
+    }
+    
+    return 0;
+}</code></pre>
+
+<h3>37. Faça um programa que compare os primeiros n caracteres de duas strings usando strncmp()</h3>
+<div class="password-container">
+    <input type="password" id="password37" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code37', 'password37', this.nextElementSibling)" />
+    <button onclick="toggleCode('code37', 'password37', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code37" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char palavra1[50], palavra2[50];
+    int n;
+    
+    printf("Digite a primeira palavra: ");
+    scanf("%s", palavra1);
+    
+    printf("Digite a segunda palavra: ");
+    scanf("%s", palavra2);
+    
+    printf("Digite quantos caracteres comparar: ");
+    scanf("%d", &n);
+    
+    int resultado = strncmp(palavra1, palavra2, n);
+    
+    if (resultado < 0) {
+        printf("Os primeiros %d caracteres de '%s' vêm antes de '%s'.\n", n, palavra1, palavra2);
+    } else if (resultado > 0) {
+        printf("Os primeiros %d caracteres de '%s' vêm depois de '%s'.\n", n, palavra1, palavra2);
+    } else {
+        printf("Os primeiros %d caracteres são iguais.\n", n);
+    }
+    
+    return 0;
+}</code></pre>
+
+<h3>38. Faça um programa que copie os primeiros n caracteres de uma string usando strncpy()</h3>
+<div class="password-container">
+    <input type="password" id="password38" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code38', 'password38', this.nextElementSibling)" />
+    <button onclick="toggleCode('code38', 'password38', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code38" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char origem[100], destino[100];
+    int n;
+    
+    printf("Digite uma string: ");
+    scanf(" %[^\n]", origem);
+    
+    printf("Digite quantos caracteres copiar: ");
+    scanf("%d", &n);
+    
+    strncpy(destino, origem, n);
+    destino[n] = '\0'; // Garante terminação nula
+    
+    printf("String original: %s\n", origem);
+    printf("String copiada: %s\n", destino);
+    
+    return 0;
+}</code></pre>
+
+<h3>39. Faça um programa que busque o último ocorrência de um caractere em uma string usando strrchr()</h3>
+<div class="password-container">
+    <input type="password" id="password39" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code39', 'password39', this.nextElementSibling)" />
+    <button onclick="toggleCode('code39', 'password39', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code39" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char texto[100], *posicao;
+    char caractere;
+    
+    printf("Digite um texto: ");
+    scanf(" %[^\n]", texto);
+    
+    printf("Digite um caractere para buscar: ");
+    scanf(" %c", &caractere);
+    
+    posicao = strrchr(texto, caractere);
+    
+    if (posicao != NULL) {
+        printf("Última ocorrência na posição %ld.\n", posicao - texto);
+    } else {
+        printf("Caractere não encontrado.\n");
+    }
+    
+    return 0;
+}</code></pre>
+
+<h3>40. Faça um programa que tokenize uma string usando strtok()</h3>
+<div class="password-container">
+    <input type="password" id="password40" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code40', 'password40', this.nextElementSibling)" />
+    <button onclick="toggleCode('code40', 'password40', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code40" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char texto[100] = "Maçã,Banana,Laranja,Uva";
+    char *token;
+    
+    printf("Texto original: %s\n", texto);
+    
+    token = strtok(texto, ",");
+    
+    printf("Tokens:\n");
+    while (token != NULL) {
+        printf("%s\n", token);
+        token = strtok(NULL, ",");
+    }
+    
+    return 0;
+}</code></pre>
+
+<div class="page-break"></div>
+
+<h2>Exercícios Adicionais - Biblioteca time.h</h2>
+
+<h3>41. Faça um programa que mostre a data e hora atuais</h3>
+<div class="password-container">
+    <input type="password" id="password41" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code41', 'password41', this.nextElementSibling)" />
+    <button onclick="toggleCode('code41', 'password41', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code41" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+int main() {
+    time_t agora;
+    struct tm *info;
+    char buffer[80];
+    
+    time(&agora);
+    info = localtime(&agora);
+    
+    strftime(buffer, 80, "Data: %d/%m/%Y Hora: %H:%M:%S", info);
+    printf("%s\n", buffer);
+    
+    return 0;
+}</code></pre>
+
+<h3>42. Faça um programa que calcule a diferença em segundos entre duas datas</h3>
+<div class="password-container">
+    <input type="password" id="password42" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code42', 'password42', this.nextElementSibling)" />
+    <button onclick="toggleCode('code42', 'password42', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code42" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+int main() {
+    struct tm data1 = {0}, data2 = {0};
+    time_t tempo1, tempo2;
+    double diferenca;
+    
+    // Primeira data: 01/01/2020
+    data1.tm_year = 2020 - 1900;
+    data1.tm_mon = 0;
+    data1.tm_mday = 1;
+    
+    // Segunda data: 01/01/2021
+    data2.tm_year = 2021 - 1900;
+    data2.tm_mon = 0;
+    data2.tm_mday = 1;
+    
+    tempo1 = mktime(&data1);
+    tempo2 = mktime(&data2);
+    
+    diferenca = difftime(tempo2, tempo1);
+    
+    printf("Diferença em segundos: %.0f\n", diferenca);
+    printf("Diferença em dias: %.0f\n", diferenca / (60 * 60 * 24));
+    
+    return 0;
+}</code></pre>
+
+<h3>43. Faça um programa que mostre o tempo de execução de um loop</h3>
+<div class="password-container">
+    <input type="password" id="password43" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code43', 'password43', this.nextElementSibling)" />
+    <button onclick="toggleCode('code43', 'password43', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code43" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+int main() {
+    clock_t inicio, fim;
+    double tempo;
+    long i, soma = 0;
+    
+    inicio = clock();
+    
+    for (i = 0; i < 100000000; i++) {
+        soma += i;
+    }
+    
+    fim = clock();
+    tempo = ((double) (fim - inicio)) / CLOCKS_PER_SEC;
+    
+    printf("Tempo de execução: %f segundos\n", tempo);
+    printf("Soma: %ld\n", soma);
+    
+    return 0;
+}</code></pre>
+
+<h3>44. Faça um programa que mostre um cronômetro (contagem regressiva de 10 segundos)</h3>
+<div class="password-container">
+    <input type="password" id="password44" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code44', 'password44', this.nextElementSibling)" />
+    <button onclick="toggleCode('code44', 'password44', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code44" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+int main() {
+    int segundos = 10;
+    time_t inicio, agora;
+    
+    inicio = time(NULL);
+    
+    printf("Cronômetro regressivo:\n");
+    
+    while (segundos > 0) {
+        agora = time(NULL);
+        if (difftime(agora, inicio) >= 1) {
+            printf("%d\n", segundos);
+            segundos--;
+            inicio = agora;
+        }
+    }
+    
+    printf("Tempo esgotado!\n");
+    
+    return 0;
+}</code></pre>
+
+<h3>45. Faça um programa que mostre o dia da semana de uma data específica</h3>
+<div class="password-container">
+    <input type="password" id="password45" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code45', 'password45', this.nextElementSibling)" />
+    <button onclick="toggleCode('code45', 'password45', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code45" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+int main() {
+    struct tm data = {0};
+    char dias[7][20] = {"Domingo", "Segunda-feira", "Terça-feira", 
+                        "Quarta-feira", "Quinta-feira", "Sexta-feira", 
+                        "Sábado"};
+    
+    printf("Digite uma data (dd mm aaaa): ");
+    scanf("%d %d %d", &data.tm_mday, &data.tm_mon, &data.tm_year);
+    
+    data.tm_mon -= 1;    // Meses são 0-11
+    data.tm_year -= 1900; // Anos desde 1900
+    
+    mktime(&data); // Normaliza a estrutura tm
+    
+    printf("Dia da semana: %s\n", dias[data.tm_wday]);
+    
+    return 0;
+}</code></pre>
+
+<h3>46. Faça um programa que gere um relatório com data e hora de criação</h3>
+<div class="password-container">
+    <input type="password" id="password46" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code46', 'password46', this.nextElementSibling)" />
+    <button onclick="toggleCode('code46', 'password46', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code46" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+int main() {
+    time_t agora;
+    struct tm *info;
+    char datahora[50];
+    
+    time(&agora);
+    info = localtime(&agora);
+    
+    strftime(datahora, 50, "Relatório gerado em %d/%m/%Y às %H:%M", info);
+    
+    printf("================================\n");
+    printf("%s\n", datahora);
+    printf("================================\n");
+    printf("Conteúdo do relatório:\n");
+    printf("- Item 1: Dados importantes\n");
+    printf("- Item 2: Análise crítica\n");
+    printf("- Item 3: Conclusões\n");
+    printf("================================\n");
+    
+    return 0;
+}</code></pre>
+
+<h3>47. Faça um programa que mostre quantos dias faltam para o Natal</h3>
+<div class="password-container">
+    <input type="password" id="password47" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code47', 'password47', this.nextElementSibling)" />
+    <button onclick="toggleCode('code47', 'password47', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code47" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+int main() {
+    time_t agora;
+    struct tm natal = {0};
+    double segundos;
+    int dias;
+    
+    time(&agora);
+    
+    natal = *localtime(&agora);
+    natal.tm_mon = 11;    // Dezembro
+    natal.tm_mday = 25;   // Dia 25
+    
+    mktime(&natal); // Normaliza a estrutura tm
+    
+    segundos = difftime(mktime(&natal), agora);
+    dias = segundos / (60 * 60 * 24);
+    
+    if (dias < 0) {
+        printf("O Natal já passou este ano!\n");
+    } else if (dias == 0) {
+        printf("Hoje é Natal!\n");
+    } else {
+        printf("Faltam %d dias para o Natal!\n", dias);
+    }
+    
+    return 0;
+}</code></pre>
+
+<h3>48. Faça um programa que mostre o tempo em diferentes fusos horários</h3>
+<div class="password-container">
+    <input type="password" id="password48" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code48', 'password48', this.nextElementSibling)" />
+    <button onclick="toggleCode('code48', 'password48', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code48" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+    time_t agora;
+    struct tm *utc, *ny, *tk;
+    char buffer[80];
+    
+    time(&agora);
+    
+    // Hora UTC (GMT)
+    utc = gmtime(&agora);
+    strftime(buffer, 80, "UTC: %H:%M", utc);
+    printf("%s\n", buffer);
+    
+    // Hora local
+    strftime(buffer, 80, "Local: %H:%M", localtime(&agora));
+    printf("%s\n", buffer);
+    
+    // Nova York (UTC-5)
+    ny = gmtime(&agora);
+    ny->tm_hour = (ny->tm_hour - 5) % 24;
+    mktime(ny);
+    strftime(buffer, 80, "Nova York: %H:%M", ny);
+    printf("%s\n", buffer);
+    
+    // Tóquio (UTC+9)
+    tk = gmtime(&agora);
+    tk->tm_hour = (tk->tm_hour + 9) % 24;
+    mktime(tk);
+    strftime(buffer, 80, "Tóquio: %H:%M", tk);
+    printf("%s\n", buffer);
+    
+    return 0;
+}</code></pre>
+
+<h3>49. Faça um programa que implemente um alarme (avisa após 5 segundos)</h3>
+<div class="password-container">
+    <input type="password" id="password49" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code49', 'password49', this.nextElementSibling)" />
+    <button onclick="toggleCode('code49', 'password49', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code49" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+void alarme(int segundos) {
+    clock_t fim = clock() + segundos * CLOCKS_PER_SEC;
+    while (clock() < fim);
+    printf("\a"); // Beep
+    printf("ALARME! %d segundos se passaram.\n", segundos);
+}
+
+int main() {
+    int segundos = 5;
+    
+    printf("Alarme configurado para %d segundos...\n", segundos);
+    alarme(segundos);
+    
+    return 0;
+}</code></pre>
+
+<h3>50. Faça um programa que mostre o tempo em formato AM/PM</h3>
+<div class="password-container">
+    <input type="password" id="password50" placeholder="Digite a senha para ver o código"
+    onkeydown="handleEnter(event, 'code50', 'password50', this.nextElementSibling)" />
+    <button onclick="toggleCode('code50', 'password50', this)">Mostrar Código</button>
+</div>
+<pre class="language-c exercise-code" id="code50" style="display: none;"><code>#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+int main() {
+    time_t agora;
+    struct tm *info;
+    char buffer[80];
+    
+    time(&agora);
+    info = localtime(&agora);
+    
+    strftime(buffer, 80, "Hora atual: %I:%M %p", info);
+    printf("%s\n", buffer);
+    
+    return 0;
+}</code></pre>
+
+    <script>
+        function toggleCode(codeId, passwordId, button) {
+            const senhaInput = document.getElementById(passwordId);
+            const senha = senhaInput.value;
+            const codeBlock = document.getElementById(codeId);
+        
+            if (senha === "1234") {  // Altere aqui pela senha correta
+                if (codeBlock.style.display === "none") {
+                    codeBlock.style.display = "block";
+                    button.textContent = "Ocultar Código";
+                } else {
+                    codeBlock.style.display = "none";
+                    senhaInput.value = ""; // Limpa a senha ao esconder
+                    button.textContent = "Mostrar Código";
+                }
+            } else {
+                alert("Senha incorreta!");
+            }
+        }
+        
+        function handleEnter(event, codeId, passwordId, button) {
+            if (event.key === "Enter") {
+                toggleCode(codeId, passwordId, button);
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+</body>
+</html>

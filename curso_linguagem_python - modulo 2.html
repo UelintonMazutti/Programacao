@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 2: Estruturas de Controle em Python</title>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 12px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: "Courier New", monospace;
+            color: #f92672;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        .full-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 25vh;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #ccc;
+            margin: 30px 0;
+        }
+
+        .password-container {
+            margin-bottom: 15px;
+        }
+
+        .exercise-code {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-break" style="page-break-before: always;"></div>
+
+    <div class="full-page">
+        Módulo 2: Estruturas de Controle em Python
+    </div>
+
+    <h1>Curso de Lógica de Programação com Python</h1>
+
+    <hr>
+
+    <h3>1. Estruturas Condicionais (if, elif, else)</h3>
+
+    <p>As estruturas condicionais permitem que o programa tome decisões com base em condições.</p>
+
+    <h4>Estrutura if-elif-else:</h4>
+    <pre><code class="language-python">if condição:
+    # código executado se a condição for verdadeira
+elif outra_condição:
+    # código executado se a outra_condição for verdadeira
+else:
+    # código executado se nenhuma condição for verdadeira</code></pre>
+
+    <h4>Exemplo prático:</h4>
+    <pre><code class="language-python">idade = int(input("Digite sua idade: "))
+
+if idade < 12:
+    print("Criança")
+elif idade < 18:
+    print("Adolescente")
+elif idade < 60:
+    print("Adulto")
+else:
+    print("Idoso")</code></pre>
+
+    <hr>
+
+    <h3>2. Operadores Relacionais e Lógicos</h3>
+
+    <p>Usados para comparar valores em expressões condicionais:</p>
+    <table>
+        <tr>
+            <th>Operador</th>
+            <th>Descrição</th>
+        </tr>
+        <tr>
+            <td><code>==</code></td>
+            <td>Igual a</td>
+        </tr>
+        <tr>
+            <td><code>!=</code></td>
+            <td>Diferente de</td>
+        </tr>
+        <tr>
+            <td><code>&gt;</code></td>
+            <td>Maior que</td>
+        </tr>
+        <tr>
+            <td><code>&lt;</code></td>
+            <td>Menor que</td>
+        </tr>
+        <tr>
+            <td><code>&gt;=</code></td>
+            <td>Maior ou igual</td>
+        </tr>
+        <tr>
+            <td><code>&lt;=</code></td>
+            <td>Menor ou igual</td>
+        </tr>
+        <tr>
+            <td><code>and</code></td>
+            <td>E lógico</td>
+        </tr>
+        <tr>
+            <td><code>or</code></td>
+            <td>OU lógico</td>
+        </tr>
+        <tr>
+            <td><code>not</code></td>
+            <td>Negação</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h3>3. Estruturas de Repetição (while, for)</h3>
+
+    <h4>Estrutura while:</h4>
+    <pre><code class="language-python">while condição:
+    # código repetido enquanto a condição for verdadeira</code></pre>
+
+    <h4>Estrutura for:</h4>
+    <pre><code class="language-python">for elemento in sequência:
+    # código executado para cada elemento</code></pre>
+
+    <h4>Função range():</h4>
+    <pre><code class="language-python"># range(início, fim, passo)
+for i in range(5):       # 0, 1, 2, 3, 4
+for i in range(1, 6):    # 1, 2, 3, 4, 5
+for i in range(0, 10, 2): # 0, 2, 4, 6, 8</code></pre>
+
+    <hr>
+
+    <h3>4. Comandos break e continue</h3>
+
+    <p><code>break</code>: interrompe a execução de um loop.</p>
+    <p><code>continue</code>: pula para a próxima iteração do loop.</p>
+
+    <pre><code class="language-python">for i in range(10):
+    if i == 5:
+        break  # sai do loop quando i for 5
+    if i % 2 == 0:
+        continue  # pula números pares
+    print(i, end=' ')</code></pre>
+
+    <hr>
+
+    <h3>5. Laços Aninhados</h3>
+
+    <p>Um loop dentro de outro loop:</p>
+    <pre><code class="language-python">for i in range(1, 4):
+    for j in range(1, 4):
+        print(f"{i} x {j} = {i * j}")</code></pre>
+
+    <div class="page-break"></div>
+
+    <div class="page-break" style="page-break-before: always;"></div>
+
+    <div class="full-page">
+        Exercícios
+    </div>
+
+    <h3>1. Faça um programa que verifique se um número é positivo, negativo ou zero.</h3>
+    <div class="password-container">
+        <input type="password" id="password1" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code1', 'password1', this.nextElementSibling)" />
+        <button onclick="toggleCode('code1', 'password1', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code1" style="display: none;"><code>num = int(input("Digite um número: "))
+if num > 0:
+    print("Positivo")
+elif num < 0:
+    print("Negativo")
+else:
+    print("Zero")</code></pre>
+
+    <h3>2. Crie um programa que determine o maior entre três números.</h3>
+    <div class="password-container">
+        <input type="password" id="password2" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code2', 'password2', this.nextElementSibling)" />
+        <button onclick="toggleCode('code2', 'password2', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code2" style="display: none;"><code>a = float(input("Digite o primeiro número: "))
+b = float(input("Digite o segundo número: "))
+c = float(input("Digite o terceiro número: "))
+
+maior = max(a, b, c)
+print(f"O maior número é: {maior}")</code></pre>
+
+    <h3>3. Desenvolva um programa que classifique um triângulo em equilátero, isósceles ou escaleno.</h3>
+    <div class="password-container">
+        <input type="password" id="password3" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code3', 'password3', this.nextElementSibling)" />
+        <button onclick="toggleCode('code3', 'password3', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code3" style="display: none;"><code>a = float(input("Digite o primeiro lado: "))
+b = float(input("Digite o segundo lado: "))
+c = float(input("Digite o terceiro lado: "))
+
+if a == b == c:
+    print("Triângulo equilátero")
+elif a == b or a == c or b == c:
+    print("Triângulo isósceles")
+else:
+    print("Triângulo escaleno")</code></pre>
+
+    <h3>4. Escreva um programa que mostre os números de 1 a 100.</h3>
+    <div class="password-container">
+        <input type="password" id="password4" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code4', 'password4', this.nextElementSibling)" />
+        <button onclick="toggleCode('code4', 'password4', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code4" style="display: none;"><code>for i in range(1, 101):
+    print(i, end=' ')
+print()</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>5. Faça um programa que mostre os números pares entre 1 e 50.</h3>
+    <div class="password-container">
+        <input type="password" id="password5" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code5', 'password5', this.nextElementSibling)" />
+        <button onclick="toggleCode('code5', 'password5', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code5" style="display: none;"><code>for i in range(2, 51, 2):
+    print(i, end=' ')
+print()</code></pre>
+
+    <h3>6. Crie um programa que calcule o fatorial de um número.</h3>
+    <div class="password-container">
+        <input type="password" id="password6" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code6', 'password6', this.nextElementSibling)" />
+        <button onclick="toggleCode('code6', 'password6', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code6" style="display: none;"><code>n = int(input("Digite um número: "))
+fatorial = 1
+
+for i in range(1, n+1):
+    fatorial *= i
+
+print(f"Fatorial de {n} é {fatorial}")</code></pre>
+
+    <h3>7. Desenvolva um programa que verifique se um número é primo.</h3>
+    <div class="password-container">
+        <input type="password" id="password7" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code7', 'password7', this.nextElementSibling)" />
+        <button onclick="toggleCode('code7', 'password7', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code7" style="display: none;"><code>n = int(input("Digite um número: "))
+primo = True
+
+if n <= 1:
+    primo = False
+else:
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            primo = False
+            break
+
+print(f"{n} {'é' if primo else 'não é'} primo")</code></pre>
+
+    <h3>8. Escreva um programa que mostre a tabuada de um número informado.</h3>
+    <div class="password-container">
+        <input type="password" id="password8" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code8', 'password8', this.nextElementSibling)" />
+        <button onclick="toggleCode('code8', 'password8', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code8" style="display: none;"><code>n = int(input("Digite um número: "))
+for i in range(1, 11):
+    print(f"{n} x {i} = {n * i}")</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>9. Faça um programa que some os números ímpares múltiplos de 3 entre 1 e 500.</h3>
+    <div class="password-container">
+        <input type="password" id="password9" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code9', 'password9', this.nextElementSibling)" />
+        <button onclick="toggleCode('code9', 'password9', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code9" style="display: none;"><code>soma = 0
+for i in range(1, 501):
+    if i % 2 != 0 and i % 3 == 0:
+        soma += i
+print(f"Soma dos ímpares múltiplos de 3: {soma}")</code></pre>
+
+    <h3>10. Crie um programa que leia números até que o usuário digite 0, então mostre a soma.</h3>
+    <div class="password-container">
+        <input type="password" id="password10" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code10', 'password10', this.nextElementSibling)" />
+        <button onclick="toggleCode('code10', 'password10', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code10" style="display: none;"><code>soma = 0
+while True:
+    num = int(input("Digite um número (0 para sair): "))
+    if num == 0:
+        break
+    soma += num
+print(f"Soma total: {soma}")</code></pre>
+
+    <h3>11. Desenvolva um programa que calcule a série Fibonacci até o n-ésimo termo.</h3>
+    <div class="password-container">
+        <input type="password" id="password11" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code11', 'password11', this.nextElementSibling)" />
+        <button onclick="toggleCode('code11', 'password11', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code11" style="display: none;"><code>n = int(input("Quantos termos deseja? "))
+t1, t2 = 0, 1
+print("Série Fibonacci:", end=' ')
+
+for _ in range(n):
+    print(t1, end=' ')
+    t1, t2 = t2, t1 + t2
+print()</code></pre>
+
+    <h3>12. Escreva um programa que inverta um número de 3 dígitos.</h3>
+    <div class="password-container">
+        <input type="password" id="password12" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code12', 'password12', this.nextElementSibling)" />
+        <button onclick="toggleCode('code12', 'password12', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code12" style="display: none;"><code>num = int(input("Digite um número de 3 dígitos: "))
+invertido = int(str(num)[::-1])
+print(f"Número invertido: {invertido}")</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>13. Faça um programa que mostre todos os divisores de um número.</h3>
+    <div class="password-container">
+        <input type="password" id="password13" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code13', 'password13', this.nextElementSibling)" />
+        <button onclick="toggleCode('code13', 'password13', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code13" style="display: none;"><code>n = int(input("Digite um número: "))
+print(f"Divisores de {n}:", end=' ')
+
+for i in range(1, n+1):
+    if n % i == 0:
+        print(i, end=' ')
+print()</code></pre>
+
+    <h3>14. Crie um programa que determine se um número é perfeito.</h3>
+    <p>Um número perfeito é igual à soma de seus divisores próprios (excluindo ele mesmo).</p>
+    <div class="password-container">
+        <input type="password" id="password14" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code14', 'password14', this.nextElementSibling)" />
+        <button onclick="toggleCode('code14', 'password14', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code14" style="display: none;"><code>n = int(input("Digite um número: "))
+soma = 0
+
+for i in range(1, n):
+    if n % i == 0:
+        soma += i
+
+print(f"{n} {'é' if soma == n else 'não é'} um número perfeito")</code></pre>
+
+    <h3>15. Desenvolva um programa que calcule o MMC entre dois números.</h3>
+    <div class="password-container">
+        <input type="password" id="password15" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code15', 'password15', this.nextElementSibling)" />
+        <button onclick="toggleCode('code15', 'password15', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code15" style="display: none;"><code>import math
+
+a = int(input("Digite o primeiro número: "))
+b = int(input("Digite o segundo número: "))
+
+mmc = (a * b) // math.gcd(a, b)
+print(f"MMC de {a} e {b} é {mmc}")</code></pre>
+
+    <h3>16. Escreva um programa que converta um número decimal para binário.</h3>
+    <div class="password-container">
+        <input type="password" id="password16" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code16', 'password16', this.nextElementSibling)" />
+        <button onclick="toggleCode('code16', 'password16', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code16" style="display: none;"><code>n = int(input("Digite um número decimal: "))
+print(f"Binário: {bin(n)[2:]}")</code></pre>
+
+    <div class="page-break"></div>
+
+    <h3>17. Faça um programa que mostre os números primos entre 1 e 100.</h3>
+    <div class="password-container">
+        <input type="password" id="password17" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code17', 'password17', this.nextElementSibling)" />
+        <button onclick="toggleCode('code17', 'password17', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code17" style="display: none;"><code>print("Números primos entre 1 e 100:", end=' ')
+
+for n in range(2, 101):
+    primo = True
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            primo = False
+            break
+    if primo:
+        print(n, end=' ')
+print()</code></pre>
+
+    <h3>18. Crie um programa que resolva uma equação de segundo grau.</h3>
+    <div class="password-container">
+        <input type="password" id="password18" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code18', 'password18', this.nextElementSibling)" />
+        <button onclick="toggleCode('code18', 'password18', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code18" style="display: none;"><code>import math
+
+a = float(input("Digite o coeficiente a: "))
+b = float(input("Digite o coeficiente b: "))
+c = float(input("Digite o coeficiente c: "))
+
+delta = b**2 - 4*a*c
+
+if delta > 0:
+    x1 = (-b + math.sqrt(delta)) / (2*a)
+    x2 = (-b - math.sqrt(delta)) / (2*a)
+    print(f"Duas raízes reais: {x1:.2f} e {x2:.2f}")
+elif delta == 0:
+    x1 = -b / (2*a)
+    print(f"Uma raiz real: {x1:.2f}")
+else:
+    print("Não existem raízes reais")</code></pre>
+
+    <h3>19. Desenvolva um programa que calcule o MDC usando o algoritmo de Euclides.</h3>
+    <div class="password-container">
+        <input type="password" id="password19" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code19', 'password19', this.nextElementSibling)" />
+        <button onclick="toggleCode('code19', 'password19', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code19" style="display: none;"><code>a = int(input("Digite o primeiro número: "))
+b = int(input("Digite o segundo número: "))
+
+while b != 0:
+    a, b = b, a % b
+
+print(f"MDC: {a}")</code></pre>
+
+    <h3>20. Escreva um programa que simule um caixa eletrônico (notas de 50, 20, 10, 5 e 1).</h3>
+    <div class="password-container">
+        <input type="password" id="password20" placeholder="Digite a senha para ver o código"
+        onkeydown="handleEnter(event, 'code20', 'password20', this.nextElementSibling)" />
+        <button onclick="toggleCode('code20', 'password20', this)">Mostrar Código</button>
+    </div>
+    <pre class="language-python exercise-code" id="code20" style="display: none;"><code>valor = int(input("Digite o valor a ser sacado: "))
+
+notas = [50, 20, 10, 5, 1]
+quantidades = {}
+
+for nota in notas:
+    quantidades[nota] = valor // nota
+    valor %= nota
+
+for nota, qtd in quantidades.items():
+    if qtd > 0:
+        print(f"Notas de {nota}: {qtd}")</code></pre>
+
+    <script>
+        function toggleCode(codeId, passwordId, button) {
+            const senhaInput = document.getElementById(passwordId);
+            const senha = senhaInput.value;
+            const codeBlock = document.getElementById(codeId);
+        
+            if (senha === "1234") {  // Altere aqui pela senha correta
+                if (codeBlock.style.display === "none") {
+                    codeBlock.style.display = "block";
+                    button.textContent = "Ocultar Código";
+                } else {
+                    codeBlock.style.display = "none";
+                    senhaInput.value = ""; // Limpa a senha ao esconder
+                    button.textContent = "Mostrar Código";
+                }
+            } else {
+                alert("Senha incorreta!");
+            }
+        }
+        
+        function handleEnter(event, codeId, passwordId, button) {
+            if (event.key === "Enter") {
+                toggleCode(codeId, passwordId, button);
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu de Navegação</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-top: 0;
+        }
+        
+        .botao-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .botao {
+            padding: 12px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            display: inline-block;
+        }
+        
+        .botao:hover {
+            background-color: #45a049;
+        }
+
+        .footer {
+            margin-top: 50px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <!-- Adicione sua logo aqui -->
+        <img src="logo-jumper-profissoes-idiomas.png" alt="Logo da Empresa" class="logo">
+        <h1>Curso de Programação</h1>
+        <h3>Prof.: Uelinton Mazutti</h3>
+    </div>
+    
+    <p>Selecione o Módulo que você está: </p>
+    
+    <div class="botao-container">
+        <!-- Botões que redirecionam para outras páginas HTML em novas abas -->
+        <a href="curso_linguagem_c - módulo 1.html" class="botao" target="_blank">Módulo 1: Introdução à Programação e Lógica Básica</a>
+        <a href="curso_linguagem_c.html" class="botao" target="_blank">Curso de Linguagem C</a>
+    </div>
+
+    <div class="footer">
+        Desenvolvido por: Uelinton Mazutti - 
+        <a href="https://www.linkedin.com/in/uelinton-mazutti-494797205/" target="_blank">LinkedIn</a>
+    </div>
+</body>
+</html>

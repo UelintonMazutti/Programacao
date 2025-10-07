@@ -1,0 +1,1944 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 3: Introdução à Biblioteca Pandas</title>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2, h3, h4 {
+            color: #2c3e50;
+        }
+
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 12px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: "Courier New", monospace;
+            color: #f92672;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        .full-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 25vh;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #ccc;
+            margin: 30px 0;
+        }
+
+        .password-container {
+            margin-bottom: 15px;
+        }
+
+        .exercise-code {
+            display: none;
+        }
+        
+        .note {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px;
+            margin: 15px 0;
+        }
+        
+        .data-sample {
+            background-color: #e8f4fd;
+            border: 1px solid #b3d9ff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .exercise {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .concept-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-break" style="page-break-before: always;"></div>
+
+    <div class="full-page">
+        Módulo 3: Introdução à Biblioteca Pandas
+    </div>
+
+    <h1>Curso de Análise de Dados com Python e Pandas</h1>
+
+    <hr>
+
+    <h2>🎯 Introdução ao Python para Análise de Dados</h2>
+
+    <div class="concept-box">
+        <h3>📚 O que é Python?</h3>
+        <p>Python é uma linguagem de programação de alto nível, interpretada e de propósito geral. É amplamente usada em:</p>
+        <ul>
+            <li>✅ <strong>Análise de dados</strong> (Pandas, NumPy)</li>
+            <li>✅ <strong>Machine Learning</strong> (scikit-learn, TensorFlow)</li>
+            <li>✅ <strong>Automação de tarefas</li>
+            <li>✅ <strong>Desenvolvimento web</strong> (Django, Flask)</li>
+        </ul>
+    </div>
+
+    <h3>🚀 Primeiros Passos com Python</h3>
+
+    <h4>1. Instalação e Configuração</h4>
+    <pre><code class="language-python"># Verificar se o Python está instalado
+python --version
+
+# Instalar pandas
+pip install pandas
+
+# Instalar jupyter para ambiente interativo
+pip install jupyter</code></pre>
+
+    <h4>2. Estruturas Básicas do Python</h4>
+
+    <div class="concept-box">
+        <h5>📊 Variáveis e Tipos de Dados</h5>
+        <pre><code class="language-python"># Strings (texto)
+nome = "João Silva"
+empresa = 'Data Science Corp'
+
+# Números inteiros
+idade = 30
+quantidade = 150
+
+# Números decimais
+preco = 29.90
+altura = 1.75
+
+# Booleanos (Verdadeiro/Falso)
+ativo = True
+vip = False
+
+# Listas (coleções ordenadas)
+produtos = ["Notebook", "Mouse", "Teclado"]
+precos = [2500, 50, 120]
+
+# Dicionários (pares chave-valor)
+cliente = {
+    "nome": "Maria",
+    "idade": 25,
+    "cidade": "São Paulo"
+}</code></pre>
+    </div>
+
+    <h4>3. Funções Básicas do Python</h4>
+
+    <div class="concept-box">
+        <h5>🛠️ Funções Essenciais</h5>
+        <pre><code class="language-python"># Entrada de dados
+nome = input("Digite seu nome: ")
+idade = int(input("Digite sua idade: "))
+
+# Saída de dados
+print("Olá, mundo!")
+print(f"Nome: {nome}, Idade: {idade}")
+
+# Conversão de tipos
+numero_texto = "123"
+numero_inteiro = int(numero_texto)
+numero_decimal = float("3.14")
+
+# Comprimento de listas e strings
+lista = [1, 2, 3, 4, 5]
+print(len(lista))  # Saída: 5
+
+# Range para criar sequências
+numeros = list(range(1, 6))  # [1, 2, 3, 4, 5]</code></pre>
+    </div>
+
+    <h4>4. Estruturas de Controle</h4>
+
+    <div class="concept-box">
+        <h5>🎮 Condicionais e Loops</h5>
+        <pre><code class="language-python"># Condicional IF
+idade = 20
+if idade >= 18:
+    print("Maior de idade")
+else:
+    print("Menor de idade")
+
+# Loop FOR
+for i in range(5):
+    print(f"Número: {i}")
+
+# Loop em lista
+produtos = ["Notebook", "Mouse", "Teclado"]
+for produto in produtos:
+    print(produto)
+
+# Loop WHILE
+contador = 0
+while contador < 3:
+    print(contador)
+    contador += 1</code></pre>
+    </div>
+
+    <hr>
+
+    <h2>🐼 Introdução ao Pandas</h2>
+
+    <div class="concept-box">
+        <h3>O que é o Pandas?</h3>
+        <p>Pandas é uma biblioteca Python para manipulação e análise de dados. Pense nela como um <strong>Excel superpoderoso</strong> dentro do Python!</p>
+        
+        <h4>Principais Características:</h4>
+        <ul>
+            <li>✅ <strong>DataFrame</strong>: Estrutura principal (como uma planilha)</li>
+            <li>✅ <strong>Series</strong>: Coluna única de dados</li>
+            <li>✅ <strong>Leitura/Escrita</strong>: CSV, Excel, JSON, SQL</li>
+            <li>✅ <strong>Limpeza de dados</strong>: Valores missing, duplicados</li>
+            <li>✅ <strong>Análise estatística</strong>: Médias, somas, agrupamentos</li>
+        </ul>
+    </div>
+
+    <h3>📖 Como Usar o Pandas</h3>
+
+    <div class="concept-box">
+        <h5>Importando a Biblioteca</h5>
+        <pre><code class="language-python"># Importação padrão
+import pandas as pd
+
+# Criando um DataFrame simples
+dados = {
+    'Nome': ['Ana', 'João', 'Maria'],
+    'Idade': [25, 30, 35],
+    'Cidade': ['São Paulo', 'Rio', 'Belo Horizonte']
+}
+
+df = pd.DataFrame(dados)
+print(df)</code></pre>
+    </div>
+
+    <h3>🔍 Operações Básicas do Pandas</h3>
+
+    <table>
+        <tr>
+            <th>Operação</th>
+            <th>Exemplo</th>
+            <th>Descrição</th>
+        </tr>
+        <tr>
+            <td>Ver primeiras linhas</td>
+            <td><code>df.head()</code></td>
+            <td>Mostra as 5 primeiras linhas</td>
+        </tr>
+        <tr>
+            <td>Ver últimas linhas</td>
+            <td><code>df.tail()</code></td>
+            <td>Mostra as 5 últimas linhas</td>
+        </tr>
+        <tr>
+            <td>Informações do DataFrame</td>
+            <td><code>df.info()</code></td>
+            <td>Tipos de dados e valores missing</td>
+        </tr>
+        <tr>
+            <td>Estatísticas descritivas</td>
+            <td><code>df.describe()</code></td>
+            <td>Média, desvio padrão, etc.</td>
+        </tr>
+        <tr>
+            <td>Forma do DataFrame</td>
+            <td><code>df.shape</code></td>
+            <td>Retorna (linhas, colunas)</td>
+        </tr>
+        <tr>
+            <td>Nomes das colunas</td>
+            <td><code>df.columns</code></td>
+            <td>Lista com nomes das colunas</td>
+        </tr>
+        <tr>
+            <td>Tipos de dados</td>
+            <td><code>df.dtypes</code></td>
+            <td>Tipos de cada coluna</td>
+        </tr>
+        <tr>
+            <td>Valores únicos</td>
+            <td><code>df['coluna'].unique()</code></td>
+            <td>Valores distintos de uma coluna</td>
+        </tr>
+        <tr>
+            <td>Contagem de valores</td>
+            <td><code>df['coluna'].value_counts()</code></td>
+            <td>Conta frequência de valores</td>
+        </tr>
+        <tr>
+            <td>Selecionar coluna</td>
+            <td><code>df['Nome']</code></td>
+            <td>Retorna uma coluna específica</td>
+        </tr>
+        <tr>
+            <td>Selecionar múltiplas colunas</td>
+            <td><code>df[['Nome', 'Idade']]</code></td>
+            <td>Retorna colunas específicas</td>
+        </tr>
+        <tr>
+            <td>Filtrar dados</td>
+            <td><code>df[df['Idade'] > 25]</code></td>
+            <td>Filtra por condição</td>
+        </tr>
+        <tr>
+            <td>Ordenar dados</td>
+            <td><code>df.sort_values('Idade')</code></td>
+            <td>Ordena por coluna</td>
+        </tr>
+        <tr>
+            <td>Agrupar dados</td>
+            <td><code>df.groupby('Cidade')</code></td>
+            <td>Agrupa por coluna</td>
+        </tr>
+        <tr>
+            <td>Valores missing</td>
+            <td><code>df.isnull()</code></td>
+            <td>Identifica valores faltantes</td>
+        </tr>
+        <tr>
+            <td>Remover duplicatas</td>
+            <td><code>df.drop_duplicates()</code></td>
+            <td>Remove linhas duplicadas</td>
+        </tr>
+        <tr>
+            <td>Renomear colunas</td>
+            <td><code>df.rename()</code></td>
+            <td>Altera nomes das colunas</td>
+        </tr>
+        <tr>
+            <td>Resetar índice</td>
+            <td><code>df.reset_index()</code></td>
+            <td>Reinicia numeração das linhas</td>
+        </tr>
+    </table>
+
+    <div class="note">
+        <strong>💡 Dica Importante:</strong> Sempre importe o pandas como <code>pd</code> - é a convenção da comunidade!
+    </div>
+
+    <hr>
+
+    <div class="page-break" style="page-break-before: always;"></div>
+
+    <div class="full-page">
+        Exercícios Práticos - Pandas
+    </div>
+
+    <div class="exercise">
+        <h3>📝 Exercício 1: Criando seu Primeiro DataFrame</h3>
+        <p><strong>Objetivo:</strong> Aprender a criar um DataFrame a partir de um dicionário Python.</p>
+        
+        <div class="data-sample">
+            <h4>📊 Dados de Exemplo:</h4>
+            <table>
+                <tr><th>Produto</th><th>Preço</th><th>Quantidade</th></tr>
+                <tr><td>Notebook</td><td>2500</td><td>10</td></tr>
+                <tr><td>Mouse</td><td>50</td><td>25</td></tr>
+                <tr><td>Teclado</td><td>120</td><td>15</td></tr>
+                <tr><td>Monitor</td><td>800</td><td>8</td></tr>
+            </table>
+        </div>
+
+        <p><strong>Tarefa:</strong> Crie um DataFrame com os dados acima e exiba suas informações básicas.</p>
+
+        <div class="password-container">
+            <input type="password" id="password1" placeholder="Digite a senha para ver o código"
+            onkeydown="handleEnter(event, 'code1', 'password1', this.nextElementSibling)" />
+            <button onclick="toggleCode('code1', 'password1', this)">Mostrar Código</button>
+        </div>
+        <pre class="language-python exercise-code" id="code1" style="display: none;"><code>import pandas as pd
+
+# Dados para o DataFrame
+dados = {
+    'Produto': ['Notebook', 'Mouse', 'Teclado', 'Monitor'],
+    'Preço': [2500, 50, 120, 800],
+    'Quantidade': [10, 25, 15, 8]
+}
+
+# Criando o DataFrame
+df = pd.DataFrame(dados)
+
+print("=== MEU PRIMEIRO DATAFRAME ===")
+print("\nDataFrame completo:")
+print(df)
+
+print(f"\n📏 Dimensões: {df.shape[0]} linhas x {df.shape[1]} colunas")
+print(f"📋 Colunas: {df.columns.tolist()}")
+print(f"🔢 Tipos de dados:\n{df.dtypes}")
+
+print("\n👀 Primeiras 2 linhas:")
+print(df.head(2))</code></pre>
+    </div>
+
+    <div class="exercise">
+        <h3>📝 Exercício 2: Carregando Dados de um Arquivo CSV</h3>
+        <p><strong>Objetivo:</strong> Aprender a carregar dados de arquivos externos.</p>
+        
+        <div class="data-sample">
+            <h4>📁 Arquivo: vendas.csv</h4>
+            <table>
+                <tr><th>Data</th><th>Produto</th><th>Quantidade</th><th>Valor</th></tr>
+                <tr><td>2024-01-15</td><td>Notebook</td><td>2</td><td>2500</td></tr>
+                <tr><td>2024-01-16</td><td>Mouse</td><td>5</td><td>50</td></tr>
+                <tr><td>2024-01-17</td><td>Teclado</td><td>3</td><td>120</td></tr>
+                <tr><td>2024-01-18</td><td>Monitor</td><td>1</td><td>800</td></tr>
+            </table>
+        </div>
+
+        <p><strong>Tarefa:</strong> Crie um arquivo CSV com os dados acima e carregue-o no pandas.</p>
+
+        <div class="password-container">
+            <input type="password" id="password2" placeholder="Digite a senha para ver o código"
+            onkeydown="handleEnter(event, 'code2', 'password2', this.nextElementSibling)" />
+            <button onclick="toggleCode('code2', 'password2', this)">Mostrar Código</button>
+        </div>
+        <pre class="language-python exercise-code" id="code2" style="display: none;"><code>import pandas as pd
+
+# Primeiro, vamos criar o arquivo CSV
+dados_csv = '''Data,Produto,Quantidade,Valor
+2024-01-15,Notebook,2,2500
+2024-01-16,Mouse,5,50
+2024-01-17,Teclado,3,120
+2024-01-18,Monitor,1,800'''
+
+with open('vendas.csv', 'w', encoding='utf-8') as f:
+    f.write(dados_csv)
+
+print("✅ Arquivo CSV criado com sucesso!")
+
+# Agora carregando o CSV
+df = pd.read_csv('vendas.csv')
+
+print("\n=== DADOS CARREGADOS DO CSV ===")
+print("\n📊 DataFrame completo:")
+print(df)
+
+print(f"\n👀 Primeiras 3 linhas:")
+print(df.head(3))
+
+print(f"\n📏 Dimensões: {df.shape[0]} linhas x {df.shape[1]} colunas")
+print(f"💰 Valor total vendido: R$ {df['Valor'].sum():,.2f}")
+print(f"📦 Quantidade total: {df['Quantidade'].sum()} unidades")</code></pre>
+    </div>
+
+    <div class="exercise">
+        <h3>📝 Exercício 3: Explorando Informações do DataFrame</h3>
+        <p><strong>Objetivo:</strong> Aprender a explorar e entender a estrutura dos dados.</p>
+        
+        <div class="data-sample">
+            <h4>📊 Dados de Exemplo:</h4>
+            <table>
+                <tr><th>Nome</th><th>Idade</th><th>Cidade</th><th>Salário</th></tr>
+                <tr><td>Ana</td><td>25</td><td>São Paulo</td><td>3000</td></tr>
+                <tr><td>João</td><td>30</td><td>Rio de Janeiro</td><td>4500</td></tr>
+                <tr><td>Maria</td><td>35</td><td>Belo Horizonte</td><td>3500</td></tr>
+                <tr><td>Pedro</td><td>28</td><td>Salvador</td><td>5000</td></tr>
+            </table>
+        </div>
+
+        <p><strong>Tarefa:</strong> Use métodos do pandas para explorar todas as informações do DataFrame.</p>
+
+        <div class="password-container">
+            <input type="password" id="password3" placeholder="Digite a senha para ver o código"
+            onkeydown="handleEnter(event, 'code3', 'password3', this.nextElementSibling)" />
+            <button onclick="toggleCode('code3', 'password3', this)">Mostrar Código</button>
+        </div>
+        <pre class="language-python exercise-code" id="code3" style="display: none;"><code>import pandas as pd
+
+dados = {
+    'Nome': ['Ana', 'João', 'Maria', 'Pedro'],
+    'Idade': [25, 30, 35, 28],
+    'Cidade': ['São Paulo', 'Rio de Janeiro', 'Belo Horizonte', 'Salvador'],
+    'Salario': [3000, 4500, 3500, 5000]
+}
+
+df = pd.DataFrame(dados)
+
+print("=== EXPLORAÇÃO COMPLETA DO DATAFRAME ===")
+
+print("\n1. 📊 VISUALIZAÇÃO DOS DADOS:")
+print("Primeiras linhas:")
+print(df.head())
+print("\nÚltimas linhas:")
+print(df.tail(2))
+
+print(f"\n2. 📏 ESTRUTURA:")
+print(f"Dimensões: {df.shape[0]} linhas x {df.shape[1]} colunas")
+print(f"Colunas: {df.columns.tolist()}")
+
+print(f"\n3. 🔢 TIPOS DE DADOS:")
+print(df.dtypes)
+
+print(f"\n4. 📋 INFORMAÇÕES GERAIS:")
+df.info()
+
+print(f"\n5. 📈 ESTATÍSTICAS DESCRITIVAS:")
+print(df.describe())
+
+print(f"\n6. 💰 ANÁLISE DE SALÁRIOS:")
+print(f"Salário médio: R$ {df['Salario'].mean():.2f}")
+print(f"Maior salário: R$ {df['Salario'].max():.2f}")
+print(f"Menor salário: R$ {df['Salario'].min():.2f}")
+print(f"Total em salários: R$ {df['Salario'].sum():.2f}")</code></pre>
+    </div>
+
+    <div class="exercise">
+        <h3>📝 Exercício 4: Filtros Simples com Condições</h3>
+        <p><strong>Objetivo:</strong> Aprender a filtrar dados usando condições básicas.</p>
+        
+        <div class="data-sample">
+            <h4>📊 Dados de Exemplo:</h4>
+            <table>
+                <tr><th>Nome</th><th>Idade</th><th>Departamento</th><th>Salário</th></tr>
+                <tr><td>Ana</td><td>25</td><td>Vendas</td><td>3000</td></tr>
+                <tr><td>João</td><td>30</td><td>TI</td><td>4500</td></tr>
+                <tr><td>Maria</td><td>35</td><td>Vendas</td><td>3500</td></tr>
+                <tr><td>Pedro</td><td>28</td><td>TI</td><td>5000</td></tr>
+                <tr><td>Carla</td><td>29</td><td>RH</td><td>3200</td></tr>
+            </table>
+        </div>
+
+        <p><strong>Tarefa:</strong> Crie filtros para encontrar funcionários com salário acima de R$ 4.000, da área de TI e com mais de 30 anos.</p>
+
+        <div class="password-container">
+            <input type="password" id="password4" placeholder="Digite a senha para ver o código"
+            onkeydown="handleEnter(event, 'code4', 'password4', this.nextElementSibling)" />
+            <button onclick="toggleCode('code4', 'password4', this)">Mostrar Código</button>
+        </div>
+        <pre class="language-python exercise-code" id="code4" style="display: none;"><code>import pandas as pd
+
+dados = {
+    'Nome': ['Ana', 'João', 'Maria', 'Pedro', 'Carla'],
+    'Idade': [25, 30, 35, 28, 29],
+    'Departamento': ['Vendas', 'TI', 'Vendas', 'TI', 'RH'],
+    'Salario': [3000, 4500, 3500, 5000, 3200]
+}
+
+df = pd.DataFrame(dados)
+
+print("=== FILTROS SIMPLES COM PANDAS ===")
+print("\n📊 DataFrame completo:")
+print(df)
+
+print("\n" + "="*50)
+print("1. 🔍 FUNCIONÁRIOS COM SALÁRIO ACIMA DE R$ 4.000")
+print("="*50)
+salarios_altos = df[df['Salario'] > 4000]
+print(salarios_altos)
+
+print("\n" + "="*50)
+print("2. 💻 FUNCIONÁRIOS DO DEPARTAMENTO DE TI")
+print("="*50)
+func_ti = df[df['Departamento'] == 'TI']
+print(func_ti)
+
+print("\n" + "="*50)
+print("3. 🎂 FUNCIONÁRIOS COM MAIS DE 30 ANOS")
+print("="*50)
+maiores_30 = df[df['Idade'] > 30]
+print(maiores_30)
+
+print("\n" + "="*50)
+print("4. 📊 RESUMO DOS FILTROS")
+print("="*50)
+print(f"Total de funcionários: {len(df)}")
+print(f"Salários acima de R$ 4.000: {len(salarios_altos)}")
+print(f"Funcionários de TI: {len(func_ti)}")
+print(f"Funcionários com mais de 30 anos: {len(maiores_30)}")</code></pre>
+    </div>
+
+    <div class="exercise">
+        <h3>📝 Exercício 5: Filtros com Múltiplas Condições</h3>
+        <p><strong>Objetivo:</strong> Aprender a combinar múltiplas condições em filtros.</p>
+        
+        <div class="data-sample">
+            <h4>📊 Dados de Exemplo:</h4>
+            <table>
+                <tr><th>Mês</th><th>Vendedor</th><th>Região</th><th>Vendas</th></tr>
+                <tr><td>Janeiro</td><td>Ana</td><td>Norte</td><td>15000</td></tr>
+                <tr><td>Janeiro</td><td>João</td><td>Sul</td><td>22000</td></tr>
+                <tr><td>Fevereiro</td><td>Ana</td><td>Norte</td><td>17000</td></tr>
+                <tr><td>Fevereiro</td><td>João</td><td>Sul</td><td>24000</td></tr>
+                <tr><td>Março</td><td>Ana</td><td>Norte</td><td>16000</td></tr>
+                <tr><td>Março</td><td>João</td><td>Sul</td><td>23000</td></tr>
+            </table>
+        </div>
+
+        <p><strong>Tarefa:</strong> Crie filtros combinados para encontrar vendas específicas usando AND (&), OR (|) e NOT (~).</p>
+
+        <div class="password-container">
+            <input type="password" id="password5" placeholder="Digite a senha para ver o código"
+            onkeydown="handleEnter(event, 'code5', 'password5', this.nextElementSibling)" />
+            <button onclick="toggleCode('code5', 'password5', this)">Mostrar Código</button>
+        </div>
+        <pre class="language-python exercise-code" id="code5" style="display: none;"><code>import pandas as pd
+
+dados = {
+    'Mes': ['Janeiro', 'Janeiro', 'Fevereiro', 'Fevereiro', 'Março', 'Março'],
+    'Vendedor': ['Ana', 'João', 'Ana', 'João', 'Ana', 'João'],
+    'Regiao': ['Norte', 'Sul', 'Norte', 'Sul', 'Norte', 'Sul'],
+    'Vendas': [15000, 22000, 17000, 24000, 16000, 23000]
+}
+
+df = pd.DataFrame(dados)
+
+print("=== FILTROS COM MÚLTIPLAS CONDIÇÕES ===")
+print("\n📊 DataFrame completo:")
+print(df)
+
+print("\n" + "="*60)
+print("1. 🔍 VENDAS DA ANA ACIMA DE R$ 16.000 (AND)")
+print("="*60)
+filtro1 = df[(df['Vendedor'] == 'Ana') & (df['Vendas'] > 16000)]
+print(filtro1)
+
+print("\n" + "="*60)
+print("2. 🔍 VENDAS DO JOÃO OU VENDAS ACIMA DE R$ 20.000 (OR)")
+print("="*60)
+filtro2 = df[(df['Vendedor'] == 'João') | (df['Vendas'] > 20000)]
+print(filtro2)
+
+print("\n" + "="*60)
+print("3. 🔍 VENDAS QUE NÃO SÃO DA REGIÃO SUL (NOT)")
+print("="*60)
+filtro3 = df[~(df['Regiao'] == 'Sul')]
+print(filtro3)
+
+print("\n" + "="*60)
+print("4. 🔍 VENDAS DA ANA NA REGIÃO NORTE ACIMA DE R$ 16.000")
+print("="*60)
+filtro4 = df[(df['Vendedor'] == 'Ana') & 
+             (df['Regiao'] == 'Norte') & 
+             (df['Vendas'] > 16000)]
+print(filtro4)
+
+print("\n" + "="*60)
+print("5. 📊 RESUMO DOS FILTROS")
+print("="*60)
+print(f"Total de registros: {len(df)}")
+print(f"Filtro 1 (Ana > 16k): {len(filtro1)} registros")
+print(f"Filtro 2 (João OR >20k): {len(filtro2)} registros")
+print(f"Filtro 3 (Não Sul): {len(filtro3)} registros")
+print(f"Filtro 4 (Ana+Norte+>16k): {len(filtro4)} registros")</code></pre>
+    </div>
+
+    <div class="exercise">
+        <h3>📝 Exercício 6: Adicionando Novas Colunas</h3>
+        <p><strong>Objetivo:</strong> Aprender a criar novas colunas com cálculos e transformações.</p>
+        
+        <div class="data-sample">
+            <h4>📊 Dados de Exemplo:</h4>
+            <table>
+                <tr><th>Produto</th><th>Preço</th><th>Custo</th><th>Quantidade</th></tr>
+                <tr><td>Notebook</td><td>2500</td><td>1800</td><td>10</td></tr>
+                <tr><td>Mouse</td><td>50</td><td>30</td><td>25</td></tr>
+                <tr><td>Teclado</td><td>120</td><td>80</td><td>15</td></tr>
+                <tr><td>Monitor</td><td>800</td><td>600</td><td>8</td></tr>
+            </table>
+        </div>
+
+        <p><strong>Tarefa:</strong> Adicione colunas para lucro unitário, valor total em estoque e margem de lucro.</p>
+
+        <div class="password-container">
+            <input type="password" id="password6" placeholder="Digite a senha para ver o código"
+            onkeydown="handleEnter(event, 'code6', 'password6', this.nextElementSibling)" />
+            <button onclick="toggleCode('code6', 'password6', this)">Mostrar Código</button>
+        </div>
+        <pre class="language-python exercise-code" id="code6" style="display: none;"><code>import pandas as pd
+
+dados = {
+    'Produto': ['Notebook', 'Mouse', 'Teclado', 'Monitor'],
+    'Preco': [2500, 50, 120, 800],
+    'Custo': [1800, 30, 80, 600],
+    'Quantidade': [10, 25, 15, 8]
+}
+
+df = pd.DataFrame(dados)
+
+print("=== ADICIONANDO NOVAS COLUNAS ===")
+print("\n📊 DataFrame original:")
+print(df)
+
+# Lucro por unidade
+df['Lucro_Unitario'] = df['Preco'] - df['Custo']
+print(f"\n1. 💰 LUCRO UNITÁRIO:")
+print(df[['Produto', 'Preco', 'Custo', 'Lucro_Unitario']])
+
+# Valor total em estoque
+df['Valor_Estoque'] = df['Preco'] * df['Quantidade']
+print(f"\n2. 📦 VALOR TOTAL EM ESTOQUE:")
+print(df[['Produto', 'Quantidade', 'Preco', 'Valor_Estoque']])
+
+# Margem de lucro (%)
+df['Margem_Lucro'] = (df['Lucro_Unitario'] / df['Preco']) * 100
+print(f"\n3. 📈 MARGEM DE LUCRO (%):")
+print(df[['Produto', 'Margem_Lucro']].round(2))
+
+# Categoria baseada no preço
+df['Categoria'] = ['Alto' if preco > 1000 else 'Médio' if preco > 100 else 'Baixo' 
+                   for preco in df['Preco']]
+print(f"\n4. 🏷️ CATEGORIA POR PREÇO:")
+print(df[['Produto', 'Preco', 'Categoria']])
+
+print(f"\n5. 📊 RESUMO FINAL:")
+print(df)
+
+print(f"\n💰 Lucro total potencial: R$ {(df['Lucro_Unitario'] * df['Quantidade']).sum():,.2f}")
+print(f"📈 Margem de lucro média: {df['Margem_Lucro'].mean():.2f}%")</code></pre>
+    </div>
+
+    <div class="exercise">
+        <h3>📝 Exercício 7: Estatísticas Básicas e Agregações</h3>
+        <p><strong>Objetivo:</strong> Aprender a calcular estatísticas descritivas e agregar dados.</p>
+        
+        <div class="data-sample">
+            <h4>📊 Dados de Exemplo:</h4>
+            <table>
+                <tr><th>Aluno</th><th>Matemática</th><th>Português</th><th>História</th></tr>
+                <tr><td>Ana</td><td>8.5</td><td>7.8</td><td>9.0</td></tr>
+                <tr><td>João</td><td>7.0</td><td>6.5</td><td>8.2</td></tr>
+                <tr><td>Maria</td><td>9.2</td><td>8.9</td><td>7.5</td></tr>
+                <tr><td>Pedro</td><td>6.8</td><td>7.2</td><td>6.9</td></tr>
+                <tr><td>Carla</td><td>8.9</td><td>9.1</td><td>8.7</td></tr>
+            </table>
+        </div>
+
+        <p><strong>Tarefa:</strong> Calcule médias, medianas, desvios padrão e identifique os melhores alunos.</p>
+
+        <div class="password-container">
+            <input type="password" id="password7" placeholder="Digite a senha para ver o código"
+            onkeydown="handleEnter(event, 'code7', 'password7', this.nextElementSibling)" />
+            <button onclick="toggleCode('code7', 'password7', this)">Mostrar Código</button>
+        </div>
+        <pre class="language-python exercise-code" id="code7" style="display: none;"><code>import pandas as pd
+
+dados = {
+    'Aluno': ['Ana', 'João', 'Maria', 'Pedro', 'Carla'],
+    'Matematica': [8.5, 7.0, 9.2, 6.8, 8.9],
+    'Portugues': [7.8, 6.5, 8.9, 7.2, 9.1],
+    'Historia': [9.0, 8.2, 7.5, 6.9, 8.7]
+}
+
+df = pd.DataFrame(dados)
+
+print("=== ESTATÍSTICAS BÁSICAS E AGREGAÇÕES ===")
+print("\n📊 DataFrame completo:")
+print(df)
+
+print("\n" + "="*50)
+print("1. 📈 ESTATÍSTICAS DESCRITIVAS COMPLETAS")
+print("="*50)
+print(df[['Matematica', 'Portugues', 'Historia']].describe())
+
+print("\n" + "="*50)
+print("2. 🎓 MÉDIAS POR ALUNO")
+print("="*50)
+df['Media_Geral'] = df[['Matematica', 'Portugues', 'Historia']].mean(axis=1)
+print(df[['Aluno', 'Media_Geral']].round(2))
+
+print("\n" + "="*50)
+print("3. 📚 MÉDIAS POR MATÉRIA")
+print("="*50)
+print(f"Matemática: {df['Matematica'].mean():.2f}")
+print(f"Português: {df['Portugues'].mean():.2f}")
+print(f"História: {df['Historia'].mean():.2f}")
+
+print("\n" + "="*50)
+print("4. 🏆 MELHORES E PIORES DESEMPENHOS")
+print("="*50)
+print(f"Maior nota em Matemática: {df['Matematica'].max()} - {df.loc[df['Matematica'].idxmax(), 'Aluno']}")
+print(f"Menor nota em Matemática: {df['Matematica'].min()} - {df.loc[df['Matematica'].idxmin(), 'Aluno']}")
+print(f"Aluno com melhor média: {df.loc[df['Media_Geral'].idxmax(), 'Aluno']} - {df['Media_Geral'].max():.2f}")
+
+print("\n" + "="*50)
+print("5. 📊 OUTRAS ESTATÍSTICAS")
+print("="*50)
+print(f"Mediana Matemática: {df['Matematica'].median():.2f}")
+print(f"Desvio padrão Português: {df['Portugues'].std():.2f}")
+print(f"Variância História: {df['Historia'].var():.2f}")</code></pre>
+    </div>
+
+    <div class="exercise">
+        <h3>📝 Exercício 8: Agrupamento de Dados com GroupBy</h3>
+        <p><strong>Objetivo:</strong> Aprender a agrupar dados e calcular estatísticas por categoria.</p>
+        
+        <div class="data-sample">
+            <h4>📊 Dados de Exemplo:</h4>
+            <table>
+                <tr><th>Vendedor</th><th>Departamento</th><th>Vendas</th><th>Comissão</th></tr>
+                <tr><td>Ana</td><td>Vendas</td><td>15000</td><td>1500</td></tr>
+                <tr><td>João</td><td>TI</td><td>22000</td><td>2200</td></tr>
+                <tr><td>Maria</td><td>Vendas</td><td>18000</td><td>1800</td></tr>
+                <tr><td>Pedro</td><td>TI</td><td>25000</td><td>2500</td></tr>
+                <tr><td>Carla</td><td>RH</td><td>12000</td><td>1200</td></tr>
+            </table>
+        </div>
+
+        <p><strong>Tarefa:</strong> Agrupe os dados por departamento e calcule totais, médias e contagens.</p>
+
+        <div class="password-container">
+            <input type="password" id="password8" placeholder="Digite a senha para ver o código"
+            onkeydown="handleEnter(event, 'code8', 'password8', this.nextElementSibling)" />
+            <button onclick="toggleCode('code8', 'password8', this)">Mostrar Código</button>
+        </div>
+        <pre class="language-python exercise-code" id="code8" style="display: none;"><code>import pandas as pd
+
+dados = {
+    'Vendedor': ['Ana', 'João', 'Maria', 'Pedro', 'Carla'],
+    'Departamento': ['Vendas', 'TI', 'Vendas', 'TI', 'RH'],
+    'Vendas': [15000, 22000, 18000, 25000, 12000],
+    'Comissao': [1500, 2200, 1800, 2500, 1200]
+}
+
+df = pd.DataFrame(dados)
+
+print("=== AGREGAÇÃO COM GROUPBY ===")
+print("\n📊 DataFrame completo:")
+print(df)
+
+print("\n" + "="*60)
+print("1. 📊 ESTATÍSTICAS POR DEPARTAMENTO")
+print("="*60)
+agrupado = df.groupby('Departamento').agg({
+    'Vendas': ['sum', 'mean', 'max', 'min', 'count'],
+    'Comissao': 'sum',
+    'Vendedor': 'count'
+}).round(2)
+
+print(agrupado)
+
+print("\n" + "="*60)
+print("2. 💰 VENDAS TOTAIS POR DEPARTAMENTO")
+print("="*60)
+vendas_por_depto = df.groupby('Departamento')['Vendas'].sum()
+print(vendas_por_depto)
+
+print("\n" + "="*60)
+print("3. 📈 MÉDIA DE VENDAS POR DEPARTAMENTO")
+print("="*60)
+media_por_depto = df.groupby('Departamento')['Vendas'].mean()
+print(media_por_depto)
+
+print("\n" + "="*60)
+print("4. 🏆 MAIOR VENDA POR DEPARTAMENTO")
+print("="*60)
+maior_venda = df.groupby('Departamento')['Vendas'].max()
+print(maior_venda)
+
+print("\n" + "="*60)
+print("5. 👥 CONTAGEM DE VENDEDORES POR DEPARTAMENTO")
+print("="*60)
+contagem_vendedores = df.groupby('Departamento')['Vendedor'].count()
+print(contagem_vendedores)
+
+print("\n" + "="*60)
+print("6. 📋 RESUMO GERAL")
+print("="*60)
+print(f"Departamentos: {df['Departamento'].unique().tolist()}")
+print(f"Total de vendedores: {len(df)}")
+print(f"Vendas totais: R$ {df['Vendas'].sum():,.2f}")
+print(f"Comissão total: R$ {df['Comissao'].sum():,.2f}")</code></pre>
+    </div>
+
+    <div class="exercise">
+        <h3>📝 Exercício 9: Ordenação de Dados</h3>
+        <p><strong>Objetivo:</strong> Aprender a ordenar DataFrames por diferentes critérios.</p>
+        
+        <div class="data-sample">
+            <h4>📊 Dados de Exemplo:</h4>
+            <table>
+                <tr><th>Cidade</th><th>População</th><th>Área (km²)</th><th>IDH</th></tr>
+                <tr><td>São Paulo</td><td>12300000</td><td>1521</td><td>0.805</td></tr>
+                <tr><td>Rio de Janeiro</td><td>6748000</td><td>1182</td><td>0.799</td></tr>
+                <tr><td>Salvador</td><td>2887000</td><td>693</td><td>0.759</td></tr>
+                <tr><td>Brasília</td><td>3055000</td><td>5801</td><td>0.824</td></tr>
+                <tr><td>Fortaleza</td><td>2686000</td><td>313</td><td>0.754</td></tr>
+            </table>
+        </div>
+
+        <p><strong>Tarefa:</strong> Ordene os dados por população, IDH e combine múltiplos critérios de ordenação.</p>
+
+        <div class="password-container">
+            <input type="password" id="password9" placeholder="Digite a senha para ver o código"
+            onkeydown="handleEnter(event, 'code9', 'password9', this.nextElementSibling)" />
+            <button onclick="toggleCode('code9', 'password9', this)">Mostrar Código</button>
+        </div>
+        <pre class="language-python exercise-code" id="code9" style="display: none;"><code>import pandas as pd
+
+dados = {
+    'Cidade': ['São Paulo', 'Rio de Janeiro', 'Salvador', 'Brasília', 'Fortaleza'],
+    'Populacao': [12300000, 6748000, 2887000, 3055000, 2686000],
+    'Area': [1521, 1182, 693, 5801, 313],
+    'IDH': [0.805, 0.799, 0.759, 0.824, 0.754]
+}
+
+df = pd.DataFrame(dados)
+
+print("=== ORDENAÇÃO DE DATAFRAME ===")
+print("\n📊 DataFrame original:")
+print(df)
+
+print("\n" + "="*50)
+print("1. 📊 ORDENADO POR POPULAÇÃO (CRESCENTE)")
+print("="*50)
+ordenado_pop = df.sort_values('Populacao')
+print(ordenado_pop[['Cidade', 'Populacao']])
+
+print("\n" + "="*50)
+print("2. 📊 ORDENADO POR POPULAÇÃO (DECRESCENTE)")
+print("="*50)
+ordenado_pop_desc = df.sort_values('Populacao', ascending=False)
+print(ordenado_pop_desc[['Cidade', 'Populacao']])
+
+print("\n" + "="*50)
+print("3. 🎯 ORDENADO POR IDH (DECRESCENTE)")
+print("="*50)
+ordenado_idh = df.sort_values('IDH', ascending=False)
+print(ordenado_idh[['Cidade', 'IDH']])
+
+print("\n" + "="*50)
+print("4. 🔄 ORDENADO POR MÚLTIPLAS COLUNAS")
+print("="*50)
+ordenado_multi = df.sort_values(['Area', 'Populacao'], ascending=[False, True])
+print(ordenado_multi[['Cidade', 'Area', 'Populacao']])
+
+print("\n" + "="*50)
+print("5. 🏆 TOP 3 CIDADES POR POPULAÇÃO")
+print("="*50)
+top3_pop = df.nlargest(3, 'Populacao')
+print(top3_pop[['Cidade', 'Populacao']])
+
+print("\n" + "="*50)
+print("6. 📈 TOP 3 CIDADES POR IDH")
+print("="*50)
+top3_idh = df.nlargest(3, 'IDH')
+print(top3_idh[['Cidade', 'IDH']])
+
+print("\n" + "="*50)
+print("7. 📊 RESUMO DAS ORDENAÇÕES")
+print("="*50)
+print(f"Cidade mais populosa: {df.loc[df['Populacao'].idxmax(), 'Cidade']}")
+print(f"Cidade com maior IDH: {df.loc[df['IDH'].idxmax(), 'Cidade']}")
+print(f"Cidade com maior área: {df.loc[df['Area'].idxmax(), 'Cidade']}")</code></pre>
+    </div>
+
+    <div class="exercise">
+        <h3>📝 Exercício 10: Trabalhando com Valores Missing</h3>
+        <p><strong>Objetivo:</strong> Aprender a identificar e tratar valores faltantes em dados.</p>
+        
+        <div class="data-sample">
+            <h4>📊 Dados de Exemplo (com valores faltantes):</h4>
+            <table>
+                <tr><th>Nome</th><th>Idade</th><th>Salário</th><th>Departamento</th></tr>
+                <tr><td>Ana</td><td>25</td><td>3000</td><td>Vendas</td></tr>
+                <tr><td>João</td><td>-</td><td>4500</td><td>TI</td></tr>
+                <tr><td>Maria</td><td>35</td><td>-</td><td>Vendas</td></tr>
+                <tr><td>Pedro</td><td>28</td><td>5000</td><td>-</td></tr>
+                <tr><td>-</td><td>29</td><td>3200</td><td>RH</td></tr>
+            </table>
+        </div>
+
+        <p><strong>Tarefa:</strong> Identifique valores missing, preencha com valores apropriados e compare os resultados.</p>
+
+        <div class="password-container">
+            <input type="password" id="password10" placeholder="Digite a senha para ver o código"
+            onkeydown="handleEnter(event, 'code10', 'password10', this.nextElementSibling)" />
+            <button onclick="toggleCode('code10', 'password10', this)">Mostrar Código</button>
+        </div>
+        <pre class="language-python exercise-code" id="code10" style="display: none;"><code>import pandas as pd
+import numpy as np
+
+# Criando dados com valores missing
+dados = {
+    'Nome': ['Ana', 'João', 'Maria', 'Pedro', None],
+    'Idade': [25, None, 35, 28, 29],
+    'Salario': [3000, 4500, None, 5000, 3200],
+    'Departamento': ['Vendas', 'TI', 'Vendas', None, 'RH']
+}
+
+df = pd.DataFrame(dados)
+
+print("=== TRABALHANDO COM VALORES MISSING ===")
+print("\n1. 📊 DATAFRAME ORIGINAL:")
+print(df)
+
+print(f"\n2. 🔍 IDENTIFICANDO VALORES MISSING:")
+print("Valores missing por coluna:")
+print(df.isnull().sum())
+
+print(f"\nTotal de valores missing: {df.isnull().sum().sum()}")
+
+print(f"\n3. 📈 ESTATÍSTICAS ANTES DO TRATAMENTO:")
+print(f"Média de idade: {df['Idade'].mean():.2f}")
+print(f"Mediana de salário: {df['Salario'].median():.2f}")
+
+print(f"\n4. 🛠️ PREENCHENDO VALORES MISSING:")
+df_preenchido = df.fillna({
+    'Nome': 'Desconhecido',
+    'Idade': df['Idade'].mean(),
+    'Salario': df['Salario'].median(),
+    'Departamento': 'Não Informado'
+})
+
+print("DataFrame após preenchimento:")
+print(df_preenchido)
+
+print(f"\n5. 🗑️ ALTERNATIVA: REMOVENDO LINHAS COM MISSING")
+df_sem_nulos = df.dropna()
+print(f"DataFrame sem linhas com missing (shape: {df_sem_nulos.shape}):")
+print(df_sem_nulos)
+
+print(f"\n6. 📊 COMPARAÇÃO DOS RESULTADOS:")
+print(f"DataFrame original: {df.shape[0]} linhas")
+print(f"Após preenchimento: {df_preenchido.shape[0]} linhas")
+print(f"Após remoção: {df_sem_nulos.shape[0]} linhas")
+
+print(f"\n7. 📈 ESTATÍSTICAS APÓS TRATAMENTO:")
+print(f"Média de idade (preenchida): {df_preenchido['Idade'].mean():.2f}")
+print(f"Mediana de salário (preenchida): {df_preenchido['Salario'].median():.2f}")</code></pre>
+    </div>
+
+    <!-- Continuando com os exercícios 11 ao 20 -->
+    <div class="exercise">
+        <h3>📝 Exercício 11: Renomeando Colunas e Índices</h3>
+        <p><strong>Objetivo:</strong> Aprender a renomear colunas e trabalhar com índices.</p>
+        
+        <div class="data-sample">
+            <h4>📊 Dados de Exemplo:</h4>
+            <table>
+                <tr><th>nome_completo</th><th>idade_anos</th><th>cidade_natal</th><th>salario_mensal</th></tr>
+                <tr><td>Ana Silva</td><td>25</td><td>São Paulo</td><td>3000</td></tr>
+                <tr><td>João Santos</td><td>30</td><td>Rio de Janeiro</td><td>4500</td></tr>
+                <tr><td>Maria Oliveira</td><td>35</td><td>Belo Horizonte</td><td>3500</td></tr>
+            </table>
+        </div>
+
+        <p><strong>Tarefa:</strong> Renomeie as colunas para português correto e trabalhe com diferentes configurações de índice.</p>
+
+        <div class="password-container">
+            <input type="password" id="password11" placeholder="Digite a senha para ver o código"
+            onkeydown="handleEnter(event, 'code11', 'password11', this.nextElementSibling)" />
+            <button onclick="toggleCode('code11', 'password11', this)">Mostrar Código</button>
+        </div>
+        <pre class="language-python exercise-code" id="code11" style="display: none;"><code>import pandas as pd
+
+dados = {
+    'nome_completo': ['Ana Silva', 'João Santos', 'Maria Oliveira'],
+    'idade_anos': [25, 30, 35],
+    'cidade_natal': ['São Paulo', 'Rio de Janeiro', 'Belo Horizonte'],
+    'salario_mensal': [3000, 4500, 3500]
+}
+
+df = pd.DataFrame(dados)
+
+print("=== RENOMEANDO COLUNAS E ÍNDICES ===")
+print("\n1. 📊 DATAFRAME ORIGINAL:")
+print(df)
+print(f"Colunas originais: {df.columns.tolist()}")
+
+print(f"\n2. 🔄 RENOMEANDO COLUNAS")
+df_renomeado = df.rename(columns={
+    'nome_completo': 'Nome',
+    'idade_anos': 'Idade',
+    'cidade_natal': 'Cidade',
+    'salario_mensal': 'Salario'
+})
+
+print("DataFrame com colunas renomeadas:")
+print(df_renomeado)
+
+print(f"\n3. 🔑 DEFININDO NOVO ÍNDICE")
+df_novo_indice = df_renomeado.set_index('Nome')
+print("DataFrame com Nome como índice:")
+print(df_novo_indice)
+
+print(f"\n4. 🔄 RESETANDO ÍNDICE")
+df_reset = df_novo_indice.reset_index()
+print("DataFrame com índice resetado:")
+print(df_reset)
+
+print(f"\n5. 🏷️ RENOMEANDO ÍNDICE")
+df_renomeado.index.name = 'ID'
+print("DataFrame com índice renomeado:")
+print(df_renomeado)
+
+print(f"\n6. 📋 RESUMO DAS TRANSFORMAÇÕES")
+print(f"Forma original: {df.shape}")
+print(f"Forma após renomeação: {df_renomeado.shape}")
+print(f"Forma com novo índice: {df_novo_indice.shape}")</code></pre>
+    </div>
+
+    <div class="exercise">
+        <h3>📝 Exercício 12: Seleção com Loc e Iloc</h3>
+        <p><strong>Objetivo:</strong> Aprender a usar loc e iloc para seleções específicas.</p>
+        
+        <div class="data-sample">
+            <h4>📊 Dados de Exemplo:</h4>
+            <table>
+                <tr><th>Nome</th><th>Idade</th><th>Departamento</th><th>Salário</th></tr>
+                <tr><td>Ana</td><td>25</td><td>Vendas</td><td>3000</td></tr>
+                <tr><td>João</td><td>30</td><td>TI</td><td>4500</td></tr>
+                <tr><td>Maria</td><td>35</td><td>Vendas</td><td>3500</td></tr>
+                <tr><td>Pedro</td><td>28</td><td>TI</td><td>5000</td></tr>
+                <tr><td>Carla</td><td>29</td><td>RH</td><td>3200</td></tr>
+            </table>
+        </div>
+
+        <p><strong>Tarefa:</strong> Use loc e iloc para selecionar dados específicos por posição e label.</p>
+
+        <div class="password-container">
+            <input type="password" id="password12" placeholder="Digite a senha para ver o código"
+            onkeydown="handleEnter(event, 'code12', 'password12', this.nextElementSibling)" />
+            <button onclick="toggleCode('code12', 'password12', this)">Mostrar Código</button>
+        </div>
+        <pre class="language-python exercise-code" id="code12" style="display: none;"><code>import pandas as pd
+
+dados = {
+    'Nome': ['Ana', 'João', 'Maria', 'Pedro', 'Carla'],
+    'Idade': [25, 30, 35, 28, 29],
+    'Departamento': ['Vendas', 'TI', 'Vendas', 'TI', 'RH'],
+    'Salario': [3000, 4500, 3500, 5000, 3200]
+}
+
+df = pd.DataFrame(dados)
+
+print("=== SELEÇÃO COM LOC E ILOC ===")
+print("DataFrame completo:")
+print(df)
+
+print(f"\n1. 🔢 SELEÇÃO COM ILOC (POR POSIÇÃO)")
+print("Primeira linha:", df.iloc[0].tolist())
+print("Última linha:", df.iloc[-1].tolist())
+print("Linhas 1 a 3:")
+print(df.iloc[1:4])
+print("Colunas 0 e 2:")
+print(df.iloc[:, [0, 2]])
+
+print(f"\n2. 🏷️ SELEÇÃO COM LOC (POR LABEL)")
+print("Linha com índice 2:")
+print(df.loc[2])
+print("Linhas 1 a 3, colunas Nome e Salario:")
+print(df.loc[1:3, ['Nome', 'Salario']])
+
+print(f"\n3. 🔍 SELEÇÃO MISTA")
+print("Nomes dos funcionários de TI:")
+print(df.loc[df['Departamento'] == 'TI', 'Nome'])
+
+print(f"\n4. 💰 SALÁRIOS ACIMA DA MÉDIA")
+media_salario = df['Salario'].mean()
+acima_media = df.loc[df['Salario'] > media_salario, ['Nome', 'Salario']]
+print(acima_media)
+
+print(f"\n5. 🎯 SELEÇÕES AVANÇADAS")
+print("Funcionários de Vendas com mais de 30 anos:")
+print(df.loc[(df['Departamento'] == 'Vendas') & (df['Idade'] > 30), :])
+
+print(f"\n6. 📊 RESUMO DAS SELEÇÕES")
+print(f"Total de funcionários: {len(df)}")
+print(f"Funcionários de TI: {len(df.loc[df['Departamento'] == 'TI'])}")
+print(f"Salário médio: R$ {media_salario:.2f}")
+print(f"Acima da média: {len(acima_media)} funcionários")</code></pre>
+    </div>
+
+    <!-- Continuando com mais exercícios até o 20 -->
+
+    <div class="exercise">
+        <h3>📝 Exercício 13: Trabalhando com Datas</h3>
+        <p><strong>Objetivo:</strong> Aprender a trabalhar com datas e tempos no pandas.</p>
+        
+        <div class="data-sample">
+            <h4>📊 Dados de Exemplo:</h4>
+            <table>
+                <tr><th>Data</th><th>Vendedor</th><th>Vendas</th></tr>
+                <tr><td>2024-01-15</td><td>Ana</td><td>15000</td></tr>
+                <tr><td>2024-02-20</td><td>João</td><td>22000</td></tr>
+                <tr><td>2024-03-10</td><td>Maria</td><td>18000</td></tr>
+                <tr><td>2024-01-25</td><td>Pedro</td><td>25000</td></tr>
+                <tr><td>2024-02-15</td><td>Carla</td><td>12000</td></tr>
+            </table>
+        </div>
+
+        <p><strong>Tarefa:</strong> Converta datas, extraia informações temporais e faça análises por período.</p>
+
+        <div class="password-container">
+            <input type="password" id="password13" placeholder="Digite a senha para ver o código"
+            onkeydown="handleEnter(event, 'code13', 'password13', this.nextElementSibling)" />
+            <button onclick="toggleCode('code13', 'password13', this)">Mostrar Código</button>
+        </div>
+        <pre class="language-python exercise-code" id="code13" style="display: none;"><code>import pandas as pd
+
+dados = {
+    'Data': ['2024-01-15', '2024-02-20', '2024-03-10', '2024-01-25', '2024-02-15'],
+    'Vendedor': ['Ana', 'João', 'Maria', 'Pedro', 'Carla'],
+    'Vendas': [15000, 22000, 18000, 25000, 12000]
+}
+
+df = pd.DataFrame(dados)
+
+print("=== TRABALHANDO COM DATAS ===")
+
+# Convertendo para datetime
+df['Data'] = pd.to_datetime(df['Data'])
+print("1. 📊 DATAFRAME COM DATAS CONVERTIDAS:")
+print(df)
+print(f"Tipo da coluna Data: {df['Data'].dtype}")
+
+# Extraindo informações da data
+df['Ano'] = df['Data'].dt.year
+df['Mes'] = df['Data'].dt.month
+df['Dia'] = df['Data'].dt.day
+df['Dia_Semana'] = df['Data'].dt.day_name()
+df['Trimestre'] = df['Data'].dt.quarter
+
+print(f"\n2. 📅 INFORMAÇÕES DE DATA EXTRAÍDAS:")
+print(df[['Data', 'Ano', 'Mes', 'Dia', 'Dia_Semana', 'Trimestre', 'Vendas']])
+
+print(f"\n3. 📈 VENDAS POR MÊS:")
+vendas_por_mes = df.groupby('Mes')['Vendas'].sum()
+print(vendas_por_mes)
+
+print(f"\n4. 🔍 VENDAS DE JANEIRO:")
+vendas_janeiro = df[df['Data'].dt.month == 1]
+print(vendas_janeiro[['Data', 'Vendedor', 'Vendas']])
+
+print(f"\n5. 📊 DATAFRAME ORDENADO POR DATA:")
+df_ordenado = df.sort_values('Data')
+print(df_ordenado[['Data', 'Vendedor', 'Vendas']])
+
+print(f"\n6. 📋 RESUMO TEMPORAL:")
+print(f"Período: {df['Data'].min().strftime('%d/%m/%Y')} a {df['Data'].max().strftime('%d/%m/%Y')}")
+print(f"Total de meses: {df['Mes'].nunique()}")
+print(f"Vendas totais: R$ {df['Vendas'].sum():,.2f}")
+print(f"Melhor mês: {vendas_por_mes.idxmax()} - R$ {vendas_por_mes.max():,.2f}")</code></pre>
+    </div>
+
+    <div class="exercise">
+        <h3>📝 Exercício 14: Aplicando Funções Personalizadas</h3>
+        <p><strong>Objetivo:</strong> Aprender a aplicar funções personalizadas em DataFrames.</p>
+        
+        <div class="data-sample">
+            <h4>📊 Dados de Exemplo:</h4>
+            <table>
+                <tr><th>Produto</th><th>Preço</th><th>Vendas</th></tr>
+                <tr><td>Notebook</td><td>2500</td><td>150</td></tr>
+                <tr><td>Mouse</td><td>50</td><td>300</td></tr>
+                <tr><td>Teclado</td><td>120</td><td>200</td></tr>
+                <tr><td>Monitor</td><td>800</td><td>80</td></tr>
+            </table>
+        </div>
+
+        <p><strong>Tarefa:</strong> Crie e aplique funções personalizadas para classificar dados e calcular métricas.</p>
+
+        <div class="password-container">
+            <input type="password" id="password14" placeholder="Digite a senha para ver o código"
+            onkeydown="handleEnter(event, 'code14', 'password14', this.nextElementSibling)" />
+            <button onclick="toggleCode('code14', 'password14', this)">Mostrar Código</button>
+        </div>
+        <pre class="language-python exercise-code" id="code14" style="display: none;"><code>import pandas as pd
+
+dados = {
+    'Produto': ['Notebook', 'Mouse', 'Teclado', 'Monitor'],
+    'Preco': [2500, 50, 120, 800],
+    'Vendas': [150, 300, 200, 80]
+}
+
+df = pd.DataFrame(dados)
+
+print("=== APLICANDO FUNÇÕES PERSONALIZADAS ===")
+print("DataFrame original:")
+print(df)
+
+# Função para classificar preços
+def classificar_preco(preco):
+    if preco > 1000:
+        return 'Alto'
+    elif preco > 100:
+        return 'Médio'
+    else:
+        return 'Baixo'
+
+print(f"\n1. 🏷️ CLASSIFICAÇÃO DE PREÇOS")
+df['Categoria_Preco'] = df['Preco'].apply(classificar_preco)
+print(df[['Produto', 'Preco', 'Categoria_Preco']])
+
+# Função para calcular receita total
+def calcular_receita(linha):
+    return linha['Preco'] * linha['Vendas']
+
+print(f"\n2. 💰 RECEITA TOTAL POR PRODUTO")
+df['Receita_Total'] = df.apply(calcular_receita, axis=1)
+print(df[['Produto', 'Preco', 'Vendas', 'Receita_Total']])
+
+print(f"\n3. 💸 PREÇOS COM DESCONTO (LAMBDA)")
+df['Preco_Com_Desconto'] = df['Preco'].apply(lambda x: x * 0.9)  # 10% de desconto
+print(df[['Produto', 'Preco', 'Preco_Com_Desconto']])
+
+# Função para avaliar desempenho de vendas
+def avaliar_desempenho(linha):
+    receita = linha['Preco'] * linha['Vendas']
+    if receita > 100000:
+        return 'Excelente'
+    elif receita > 50000:
+        return 'Bom'
+    else:
+        return 'Regular'
+
+print(f"\n4. 📈 AVALIAÇÃO DE DESEMPENHO")
+df['Desempenho'] = df.apply(avaliar_desempenho, axis=1)
+print(df[['Produto', 'Receita_Total', 'Desempenho']])
+
+print(f"\n5. 📊 MÉTRICAS PERSONALIZADAS")
+# Função para calcular margem (supondo custo como 70% do preço)
+def calcular_margem(preco):
+    custo = preco * 0.7
+    margem = ((preco - custo) / preco) * 100
+    return margem
+
+df['Margem'] = df['Preco'].apply(calcular_margem).round(2)
+print(df[['Produto', 'Preco', 'Margem']])
+
+print(f"\n6. 📋 RESUMO DAS TRANSFORMAÇÕES")
+print(f"Receita total: R$ {df['Receita_Total'].sum():,.2f}")
+print(f"Produtos com desempenho Excelente: {len(df[df['Desempenho'] == 'Excelente'])}")
+print(f"Margem média: {df['Margem'].mean():.2f}%")</code></pre>
+    </div>
+
+    <!-- Continuando com os exercícios 15 ao 20 -->
+
+    <div class="exercise">
+        <h3>📝 Exercício 15: Combinando Múltiplos DataFrames</h3>
+        <p><strong>Objetivo:</strong> Aprender a combinar e juntar diferentes DataFrames.</p>
+        
+        <div class="data-sample">
+            <h4>📊 DataFrame 1 - Funcionários:</h4>
+            <table>
+                <tr><th>ID</th><th>Nome</th><th>Departamento</th></tr>
+                <tr><td>1</td><td>Ana</td><td>Vendas</td></tr>
+                <tr><td>2</td><td>João</td><td>TI</td></tr>
+                <tr><td>3</td><td>Maria</td><td>Vendas</td></tr>
+            </table>
+            
+            <h4>📊 DataFrame 2 - Salários:</h4>
+            <table>
+                <tr><th>ID</th><th>Salário</th><th>Data_Admissao</th></tr>
+                <tr><td>1</td><td>3000</td><td>2020-01-15</td></tr>
+                <tr><td>2</td><td>4500</td><td>2019-03-20</td></tr>
+                <tr><td>3</td><td>3500</td><td>2021-06-10</td></tr>
+            </table>
+        </div>
+
+        <p><strong>Tarefa:</strong> Combine os DataFrames usando merge e concat.</p>
+
+        <div class="password-container">
+            <input type="password" id="password15" placeholder="Digite a senha para ver o código"
+            onkeydown="handleEnter(event, 'code15', 'password15', this.nextElementSibling)" />
+            <button onclick="toggleCode('code15', 'password15', this)">Mostrar Código</button>
+        </div>
+        <pre class="language-python exercise-code" id="code15" style="display: none;"><code>import pandas as pd
+
+# Criando primeiro DataFrame
+df1 = pd.DataFrame({
+    'ID': [1, 2, 3, 4],
+    'Nome': ['Ana', 'João', 'Maria', 'Pedro'],
+    'Departamento': ['Vendas', 'TI', 'Vendas', 'TI']
+})
+
+# Criando segundo DataFrame
+df2 = pd.DataFrame({
+    'ID': [1, 2, 3],
+    'Salario': [3000, 4500, 3500],
+    'Data_Admissao': ['2020-01-15', '2019-03-20', '2021-06-10']
+})
+
+print("=== COMBINANDO DATAFRAMES ===")
+
+print("DataFrame 1 (Funcionários):")
+print(df1)
+print(f"\nDataFrame 2 (Salários):")
+print(df2)
+
+print(f"\n1. 🔄 MERGE DOS DATAFRAMES (LEFT JOIN)")
+df_merged = pd.merge(df1, df2, on='ID', how='left')
+print(df_merged)
+
+print(f"\n2. 📥 CONCATENANDO DATAFRAMES")
+df3 = pd.DataFrame({
+    'ID': [5, 6],
+    'Nome': ['Carla', 'Lucas'],
+    'Departamento': ['RH', 'TI']
+})
+
+df_concatenado = pd.concat([df1, df3], ignore_index=True)
+print(df_concatenado)
+
+print(f"\n3. 💰 ADICIONANDO NOVOS SALÁRIOS")
+novos_salarios = pd.DataFrame({
+    'ID': [4, 5, 6],
+    'Salario': [5000, 3200, 4800],
+    'Data_Admissao': ['2022-02-01', '2023-01-15', '2021-12-10']
+})
+
+df_completo = pd.merge(df_concatenado, novos_salarios, on='ID', how='left')
+print(df_completo)
+
+print(f"\n4. 📊 AGREGAÇÃO NO DATAFRAME COMBINADO")
+salario_por_depto = df_completo.groupby('Departamento')['Salario'].mean()
+print("Salário médio por departamento:")
+print(salario_por_depto.round(2))
+
+print(f"\n5. 📋 RESUMO DA COMBINAÇÃO")
+print(f"Total de funcionários: {len(df_completo)}")
+print(f"Departamentos: {df_completo['Departamento'].unique().tolist()}")
+print(f"Salário total: R$ {df_completo['Salario'].sum():,.2f}")</code></pre>
+    </div>
+
+    <!-- Continuando com exercícios 16-20 -->
+
+    <div class="exercise">
+        <h3>📝 Exercício 16: Salvando em Diferentes Formatos</h3>
+        <p><strong>Objetivo:</strong> Aprender a salvar DataFrames em diferentes formatos de arquivo.</p>
+        
+        <div class="data-sample">
+            <h4>📊 Dados de Exemplo:</h4>
+            <table>
+                <tr><th>Produto</th><th>Categoria</th><th>Preço</th><th>Vendas</th></tr>
+                <tr><td>Notebook</td><td>Eletrônico</td><td>2500</td><td>150</td></tr>
+                <tr><td>Mouse</td><td>Periférico</td><td>50</td><td>300</td></tr>
+                <tr><td>Teclado</td><td>Periférico</td><td>120</td><td>200</td></tr>
+                <tr><td>Monitor</td><td>Eletrônico</td><td>800</td><td>80</td></tr>
+            </table>
+        </div>
+
+        <p><strong>Tarefa:</strong> Salve o DataFrame em CSV, Excel e JSON, depois verifique a leitura.</p>
+
+        <div class="password-container">
+            <input type="password" id="password16" placeholder="Digite a senha para ver o código"
+            onkeydown="handleEnter(event, 'code16', 'password16', this.nextElementSibling)" />
+            <button onclick="toggleCode('code16', 'password16', this)">Mostrar Código</button>
+        </div>
+        <pre class="language-python exercise-code" id="code16" style="display: none;"><code>import pandas as pd
+import os
+
+dados = {
+    'Produto': ['Notebook', 'Mouse', 'Teclado', 'Monitor'],
+    'Categoria': ['Eletrônico', 'Periférico', 'Periférico', 'Eletrônico'],
+    'Preco': [2500, 50, 120, 800],
+    'Vendas': [150, 300, 200, 80]
+}
+
+df = pd.DataFrame(dados)
+
+print("=== SALVANDO DATAFRAME EM DIFERENTES FORMATOS ===")
+print("DataFrame original:")
+print(df)
+
+print(f"\n1. 💾 SALVANDO COMO CSV")
+df.to_csv('produtos.csv', index=False)
+print("✅ Salvo como CSV: produtos.csv")
+
+print(f"\n2. 📊 SALVANDO COMO EXCEL")
+df.to_excel('produtos.xlsx', index=False, sheet_name='Produtos')
+print("✅ Salvo como Excel: produtos.xlsx")
+
+print(f"\n3. 📄 SALVANDO COMO JSON")
+df.to_json('produtos.json', orient='records', indent=2)
+print("✅ Salvo como JSON: produtos.json")
+
+print(f"\n4. 🔍 VERIFICANDO ARQUIVOS CRIADOS")
+arquivos = ['produtos.csv', 'produtos.xlsx', 'produtos.json']
+for arquivo in arquivos:
+    if os.path.exists(arquivo):
+        print(f"   ✅ {arquivo} - {os.path.getsize(arquivo)} bytes")
+
+print(f"\n5. 📖 LENDO OS ARQUIVOS SALVOS")
+df_csv = pd.read_csv('produtos.csv')
+print(f"CSV carregado - Shape: {df_csv.shape}")
+
+df_excel = pd.read_excel('produtos.xlsx')
+print(f"Excel carregado - Shape: {df_excel.shape}")
+
+df_json = pd.read_json('produtos.json')
+print(f"JSON carregado - Shape: {df_json.shape}")
+
+print(f"\n6. ✅ VERIFICAÇÃO DE INTEGRIDADE")
+print(f"Dados originais: {df.shape[0]} linhas x {df.shape[1]} colunas")
+print(f"CSV carregado: {df_csv.shape[0]} linhas x {df_csv.shape[1]} colunas")
+print(f"Excel carregado: {df_excel.shape[0]} linhas x {df_excel.shape[1]} colunas")
+print(f"JSON carregado: {df_json.shape[0]} linhas x {df_json.shape[1]} colunas")
+
+print(f"\n7. 🧹 LIMPANDO ARQUIVOS (OPCIONAL)")
+for arquivo in arquivos:
+    if os.path.exists(arquivo):
+        os.remove(arquivo)
+        print(f"   🗑️ {arquivo} removido")</code></pre>
+    </div>
+
+    <div class="exercise">
+        <h3>📝 Exercício 17: Trabalhando com Dados Categóricos</h3>
+        <p><strong>Objetivo:</strong> Aprender a trabalhar com variáveis categóricas no pandas.</p>
+        
+        <div class="data-sample">
+            <h4>📊 Dados de Exemplo:</h4>
+            <table>
+                <tr><th>Produto</th><th>Categoria</th><th>Avaliação</th></tr>
+                <tr><td>Notebook</td><td>Eletrônico</td><td>5</td></tr>
+                <tr><td>Mouse</td><td>Periférico</td><td>4</td></tr>
+                <tr><td>Teclado</td><td>Periférico</td><td>5</td></tr>
+                <tr><td>Monitor</td><td>Eletrônico</td><td>4</td></tr>
+                <tr><td>Tablet</td><td>Eletrônico</td><td>3</td></tr>
+            </table>
+        </div>
+
+        <p><strong>Tarefa:</strong> Converta colunas para categóricas e faça análises específicas.</p>
+
+        <div class="password-container">
+            <input type="password" id="password17" placeholder="Digite a senha para ver o código"
+            onkeydown="handleEnter(event, 'code17', 'password17', this.nextElementSibling)" />
+            <button onclick="toggleCode('code17', 'password17', this)">Mostrar Código</button>
+        </div>
+        <pre class="language-python exercise-code" id="code17" style="display: none;"><code>import pandas as pd
+
+dados = {
+    'Produto': ['Notebook', 'Mouse', 'Teclado', 'Monitor', 'Tablet', 'Webcam', 'Headset'],
+    'Categoria': ['Eletrônico', 'Periférico', 'Periférico', 'Eletrônico', 'Eletrônico', 'Periférico', 'Periférico'],
+    'Avaliacao': [5, 4, 5, 4, 3, 4, 5]
+}
+
+df = pd.DataFrame(dados)
+
+print("=== TRABALHANDO COM DADOS CATEGÓRICOS ===")
+print("DataFrame original:")
+print(df)
+
+# Convertendo para categoria
+df['Categoria'] = df['Categoria'].astype('category')
+print(f"\n1. 🔧 CONVERSÃO PARA CATEGORIA")
+print(f"Tipos de dados após conversão:")
+print(df.dtypes)
+
+print(f"\n2. 📋 INFORMAÇÕES SOBRE CATEGORIAS")
+print(f"Categorias disponíveis: {df['Categoria'].cat.categories.tolist()}")
+print(f"Número de categorias: {df['Categoria'].nunique()}")
+
+print(f"\n3. 📊 CONTAGEM POR CATEGORIA")
+contagem_categorias = df['Categoria'].value_counts()
+print(contagem_categorias)
+
+print(f"\n4. ⭐ AVALIAÇÃO MÉDIA POR CATEGORIA")
+avaliacao_media = df.groupby('Categoria')['Avaliacao'].mean()
+print(avaliacao_media.round(2))
+
+print(f"\n5. 🔄 ORDENANDO POR CATEGORIA")
+df_ordenado = df.sort_values('Categoria')
+print(df_ordenado)
+
+print(f"\n6. 🔢 ONE-HOT ENCODING")
+df_encoded = pd.get_dummies(df, columns=['Categoria'], prefix='Cat')
+print("DataFrame com one-hot encoding:")
+print(df_encoded)
+
+print(f"\n7. 📈 ANÁLISE POR CATEGORIA")
+print(f"Produtos por categoria:")
+for categoria in df['Categoria'].cat.categories:
+    produtos = df[df['Categoria'] == categoria]['Produto'].tolist()
+    avaliacao_media = df[df['Categoria'] == categoria]['Avaliacao'].mean()
+    print(f"  {categoria}: {len(produtos)} produtos - Avaliação média: {avaliacao_media:.2f}")</code></pre>
+    </div>
+
+    <div class="exercise">
+        <h3>📝 Exercício 18: Análise Temporal de Dados</h3>
+        <p><strong>Objetivo:</strong> Aprender a fazer análises temporais com séries de tempo.</p>
+        
+        <div class="data-sample">
+            <h4>📊 Dados de Exemplo:</h4>
+            <table>
+                <tr><th>Data</th><th>Vendas</th><th>Clientes</th></tr>
+                <tr><td>2024-01-01</td><td>15000</td><td>45</td></tr>
+                <tr><td>2024-01-02</td><td>12000</td><td>38</td></tr>
+                <tr><td>2024-01-03</td><td>18000</td><td>52</td></tr>
+                <tr><td>2024-01-04</td><td>16000</td><td>48</td></tr>
+                <tr><td>2024-01-05</td><td>22000</td><td>61</td></tr>
+            </table>
+        </div>
+
+        <p><strong>Tarefa:</strong> Faça análises temporais com médias móveis e variações percentuais.</p>
+
+        <div class="password-container">
+            <input type="password" id="password18" placeholder="Digite a senha para ver o código"
+            onkeydown="handleEnter(event, 'code18', 'password18', this.nextElementSibling)" />
+            <button onclick="toggleCode('code18', 'password18', this)">Mostrar Código</button>
+        </div>
+        <pre class="language-python exercise-code" id="code18" style="display: none;"><code>import pandas as pd
+import numpy as np
+
+# Criando dados temporais
+dados = {
+    'Data': ['2024-01-01', '2024-01-02', '2024-01-03', '2024-01-04', '2024-01-05',
+             '2024-01-06', '2024-01-07', '2024-01-08', '2024-01-09', '2024-01-10'],
+    'Vendas': [15000, 12000, 18000, 16000, 22000, 19000, 14000, 21000, 17000, 23000],
+    'Clientes': [45, 38, 52, 48, 61, 55, 42, 58, 49, 63]
+}
+
+df = pd.DataFrame(dados)
+
+print("=== ANÁLISE TEMPORAL ===")
+
+# Convertendo para datetime e definindo como índice
+df['Data'] = pd.to_datetime(df['Data'])
+df.set_index('Data', inplace=True)
+
+print("DataFrame com índice temporal:")
+print(df)
+
+print(f"\n1. 📅 ESTATÍSTICAS TEMPORAIS")
+print(f"   Período: {df.index.min()} a {df.index.max()}")
+print(f"   Dias analisados: {len(df)}")
+print(f"   Vendas totais: R$ {df['Vendas'].sum():,.2f}")
+print(f"   Clientes totais: {df['Clientes'].sum()}")
+
+print(f"\n2. 📈 MÉDIA MÓVEL DE 3 DIAS")
+df['Vendas_Media_Movel'] = df['Vendas'].rolling(window=3).mean()
+df['Clientes_Media_Movel'] = df['Clientes'].rolling(window=3).mean()
+print(df[['Vendas', 'Vendas_Media_Movel', 'Clientes', 'Clientes_Media_Movel']].round(2))
+
+print(f"\n3. 📊 VARIAÇÃO PERCENTUAL DIÁRIA")
+df['Vendas_Variacao'] = df['Vendas'].pct_change() * 100
+df['Clientes_Variacao'] = df['Clientes'].pct_change() * 100
+print(df[['Vendas_Variacao', 'Clientes_Variacao']].round(2))
+
+print(f"\n4. 🏆 MELHOR E PIOR DIA")
+melhor_dia_vendas = df['Vendas'].idxmax()
+pior_dia_vendas = df['Vendas'].idxmin()
+melhor_dia_clientes = df['Clientes'].idxmax()
+
+print(f"Melhor dia de vendas: {melhor_dia_vendas.strftime('%d/%m/%Y')} - R$ {df['Vendas'].max():,.2f}")
+print(f"Pior dia de vendas: {pior_dia_vendas.strftime('%d/%m/%Y')} - R$ {df['Vendas'].min():,.2f}")
+print(f"Melhor dia de clientes: {melhor_dia_clientes.strftime('%d/%m/%Y')} - {df['Clientes'].max()} clientes")
+
+print(f"\n5. 📈 TENDÊNCIA")
+x = range(len(df))
+coef_vendas = np.polyfit(x, df['Vendas'], 1)[0]
+coef_clientes = np.polyfit(x, df['Clientes'], 1)[0]
+
+print(f"Vendas: {'📈 Crescimento' if coef_vendas > 0 else '📉 Queda'} de R$ {abs(coef_vendas):.2f} por dia")
+print(f"Clientes: {'📈 Crescimento' if coef_clientes > 0 else '📉 Queda'} de {abs(coef_clientes):.2f} clientes por dia")
+
+print(f"\n6. 📊 RESUMO DA ANÁLISE TEMPORAL")
+print(f"Média diária de vendas: R$ {df['Vendas'].mean():,.2f}")
+print(f"Média diária de clientes: {df['Clientes'].mean():.1f}")
+print(f"Maior variação positiva: {df['Vendas_Variacao'].max():.2f}%")
+print(f"Maior variação negativa: {df['Vendas_Variacao'].min():.2f}%")</code></pre>
+    </div>
+
+    <div class="exercise">
+        <h3>📝 Exercício 19: Análises Complexas com Agregações Múltiplas</h3>
+        <p><strong>Objetivo:</strong> Aprender a fazer análises complexas com múltiplas agregações.</p>
+        
+        <div class="data-sample">
+            <h4>📊 Dados de Exemplo:</h4>
+            <table>
+                <tr><th>Data</th><th>Vendedor</th><th>Produto</th><th>Região</th><th>Quantidade</th><th>Preço_Unitario</th></tr>
+                <tr><td>2024-01-15</td><td>Ana</td><td>Notebook</td><td>Norte</td><td>2</td><td>2500</td></tr>
+                <tr><td>2024-01-15</td><td>João</td><td>Mouse</td><td>Sul</td><td>5</td><td>50</td></tr>
+                <tr><td>2024-01-16</td><td>Ana</td><td>Teclado</td><td>Norte</td><td>3</td><td>120</td></tr>
+                <tr><td>2024-01-16</td><td>João</td><td>Monitor</td><td>Sul</td><td>1</td><td>800</td></tr>
+                <tr><td>2024-01-17</td><td>Ana</td><td>Monitor</td><td>Norte</td><td>2</td><td>800</td></tr>
+            </table>
+        </div>
+
+        <p><strong>Tarefa:</strong> Faça análises complexas com agregações múltiplas por diferentes dimensões.</p>
+
+        <div class="password-container">
+            <input type="password" id="password19" placeholder="Digite a senha para ver o código"
+            onkeydown="handleEnter(event, 'code19', 'password19', this.nextElementSibling)" />
+            <button onclick="toggleCode('code19', 'password19', this)">Mostrar Código</button>
+        </div>
+        <pre class="language-python exercise-code" id="code19" style="display: none;"><code>import pandas as pd
+
+# Dados de vendas detalhadas
+dados = {
+    'Data': ['2024-01-15', '2024-01-15', '2024-01-16', '2024-01-16', '2024-01-17',
+             '2024-01-17', '2024-01-18', '2024-01-18', '2024-01-19', '2024-01-19'],
+    'Vendedor': ['Ana', 'João', 'Ana', 'João', 'Ana', 'João', 'Ana', 'João', 'Ana', 'João'],
+    'Produto': ['Notebook', 'Mouse', 'Teclado', 'Monitor', 'Monitor', 'Notebook', 
+                'Teclado', 'Mouse', 'Notebook', 'Monitor'],
+    'Regiao': ['Norte', 'Sul', 'Norte', 'Sul', 'Norte', 'Sul', 'Norte', 'Sul', 'Norte', 'Sul'],
+    'Quantidade': [2, 5, 3, 1, 2, 1, 4, 3, 1, 2],
+    'Preco_Unitario': [2500, 50, 120, 800, 800, 2500, 120, 50, 2500, 800]
+}
+
+df = pd.DataFrame(dados)
+df['Data'] = pd.to_datetime(df['Data'])
+df['Valor_Total'] = df['Quantidade'] * df['Preco_Unitario']
+
+print("=== ANÁLISES COMPLEXAS COM AGREGAÇÕES MÚLTIPLAS ===")
+print("DataFrame completo:")
+print(df)
+
+print(f"\n1. 👤 DESEMPENHO POR VENDEDOR")
+vendedor_stats = df.groupby('Vendedor').agg({
+    'Valor_Total': ['sum', 'mean', 'count'],
+    'Quantidade': 'sum',
+    'Produto': 'nunique'
+}).round(2)
+
+vendedor_stats.columns = ['Total_Vendas', 'Media_Venda', 'Num_Vendas', 'Total_Itens', 'Produtos_Diferentes']
+print(vendedor_stats)
+
+print(f"\n2. 📦 DESEMPENHO POR PRODUTO")
+produto_stats = df.groupby('Produto').agg({
+    'Valor_Total': ['sum', 'mean'],
+    'Quantidade': 'sum',
+    'Vendedor': 'nunique'
+}).round(2)
+
+produto_stats.columns = ['Total_Vendas', 'Media_Venda', 'Total_Itens', 'Vendedores_Diferentes']
+print(produto_stats)
+
+print(f"\n3. 🗺️ DESEMPENHO POR REGIÃO")
+regiao_stats = df.groupby('Regiao').agg({
+    'Valor_Total': ['sum', 'mean'],
+    'Quantidade': 'sum',
+    'Vendedor': 'nunique',
+    'Produto': 'nunique'
+}).round(2)
+
+regiao_stats.columns = ['Total_Vendas', 'Media_Venda', 'Total_Itens', 'Vendedores_Diferentes', 'Produtos_Diferentes']
+print(regiao_stats)
+
+print(f"\n4. 📅 VENDAS POR DATA")
+vendas_diarias = df.groupby('Data').agg({
+    'Valor_Total': 'sum',
+    'Quantidade': 'sum',
+    'Vendedor': 'nunique'
+}).round(2)
+
+vendas_diarias.columns = ['Total_Vendas', 'Total_Itens', 'Vendedores_Ativos']
+print(vendas_diarias)
+
+print(f"\n5. 🔄 ANÁLISE CRUZADA - VENDEDOR X PRODUTO")
+cruzada = df.pivot_table(
+    values='Valor_Total',
+    index='Vendedor',
+    columns='Produto',
+    aggfunc='sum',
+    fill_value=0
+).round(2)
+
+print("Tabela cruzada - Vendas por Vendedor e Produto:")
+print(cruzada)
+
+print(f"\n6. 📊 RESUMO GERAL DA ANÁLISE")
+print(f"Total de vendas: R$ {df['Valor_Total'].sum():,.2f}")
+print(f"Total de itens vendidos: {df['Quantidade'].sum()}")
+print(f"Vendedores ativos: {df['Vendedor'].nunique()}")
+print(f"Produtos diferentes: {df['Produto'].nunique()}")
+print(f"Período analisado: {df['Data'].min().strftime('%d/%m/%Y')} a {df['Data'].max().strftime('%d/%m/%Y')}")</code></pre>
+    </div>
+
+    <div class="exercise">
+        <h3>📝 Exercício 20: Análise Completa de Negócios</h3>
+        <p><strong>Objetivo:</strong> Integrar todos os conceitos em uma análise completa de negócios.</p>
+        
+        <div class="data-sample">
+            <h4>📊 Dados de Exemplo:</h4>
+            <table>
+                <tr><th>Mês</th><th>Vendedor</th><th>Produto</th><th>Categoria</th><th>Quantidade</th><th>Preco_Unitario</th><th>Custo_Unitario</th></tr>
+                <tr><td>Janeiro</td><td>Ana</td><td>Notebook</td><td>Eletrônico</td><td>5</td><td>2500</td><td>1800</td></tr>
+                <tr><td>Janeiro</td><td>João</td><td>Mouse</td><td>Periférico</td><td>20</td><td>50</td><td>30</td></tr>
+                <tr><td>Fevereiro</td><td>Ana</td><td>Teclado</td><td>Periférico</td><td>15</td><td>120</td><td>80</td></tr>
+                <tr><td>Fevereiro</td><td>João</td><td>Monitor</td><td>Eletrônico</td><td>8</td><td>800</td><td>600</td></tr>
+                <tr><td>Março</td><td>Ana</td><td>Monitor</td><td>Eletrônico</td><td>6</td><td>800</td><td>600</td></tr>
+                <tr><td>Março</td><td>João</td><td>Notebook</td><td>Eletrônico</td><td>4</td><td>2500</td><td>1800</td></tr>
+            </table>
+        </div>
+
+        <p><strong>Tarefa:</strong> Realize uma análise completa incluindo receita, lucro, margens e tendências.</p>
+
+        <div class="password-container">
+            <input type="password" id="password20" placeholder="Digite a senha para ver o código"
+            onkeydown="handleEnter(event, 'code20', 'password20', this.nextElementSibling)" />
+            <button onclick="toggleCode('code20', 'password20', this)">Mostrar Código</button>
+        </div>
+        <pre class="language-python exercise-code" id="code20" style="display: none;"><code>import pandas as pd
+
+# Dados completos para análise de negócios
+dados = {
+    'Mes': ['Janeiro', 'Janeiro', 'Fevereiro', 'Fevereiro', 'Março', 'Março',
+            'Abril', 'Abril', 'Maio', 'Maio', 'Junho', 'Junho'],
+    'Vendedor': ['Ana', 'João', 'Ana', 'João', 'Ana', 'João',
+                 'Ana', 'João', 'Ana', 'João', 'Ana', 'João'],
+    'Produto': ['Notebook', 'Mouse', 'Teclado', 'Monitor', 'Monitor', 'Notebook',
+                'Teclado', 'Mouse', 'Notebook', 'Monitor', 'Mouse', 'Teclado'],
+    'Categoria': ['Eletrônico', 'Periférico', 'Periférico', 'Eletrônico', 'Eletrônico', 'Eletrônico',
+                  'Periférico', 'Periférico', 'Eletrônico', 'Eletrônico', 'Periférico', 'Periférico'],
+    'Quantidade': [5, 20, 15, 8, 6, 4, 12, 25, 3, 7, 18, 10],
+    'Preco_Unitario': [2500, 50, 120, 800, 800, 2500, 120, 50, 2500, 800, 50, 120],
+    'Custo_Unitario': [1800, 30, 80, 600, 600, 1800, 80, 30, 1800, 600, 30, 80]
+}
+
+df = pd.DataFrame(dados)
+
+print("=== ANÁLISE COMPLETA DE NEGÓCIOS ===")
+
+# Cálculos iniciais
+df['Receita'] = df['Quantidade'] * df['Preco_Unitario']
+df['Custo_Total'] = df['Quantidade'] * df['Custo_Unitario']
+df['Lucro'] = df['Receita'] - df['Custo_Total']
+df['Margem_Lucro'] = (df['Lucro'] / df['Receita']) * 100
+
+print("1. 📊 VISÃO GERAL DO NEGÓCIO:")
+print(f"   Receita Total: R$ {df['Receita'].sum():,.2f}")
+print(f"   Lucro Total: R$ {df['Lucro'].sum():,.2f}")
+print(f"   Margem de Lucro Geral: {(df['Lucro'].sum() / df['Receita'].sum() * 100):.2f}%")
+print(f"   Total de Itens Vendidos: {df['Quantidade'].sum()}")
+print(f"   Vendedores Ativos: {df['Vendedor'].nunique()}")
+print(f"   Produtos Diferentes: {df['Produto'].nunique()}")
+
+print(f"\n2. 👤 DESEMPENHO POR VENDEDOR:")
+vendedor_performance = df.groupby('Vendedor').agg({
+    'Receita': 'sum',
+    'Lucro': 'sum',
+    'Quantidade': 'sum',
+    'Produto': 'nunique'
+}).round(2)
+
+vendedor_performance['Margem'] = (vendedor_performance['Lucro'] / vendedor_performance['Receita']) * 100
+print(vendedor_performance)
+
+print(f"\n3. 📦 DESEMPENHO POR PRODUTO:")
+produto_performance = df.groupby('Produto').agg({
+    'Receita': 'sum',
+    'Lucro': 'sum',
+    'Quantidade': 'sum',
+    'Margem_Lucro': 'mean'
+}).round(2)
+
+produto_performance = produto_performance.sort_values('Receita', ascending=False)
+print(produto_performance)
+
+print(f"\n4. 🏷️ DESEMPENHO POR CATEGORIA:")
+categoria_performance = df.groupby('Categoria').agg({
+    'Receita': 'sum',
+    'Lucro': 'sum',
+    'Quantidade': 'sum',
+    'Margem_Lucro': 'mean'
+}).round(2)
+
+categoria_performance = categoria_performance.sort_values('Receita', ascending=False)
+print(categoria_performance)
+
+print(f"\n5. 📅 EVOLUÇÃO MENSAL:")
+evolucao_mensal = df.groupby('Mes').agg({
+    'Receita': 'sum',
+    'Lucro': 'sum',
+    'Quantidade': 'sum'
+}).round(2)
+
+# Ordenar meses corretamente
+meses_ordem = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho']
+evolucao_mensal = evolucao_mensal.reindex(meses_ordem)
+
+evolucao_mensal['Variacao_Receita'] = evolucao_mensal['Receita'].pct_change() * 100
+print(evolucao_mensal)
+
+print(f"\n6. 🏆 TOP 5 VENDAS POR LUCRO:")
+top_lucro = df.nlargest(5, 'Lucro')[['Mes', 'Vendedor', 'Produto', 'Quantidade', 'Lucro']]
+print(top_lucro)
+
+print(f"\n7. 💹 PRODUTOS POR MARGEM DE LUCRO:")
+produtos_margem = df.groupby('Produto')['Margem_Lucro'].mean().round(2).sort_values(ascending=False)
+print(produtos_margem)
+
+print(f"\n8. 📈 RECOMENDAÇÕES E INSIGHTS:")
+print(f"   ✅ Produto com maior receita: {produto_performance.index[0]}")
+print(f"   ✅ Produto com maior margem: {produtos_margem.index[0]}")
+print(f"   ✅ Vendedor com melhor desempenho: {vendedor_performance['Receita'].idxmax()}")
+print(f"   ✅ Categoria mais lucrativa: {categoria_performance.index[0]}")
+print(f"   📊 Melhor mês: {evolucao_mensal['Receita'].idxmax()}")</code></pre>
+    </div>
+
+    <script>
+        function toggleCode(codeId, passwordId, button) {
+            const senhaInput = document.getElementById(passwordId);
+            const senha = senhaInput.value;
+            const codeBlock = document.getElementById(codeId);
+        
+            if (senha === "1234") {  // Altere aqui pela senha correta
+                if (codeBlock.style.display === "none") {
+                    codeBlock.style.display = "block";
+                    button.textContent = "Ocultar Código";
+                } else {
+                    codeBlock.style.display = "none";
+                    senhaInput.value = ""; // Limpa a senha ao esconder
+                    button.textContent = "Mostrar Código";
+                }
+            } else {
+                alert("Senha incorreta!");
+            }
+        }
+        
+        function handleEnter(event, codeId, passwordId, button) {
+            if (event.key === "Enter") {
+                toggleCode(codeId, passwordId, button);
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+</body>
+</html>
